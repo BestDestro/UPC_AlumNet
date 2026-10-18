@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPC Alumni Connect - Enterprise Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' }
+    </script>
+    <style>
+        :root {
+            --upc-blue: #007bc0;
+            --upc-dark: #004b75;
+            --upc-light: #f0f7fc;
+            --upc-border: #d2e4f0;
+            --bg-canvas: #0f172a;
+            --surface: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-subtle: #334155;
+            --border-strong: #475569;
+            --accent-green: #22c55e;
+            --accent-green-bg: #064e3b;
+            --accent-amber: #f59e0b;
+            --accent-amber-bg: #78350f;
+            --accent-purple: #a855f7;
+            --accent-purple-bg: #4c1d95;
+            --accent-red: #ef4444;
+            --accent-red-bg: #7f1d1d;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-canvas); color: var(--text-primary); min-height: 100vh; display: flex; flex-direction: column; }
+        
+        .hidden-role { display: none !important; }
+        .screen-view { display: none; }
+        .screen-view.active { display: block; animation: fadeIn 0.15s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(2px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* DEMO CONTROL TOOLBAR */
+        .demo-bar { background-color: #020617; color: #e2e8f0; padding: 8px 24px; display: flex; justify-content: space-between; font-size: 0.8rem; border-bottom: 1px solid var(--border-subtle); position: sticky; top: 0; z-index: 200; }
+        .demo-tag { background-color: #334155; color: #cbd5e1; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 0.72rem; text-transform: uppercase; }
+        .demo-meta-right { display: flex; align-items: center; gap: 12px; color: #94a3b8; }
+        .status-dot-secure { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; display: inline-block; }
+
+        /* HEADER */
+        header.app-header { background: var(--surface); border-bottom: 1px solid var(--border-subtle); position: sticky; top: 37px; z-index: 100; }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+        .brand-mark { background-color: var(--upc-blue); color: white; font-weight: 800; padding: 4px 8px; border-radius: 4px; }
+        .brand-name { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); }
+        .nav-tabs { display: flex; gap: 4px; height: 100%; }
+        .tab-btn { background: transparent; border: none; color: var(--text-secondary); padding: 0 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; border-bottom: 2px solid transparent; }
+        .tab-btn:hover, .tab-btn.active { color: var(--upc-blue); border-bottom-color: var(--upc-blue); }
+        
+        .badge-pill { font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
+        .badge-student { background: var(--bg-canvas); color: var(--upc-blue); border: 1px solid var(--border-subtle); }
+        .badge-alumni { background: var(--accent-green-bg); color: var(--accent-green); border: 1px solid var(--accent-green); }
+        .badge-admin { background: var(--accent-purple-bg); color: var(--accent-purple); border: 1px solid var(--accent-purple); }
+
+        /* MAIN CONTENT */
+        main.main-content { max-width: 1200px; margin: 24px auto; padding: 0 20px; width: 100%; flex: 1; }
+        .card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: 8px; margin-bottom: 16px; overflow: hidden; padding: 16px; }
+        
+        .btn-primary { background-color: var(--upc-blue); color: white; border: none; padding: 6px 16px; border-radius: 4px; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+        .btn-primary:hover { background-color: var(--upc-dark); }
+        .btn-danger-action { background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
+        .btn-danger-action:hover { background: var(--accent-red-bg); }
+
+        /* FEED GRID */
+        .feed-grid { display: grid; grid-template-columns: 260px 1fr; gap: 20px; align-items: start; }
+        .post-input-row { display: flex; gap: 12px; margin-bottom: 10px;}
+        .post-field { flex: 1; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 10px 14px; font-size: 0.86rem; resize: none; background: var(--bg-canvas); color: var(--text-primary); min-height: 42px; }
+        .post-field:focus { border-color: var(--upc-blue); min-height: 72px; outline: none;}
+        .post-card { position: relative; margin-bottom: 16px;}
+        .post-author-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .category-label { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 2px 6px; border-radius: 3px; background: var(--bg-canvas); color: var(--upc-blue); border: 1px solid var(--border-subtle); margin-bottom: 8px; }
+
+        .toast { position: fixed; bottom: 24px; right: 24px; background: var(--upc-blue); color: white; padding: 10px 16px; border-radius: 6px; font-size: 0.82rem; font-weight: 500; display: none; z-index: 1000; }
+        .toast.show { display: block; animation: fadeIn 0.2s ease-out; }
+    </style>
+</head>
+<body>
+
+    <!-- DEMO BAR -->
+    <div class="demo-bar">
+        <div class="demo-bar-left">
+            <span class="demo-tag">UPC AlumNet Real API Demo</span>
+            <span id="nav-user-email" class="hidden text-upc-blue font-bold"></span>
+        </div>
+        <div class="demo-meta-right">
+            <span><span class="status-dot-secure"></span> TLS 1.3 / OAuth2 / BLOB Cypher</span>
+            <button onclick="logout()" id="logout-btn" class="hidden text-accent-red ml-4">Logout</button>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="app-header">
+        <div class="header-inner">
+            <div class="flex items-center gap-3">
+                <div class="brand-mark">UPC</div>
+                <div class="brand-name">AlumniConnect</div>
+            </div>
+            <nav class="nav-tabs" id="main-nav" style="display: none;">
+                <button id="tab-feed" class="tab-btn active" onclick="switchTab('feed', this)">Opportunities Feed</button>
+                <button id="tab-profile" class="tab-btn" onclick="switchTab('profile', this)">Upload CV (BLOB)</button>
+                <button id="tab-admin" class="tab-btn hidden-role" onclick="switchTab('admin', this)">Moderation Console</button>
+            </nav>
+            <div>
+                <span id="role-pill" class="badge-pill" style="display: none;"></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+
+        <!-- VIEW 0: LOGIN -->
+        <section id="view-login" class="screen-view active">
+            <div class="max-w-md mx-auto card mt-10">
+                <h2 class="text-2xl font-semibold mb-6">Acceso a la Plataforma</h2>
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="mb-4">
+                        <label class="block text-sm text-text-secondary mb-1">Email Institucional</label>
+                        <input type="email" id="email" class="w-full bg-bg-canvas border border-border-subtle rounded px-3 py-2 text-white" required>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm text-text-secondary mb-1">Contraseña</label>
+                        <input type="password" id="password" class="w-full bg-bg-canvas border border-border-subtle rounded px-3 py-2 text-white" required>
+                    </div>
+                    <p id="loginError" class="text-accent-red text-sm mb-4 hidden"></p>
+                    <button type="submit" class="w-full btn-primary">Iniciar Sesión Segura</button>
+                </form>
+                <div class="mt-6 pt-4 border-t border-border-subtle">
+                    <p class="text-sm text-text-secondary mb-3">¿No tienes cuenta de prueba?</p>
+                    <button onclick="document.getElementById('register-modal').classList.remove('hidden')" class="w-full bg-surface border border-border-subtle hover:bg-bg-canvas text-white font-semibold py-2 px-4 rounded">Registrar Usuario de Prueba</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 1: FEED & OFFERS -->
+        <section id="view-feed" class="screen-view">
+            <div class="feed-grid">
+                
+                <!-- Left: Profile Summary -->
+                <aside>
+                    <div class="card text-center">
+                        <div class="w-16 h-16 rounded-full bg-upc-blue text-white flex items-center justify-center text-xl font-bold mx-auto mb-3" id="profile-avatar">U</div>
+                        <h3 id="profile-name" class="font-bold text-lg">Usuario</h3>
+                        <p id="profile-role" class="text-sm text-text-secondary mb-4">Rol</p>
+                        <div class="border-t border-border-subtle pt-4">
+                            <p class="text-xs text-text-muted">UPC Cybersecurity Project 2026</p>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Right: Posts -->
+                <div>
+                    <!-- Composer (Only Alumni & Admin) -->
+                    <div class="card hidden-role" id="composer-box">
+                        <form onsubmit="handlePublishOffer(event)">
+                            <div class="grid grid-cols-2 gap-3 mb-3">
+                                <input type="text" id="offerTitle" placeholder="Título (Ej. Junior Pentester)" class="post-field" required minlength="5">
+                                <input type="text" id="offerCompany" placeholder="Empresa" class="post-field" required minlength="2">
+                                <select id="offerType" class="post-field col-span-2">
+                                    <option value="Job">Job</option>
+                                    <option value="Internship">Internship</option>
+                                    <option value="Opportunity">Opportunity</option>
+                                </select>
+                            </div>
+                            <textarea id="offerDesc" placeholder="Describe la oferta laboral o de prácticas..." class="post-field w-full mb-3" required minlength="10"></textarea>
+                            <div class="flex justify-end">
+                                <button type="submit" class="btn-primary">Publicar Oferta</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Offers Feed -->
+                    <div id="offersContainer">
+                        <!-- Cargarán desde la API -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 2: PROFILE & BLOB UPLOAD -->
+        <section id="view-profile" class="screen-view">
+            <div class="card max-w-2xl mx-auto">
+                <h3 class="text-xl font-bold mb-2">Curriculum Vitae (BLOB Cypher)</h3>
+                <p class="text-sm text-text-secondary mb-6">Sube tu CV en PDF. El backend lo cifrará con AES-256-GCM antes de guardarlo en la base de datos PostgreSQL.</p>
+                
+                <form onsubmit="uploadDocument(event)" class="mb-6 border-2 border-dashed border-border-strong p-8 text-center rounded-lg hover:bg-bg-canvas transition-colors">
+                    <input type="file" id="cvFile" accept=".pdf,.png,.jpg" class="mb-4 text-sm" required>
+                    <button type="submit" class="btn-primary block mx-auto">Cifrar y Subir Documento</button>
+                </form>
+
+                <div id="docsContainer" class="border-t border-border-subtle pt-6">
+                    <h4 class="font-bold mb-4">Mis Documentos Cifrados</h4>
+                    <ul id="docsList" class="space-y-3">
+                        <!-- Llenado por JS tras subir -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 3: ADMIN MODERATION -->
+        <section id="view-admin" class="screen-view">
+            <div class="card">
+                <h3 class="text-xl font-bold mb-4 text-accent-red">Consola de Moderación</h3>
+                <p class="text-sm text-text-secondary mb-6">Audita las ofertas publicadas en la plataforma.</p>
+                <div id="adminOffersContainer" class="space-y-4">
+                    <!-- Ofertas para moderar -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- REGISTER MODAL -->
+    <div id="register-modal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
+        <div class="bg-surface p-8 rounded-lg shadow-xl w-full max-w-md border border-border-subtle">
+            <h2 class="text-xl font-bold mb-4">Registrar Usuario</h2>
+            <form onsubmit="handleRegister(event)">
+                <input type="text" id="regName" placeholder="Nombre Completo" class="w-full bg-bg-canvas border border-border-subtle rounded px-3 py-2 mb-3 text-white" required>
+                <input type="email" id="regEmail" placeholder="Email" class="w-full bg-bg-canvas border border-border-subtle rounded px-3 py-2 mb-3 text-white" required>
+                <input type="password" id="regPassword" placeholder="Contraseña (min 8)" class="w-full bg-bg-canvas border border-border-subtle rounded px-3 py-2 mb-3 text-white" required minlength="8">
+                <select id="regRole" class="w-full bg-bg-canvas border border-border-subtle rounded px-3 py-2 mb-6 text-white">
+                    <option value="Student">Student</option>
+                    <option value="Alumni">Alumni</option>
+                    <option value="Administrator">Administrator</option>
+                </select>
+                <div class="flex justify-end gap-3">
+                    <button type="button" onclick="document.getElementById('register-modal').classList.add('hidden')" class="px-4 py-2 text-text-secondary">Cancelar</button>
+                    <button type="submit" class="btn-primary">Registrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast-el" class="toast">Acción completada</div>
+
+    <script>
+        const API_URL = '/api/v1';
+
+        function notify(msg) {
+            const el = document.getElementById('toast-el');
+            el.textContent = msg;
+            el.classList.add('show');
+            setTimeout(() => el.classList.remove('show'), 3000);
+        }
+
+        // --- AUTH LOGIC ---
+        async function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const formData = new URLSearchParams();
+            formData.append('username', email);
+            formData.append('password', document.getElementById('password').value);
+
+            try {
+                const res = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formData
+                });
+                
+                if (!res.ok) throw new Error("Credenciales inválidas");
+                
+                const data = await res.json();
+                sessionStorage.setItem('access_token', data.access_token);
+                sessionStorage.setItem('user_role', data.role);
+                sessionStorage.setItem('user_email', email);
+                
+                setupDashboard();
+            } catch (err) {
+                const errEl = document.getElementById('loginError');
+                errEl.textContent = err.message;
+                errEl.classList.remove('hidden');
+            }
+        }
+
+        async function handleRegister(e) {
+            e.preventDefault();
+            const payload = {
+                full_name: document.getElementById('regName').value,
+                email: document.getElementById('regEmail').value,
+                password: document.getElementById('regPassword').value,
+                role_name: document.getElementById('regRole').value
+            };
+
+            try {
+                const res = await fetch(`${API_URL}/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!res.ok) throw new Error("Error en registro (email duplicado?)");
+                
+                document.getElementById('register-modal').classList.add('hidden');
+                notify("Usuario creado. Ya puedes iniciar sesión.");
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            location.reload();
+        }
+
+        // --- UI & DASHBOARD ---
+        function setupDashboard() {
+            const role = sessionStorage.getItem('user_role');
+            if (!role) return;
+
+            // UI Elements
+            document.getElementById('view-login').classList.remove('active');
+            document.getElementById('main-nav').style.display = 'flex';
+            document.getElementById('logout-btn').classList.remove('hidden');
+            
+            document.getElementById('nav-user-email').textContent = sessionStorage.getItem('user_email');
+            document.getElementById('nav-user-email').classList.remove('hidden');
+
+            document.getElementById('profile-name').textContent = sessionStorage.getItem('user_email').split('@')[0];
+            document.getElementById('profile-role').textContent = role;
+            document.getElementById('profile-avatar').textContent = sessionStorage.getItem('user_email').charAt(0).toUpperCase();
+
+            const pill = document.getElementById('role-pill');
+            pill.style.display = 'block';
+            pill.textContent = role;
+            pill.className = `badge-pill ${role === 'Student' ? 'badge-student' : role === 'Alumni' ? 'badge-alumni' : 'badge-admin'}`;
+
+            // RBAC Configuration
+            if (role === 'Alumni' || role === 'Administrator') {
+                document.getElementById('composer-box').classList.remove('hidden-role');
+            }
+            if (role === 'Administrator') {
+                document.getElementById('tab-admin').classList.remove('hidden-role');
+            }
+
+            switchTab('feed', document.getElementById('tab-feed'));
+        }
+
+        function switchTab(viewId, btn) {
+            document.querySelectorAll('.screen-view').forEach(v => v.classList.remove('active'));
+            document.getElementById(`view-${viewId}`).classList.add('active');
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (viewId === 'feed') loadOffers();
+            if (viewId === 'admin') loadAdminOffers();
+        }
+
+        // --- OFFERS LOGIC ---
+        async function loadOffers() {
+            const token = sessionStorage.getItem('access_token');
+            const res = await fetch(`${API_URL}/offers/`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (res.status === 401) logout();
+            
+            const offers = await res.json();
+            const role = sessionStorage.getItem('user_role');
+            
+            document.getElementById('offersContainer').innerHTML = offers.map(o => `
+                <div class="card post-card">
+                    <div class="post-author-row">
+                        <div>
+                            <span class="category-label">${o.offer_type}</span>
+                            <h4 class="font-bold text-lg">${o.title}</h4>
+                            <p class="text-sm text-text-secondary">${o.company}</p>
+                        </div>
+                    </div>
+                    <p class="text-sm mb-3">${o.description}</p>
+                    <p class="text-xs text-text-muted">Status: ${o.status}</p>
+                </div>
+            `).join('');
+        }
+
+        async function handlePublishOffer(e) {
+            e.preventDefault();
+            const token = sessionStorage.getItem('access_token');
+            const payload = {
+                title: document.getElementById('offerTitle').value,
+                company: document.getElementById('offerCompany').value,
+                description: document.getElementById('offerDesc').value,
+                offer_type: document.getElementById('offerType').value
+            };
+
+            await fetch(`${API_URL}/offers/`, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(payload)
+            });
+            e.target.reset();
+            notify("Oferta publicada correctamente");
+            loadOffers();
+        }
+
+        // --- MODERATION LOGIC (Admin) ---
+        async function loadAdminOffers() {
+            const token = sessionStorage.getItem('access_token');
+            const res = await fetch(`${API_URL}/offers/`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const offers = await res.json();
+            
+            document.getElementById('adminOffersContainer').innerHTML = offers.map(o => `
+                <div class="p-4 border border-border-subtle rounded-lg flex justify-between items-center bg-bg-canvas">
+                    <div>
+                        <p class="font-bold">${o.title} <span class="text-xs font-normal text-text-secondary ml-2">${o.status}</span></p>
+                        <p class="text-sm text-text-secondary truncate w-96">${o.description}</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="moderateOffer('${o.id}', 'FLAGGED')" class="btn-danger-action text-accent-amber border-accent-amber hover:bg-accent-amber-bg">Flag</button>
+                        <button onclick="moderateOffer('${o.id}', 'REMOVED')" class="btn-danger-action">Remove</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function moderateOffer(id, newStatus) {
+            const token = sessionStorage.getItem('access_token');
+            await fetch(`${API_URL}/offers/${id}/moderate`, {
+                method: 'PATCH',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ status: newStatus })
+            });
+            notify(`Oferta marcada como ${newStatus}`);
+            loadAdminOffers();
+        }
+
+        // --- BLOB ENCRYPTION LOGIC ---
+        async function uploadDocument(e) {
+            e.preventDefault();
+            const token = sessionStorage.getItem('access_token');
+            const fileInput = document.getElementById('cvFile');
+            
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            try {
+                const res = await fetch(`${API_URL}/documents/upload`, {
+                    method: 'POST',
+                    headers: { 'Authorization': `Bearer ${token}` }, // FormData no requiere Content-Type manual
+                    body: formData
+                });
+                
+                if (!res.ok) throw new Error("Error al subir archivo. ¿Excede los 5MB o no es PDF/IMG?");
+                
+                const data = await res.json();
+                notify("Archivo cifrado (BLOB Cypher) y guardado");
+                
+                // Añadir a la lista visual
+                const li = document.createElement('li');
+                li.className = "flex justify-between items-center p-3 bg-bg-canvas rounded border border-border-subtle";
+                li.innerHTML = `
+                    <span class="text-sm font-semibold">${data.filename}</span>
+                    <button onclick="downloadDocument('${data.document_id}')" class="text-upc-blue text-sm hover:underline">Descargar y Descifrar</button>
+                `;
+                document.getElementById('docsList').appendChild(li);
+                fileInput.value = '';
+            } catch(err) {
+                alert(err.message);
+            }
+        }
+
+        async function downloadDocument(id) {
+            const token = sessionStorage.getItem('access_token');
+            const res = await fetch(`${API_URL}/documents/${id}`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            
+            if (!res.ok) return alert("Acceso denegado o archivo no encontrado");
+            
+            const blob = await res.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "decrypted_document"; 
+            a.click();
+            window.URL.revokeObjectURL(url);
+            notify("Documento descifrado y descargado");
+        }
+
+        // Init Check
+        if (sessionStorage.getItem('access_token')) {
+            setupDashboard();
+        }
+    </script>
+</body>
+</html>

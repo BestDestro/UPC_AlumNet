@@ -1,0 +1,29 @@
+# Entornos virtuales y caché de Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+
+commandas.txt
+
+.env
+
+# Certificados privados SSL/TLS y datos locales de PostgreSQL
+nginx/certs/*.key
+nginx/certs/*.crt
+nginx/certs/*.pem
+certs/*.key
+certs/*.crt
+
+postgres_data/
+
+# Archivos de sistema e IDEs
+.DS_Store
+.vscode/
+.idea/
+
+logs_*.txt
+*.log
+.DS_Store
+Thumbs.db

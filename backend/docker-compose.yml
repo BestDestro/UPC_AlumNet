@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: alumnet_postgres
+    environment:
+      POSTGRES_USER: alumnet_app_user
+      POSTGRES_PASSWORD: SuperSecretAlumNet2026!
+      POSTGRES_DB: alumnet_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U alumnet_app_user -d alumnet_db"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+    restart: always
+
+  backend:
+    build: .
+    container_name: alumnet_backend
+    restart: always
+    environment:
+      - DATABASE_URL=postgresql://alumnet_app_user:SuperSecretAlumNet2026!@db:5432/alumnet_db
+    ports:
+      - "8443:8443"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  nginx:
+    image: nginx:alpine
+    container_name: alumnet_Gateway_SSL
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/certs:/etc/nginx/certs
+      - ./frontend:/usr/share/nginx/html
+
+volumes:
+  postgres_data:

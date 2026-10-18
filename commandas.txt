@@ -1,0 +1,15 @@
+docker compose up --build -d
+
+
+
+# BDD
+
+psql -h localhost -p 5432 -U alumnet_app_user -d alumnet_db
+SuperSecretAlumNet2026!
+
+
+
+rsync -av /media/sf_SharedFolder/AS/UPC_AlumNet/ ~/UPC_AlumNet/
+
+sudo chmod -R 755 frontend/
+docker logs alumnet_backend > /media/sf_SharedFolder/AS/UPC_AlumNet/backed/logs_backend.txt2>&1
