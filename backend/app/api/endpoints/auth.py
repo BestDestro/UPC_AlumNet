@@ -60,3 +60,29 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
         data={"sub": str(user.id), "role": user.role.name, "email": user.email}
     )
     return TokenResponseSchema(access_token=token, role=user.role.name)
+
+
+@router.post("/mfa/setup", response_model=MFASetupResponseSchema)
+def setup_mfa(
+    current_user: UserModel = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    secret = pyotp.random_base32()
+
+    current_user.mfa_secret = secret
+    current_user.mfa_enabled = False
+
+    db.commit()
+    db.refresh(current_user)
+
+    totp = pyotp.TOTP(secret)
+
+    provisioning_uri = totp.provisioning_uri(
+        name=current_user.email,
+        issuer_name="UPC AlumNet"
+    )
+
+    return MFASetupResponseSchema(
+        secret=secret,
+        provisioning_uri=provisioning_uri
+    )
