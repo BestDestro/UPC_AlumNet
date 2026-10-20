@@ -9,7 +9,8 @@ from app.schemas.schemas import (
     UserResponseSchema,
     TokenResponseSchema,
     MFASetupResponseSchema,
-    MFAVerifySchema
+    MFAVerifySchema,
+    MFALoginSchema
 )
 from app.core.security import hash_password, verify_password, create_access_token
 from app.api.deps import get_current_user
@@ -55,7 +56,8 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
 
     if not user.is_active:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="User account is inactive")
-
+    if user.mfa_enabled:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,detail="MFA required")
     token = create_access_token(
         data={"sub": str(user.id), "role": user.role.name, "email": user.email}
     )
