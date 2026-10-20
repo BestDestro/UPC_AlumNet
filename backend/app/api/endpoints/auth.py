@@ -117,3 +117,54 @@ def enable_mfa(
     return {
         "message": "MFA enabled successfully"
     }
+
+@router.post("/mfa/login", response_model=TokenResponseSchema)
+def mfa_login(
+    payload: MFALoginSchema,
+    db: Session = Depends(get_db)
+):
+    user = db.query(UserModel).filter(
+        UserModel.email == payload.email
+    ).first()
+
+    if not user or not verify_password(
+        payload.password,
+        user.password_hash
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid credentials"
+        )
+
+    if not user.is_active:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="User account is inactive"
+        )
+
+    if not user.mfa_enabled or not user.mfa_secret:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="MFA is not enabled for this user"
+        )
+
+    totp = pyotp.TOTP(user.mfa_secret)
+
+    if not totp.verify(payload.code):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid MFA code"
+        )
+
+    token = create_access_token(
+        data={
+            "sub": str(user.id),
+            "role": user.role.name,
+            "email": user.email
+        }
+    )
+
+    return TokenResponseSchema(
+        access_token=token,
+        role=user.role.name
+    )
