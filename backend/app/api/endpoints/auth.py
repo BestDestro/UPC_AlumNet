@@ -86,3 +86,32 @@ def setup_mfa(
         secret=secret,
         provisioning_uri=provisioning_uri
     )
+
+@router.post("/mfa/enable")
+def enable_mfa(
+    payload: MFAVerifySchema,
+    current_user: UserModel = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    if not current_user.mfa_secret:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="MFA setup has not been completed"
+        )
+
+    totp = pyotp.TOTP(current_user.mfa_secret)
+
+    if not totp.verify(payload.code):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid MFA code"
+        )
+
+    current_user.mfa_enabled = True
+
+    db.commit()
+    db.refresh(current_user)
+
+    return {
+        "message": "MFA enabled successfully"
+    }
