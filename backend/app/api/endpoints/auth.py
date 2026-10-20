@@ -1,10 +1,18 @@
+import pyotp
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from app.db.connection import get_db
 from app.db.models import UserModel, RoleModel
-from app.schemas.schemas import UserCreateSchema, UserResponseSchema, TokenResponseSchema
+from app.schemas.schemas import (
+    UserCreateSchema,
+    UserResponseSchema,
+    TokenResponseSchema,
+    MFASetupResponseSchema,
+    MFAVerifySchema
+)
 from app.core.security import hash_password, verify_password, create_access_token
+from app.api.deps import get_current_user
 
 router = APIRouter(prefix="/api/v1/auth", tags=["Authentication"])
 
