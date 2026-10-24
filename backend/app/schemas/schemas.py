@@ -29,7 +29,19 @@ class TokenResponseSchema(BaseModel):
     token_type: str = "bearer"
     role: str
 
+class MFASetupResponseSchema(BaseModel):
+    secret: str
+    provisioning_uri: str
 
+
+class MFAVerifySchema(BaseModel):
+    code: str = Field(..., min_length=6, max_length=6)
+    
+class MFALoginSchema(BaseModel):
+    email: EmailStr
+    password: str
+    code: str = Field(..., min_length=6, max_length=6)
+    
 # --- ESQUEMAS DE OFERTAS Y MODERACIÓN ---
 class OfferCreateSchema(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)

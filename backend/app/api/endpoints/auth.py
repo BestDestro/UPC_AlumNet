@@ -1,10 +1,19 @@
+import pyotp
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from app.db.connection import get_db
 from app.db.models import UserModel, RoleModel
-from app.schemas.schemas import UserCreateSchema, UserResponseSchema, TokenResponseSchema
+from app.schemas.schemas import (
+    UserCreateSchema,
+    UserResponseSchema,
+    TokenResponseSchema,
+    MFASetupResponseSchema,
+    MFAVerifySchema,
+    MFALoginSchema
+)
 from app.core.security import hash_password, verify_password, create_access_token
+from app.api.deps import get_current_user
 
 router = APIRouter(prefix="/api/v1/auth", tags=["Authentication"])
 
@@ -47,8 +56,115 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
 
     if not user.is_active:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="User account is inactive")
-
+    if user.mfa_enabled:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,detail="MFA required")
     token = create_access_token(
         data={"sub": str(user.id), "role": user.role.name, "email": user.email}
     )
     return TokenResponseSchema(access_token=token, role=user.role.name)
+
+
+@router.post("/mfa/setup", response_model=MFASetupResponseSchema)
+def setup_mfa(
+    current_user: UserModel = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    secret = pyotp.random_base32()
+
+    current_user.mfa_secret = secret
+    current_user.mfa_enabled = False
+
+    db.commit()
+    db.refresh(current_user)
+
+    totp = pyotp.TOTP(secret)
+
+    provisioning_uri = totp.provisioning_uri(
+        name=current_user.email,
+        issuer_name="UPC AlumNet"
+    )
+
+    return MFASetupResponseSchema(
+        secret=secret,
+        provisioning_uri=provisioning_uri
+    )
+
+@router.post("/mfa/enable")
+def enable_mfa(
+    payload: MFAVerifySchema,
+    current_user: UserModel = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    if not current_user.mfa_secret:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="MFA setup has not been completed"
+        )
+
+    totp = pyotp.TOTP(current_user.mfa_secret)
+
+    if not totp.verify(payload.code):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid MFA code"
+        )
+
+    current_user.mfa_enabled = True
+
+    db.commit()
+    db.refresh(current_user)
+
+    return {
+        "message": "MFA enabled successfully"
+    }
+
+@router.post("/mfa/login", response_model=TokenResponseSchema)
+def mfa_login(
+    payload: MFALoginSchema,
+    db: Session = Depends(get_db)
+):
+    user = db.query(UserModel).filter(
+        UserModel.email == payload.email
+    ).first()
+
+    if not user or not verify_password(
+        payload.password,
+        user.password_hash
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid credentials"
+        )
+
+    if not user.is_active:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="User account is inactive"
+        )
+
+    if not user.mfa_enabled or not user.mfa_secret:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="MFA is not enabled for this user"
+        )
+
+    totp = pyotp.TOTP(user.mfa_secret)
+
+    if not totp.verify(payload.code):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid MFA code"
+        )
+
+    token = create_access_token(
+        data={
+            "sub": str(user.id),
+            "role": user.role.name,
+            "email": user.email
+        }
+    )
+
+    return TokenResponseSchema(
+        access_token=token,
+        role=user.role.name
+    )
