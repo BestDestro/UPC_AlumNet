@@ -9,13 +9,6 @@ commandas.txt
 
 .env
 
-# Certificados privados SSL/TLS y datos locales de PostgreSQL
-nginx/certs/*.key
-nginx/certs/*.crt
-nginx/certs/*.pem
-certs/*.key
-certs/*.crt
-
 postgres_data/
 
 # Archivos de sistema e IDEs
