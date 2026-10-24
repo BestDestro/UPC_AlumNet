@@ -1,11 +1,12 @@
 from uuid import UUID
-from typing import Optional
+from typing import List, Optional
 from fastapi import APIRouter, Depends, UploadFile, File, HTTPException, Response, status
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, load_only
 from app.db.connection import get_db
 from app.db.models import UserModel, EncryptedDocumentModel
 from app.api.deps import get_current_user
 from app.core.blob_cipher import BlobCipher
+from app.schemas.schemas import DocumentResponseSchema
 
 router = APIRouter(prefix="/api/v1/documents", tags=["Encrypted BLOBs"])
 
@@ -42,6 +43,26 @@ async def upload_encrypted_document(
     db.refresh(doc)
 
     return {"document_id": doc.id, "filename": doc.filename, "status": "Encrypted & Stored"}
+
+
+@router.get("/", response_model=List[DocumentResponseSchema])
+def list_my_documents(
+    db: Session = Depends(get_db),
+    current_user: UserModel = Depends(get_current_user)
+):
+    """Lista los metadatos de los documentos del usuario. El BLOB cifrado no se carga ni se descifra."""
+    return (
+        db.query(EncryptedDocumentModel)
+        .options(load_only(
+            EncryptedDocumentModel.id,
+            EncryptedDocumentModel.filename,
+            EncryptedDocumentModel.content_type,
+            EncryptedDocumentModel.created_at
+        ))
+        .filter(EncryptedDocumentModel.owner_id == current_user.id)
+        .order_by(EncryptedDocumentModel.created_at.desc())
+        .all()
+    )
 
 
 @router.get("/{document_id}")

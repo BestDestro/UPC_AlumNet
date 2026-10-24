@@ -1,6 +1,6 @@
 from uuid import UUID
 from datetime import datetime
-from typing import Literal
+from typing import Literal, Optional
 from pydantic import BaseModel, EmailStr, Field, ConfigDict
 
 
@@ -22,6 +22,18 @@ class UserResponseSchema(BaseModel):
     full_name: str
     role_name: str
     is_active: bool
+
+
+class UserProfileSchema(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: UUID
+    email: EmailStr
+    full_name: str
+    role_name: str
+    is_active: bool
+    mfa_enabled: bool
+    created_at: Optional[datetime] = None
 
 
 class TokenResponseSchema(BaseModel):
@@ -68,4 +80,41 @@ class OfferResponseSchema(BaseModel):
     offer_type: str
     status: str
     author_id: UUID
+    author_name: Optional[str] = None
+    author_role: Optional[str] = None
     created_at: datetime
+
+
+# --- ESQUEMAS DE PUBLICACIONES (FEED SOCIAL) ---
+class PostCreateSchema(BaseModel):
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+
+    content: str = Field(..., min_length=1, max_length=2000)
+
+
+class PostModerationSchema(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    status: Literal["PUBLISHED", "FLAGGED", "REMOVED"]
+
+
+class PostResponseSchema(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: UUID
+    content: str
+    status: str
+    author_id: UUID
+    author_name: Optional[str] = None
+    author_role: Optional[str] = None
+    created_at: datetime
+
+
+# --- ESQUEMAS DE DOCUMENTOS CIFRADOS ---
+class DocumentResponseSchema(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: UUID
+    filename: str
+    content_type: str
+    created_at: Optional[datetime] = None

@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.db.connection import Base, engine
 from app.core.error_handler import global_exception_handler
-from app.api.endpoints import auth, offers, documents
+from app.api.endpoints import auth, offers, documents, posts
 
 # Creación de tablas en caso de no usar init.sql
 Base.metadata.create_all(bind=engine)
@@ -28,6 +28,7 @@ app.add_exception_handler(Exception, global_exception_handler)
 app.include_router(auth.router)
 app.include_router(offers.router)
 app.include_router(documents.router)
+app.include_router(posts.router)
 
 
 @app.get("/health", tags=["Health"])
