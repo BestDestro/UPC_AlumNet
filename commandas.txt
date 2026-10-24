@@ -27,3 +27,78 @@ docker compose up --build -d
 
 
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx/certs/key.pem -out nginx/certs/cert.pem
+
+
+┌──(kali㉿kali)-[~/UPC_AlumNet/backend/nginx]
+└─$ curl -I http://localhost
+HTTP/1.1 301 Moved Permanently
+Server: nginx/1.31.7
+Date: Sat, 24 Oct 2026 16:55:28 GMT
+Content-Type: text/html
+Content-Length: 169
+Connection: keep-alive
+Location: https://localhost/
+
+
+└─$ openssl s_client -connect localhost:443 </dev/null
+Connecting to ::1
+CONNECTED(00000003)
+Can't use SSL_get_servername
+depth=0 C=ES, ST=Catalonia, L=Barcelona, O=UPC, OU=Cybersecurity, CN=localhost
+verify error:num=18:self-signed certificate
+verify return:1
+depth=0 C=ES, ST=Catalonia, L=Barcelona, O=UPC, OU=Cybersecurity, CN=localhost
+verify return:1
+---
+Certificate chain
+ 0 s:C=ES, ST=Catalonia, L=Barcelona, O=UPC, OU=Cybersecurity, CN=localhost
+   i:C=ES, ST=Catalonia, L=Barcelona, O=UPC, OU=Cybersecurity, CN=localhost
+   a:PKEY: RSA, 2048 (bit); sigalg: sha256WithRSAEncryption
+   v:NotBefore: Oct 18 15:31:03 2026 GMT; NotAfter: Oct 18 15:31:03 2027 GMT
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIIDvzCCAqegAwIBAgIUECQu/X4gtocZr3lenSsPRsvVLVkwDQYJKoZIhvcNAQEL
+BQAwbzELMAkGA1UEBhMCRVMxEjAQBgNVBAgMCUNhdGFsb25pYTESMBAGA1UEBwwJ
+QmFyY2Vsb25hMQwwCgYDVQQKDANVUEMxFjAUBgNVBAsMDUN5YmVyc2VjdXJpdHkx
+EjAQBgNVBAMMCWxvY2FsaG9zdDAeFw0yNjEwMTgxNTMxMDNaFw0yNzEwMTgxNTMx
+MDNaMG8xCzAJBgNVBAYTAkVTMRIwEAYDVQQIDAlDYXRhbG9uaWExEjAQBgNVBAcM
+CUJhcmNlbG9uYTEMMAoGA1UECgwDVVBDMRYwFAYDVQQLDA1DeWJlcnNlY3VyaXR5
+MRIwEAYDVQQDDAlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+AoIBAQDpKeAa8VDbJhoSWqtKMFH3OifLthyunzcr0IouctwZDLohA+qVsjCU20pK
+qDeKNRfCw8k9SZxUIYEP30E1LTZI/IiV9UC6ChAaxY988XZdDrlTRGmevvuy9ozl
+0nVwIR4ML0VN19c/5sIUtMlbm4iQYRFkQR5jkDbFa6yCxNsKSg9dyV0aK8SlXfY0
+cHiLMqYpttNe0ynyPI9851OrKyWwfPUf5RdLQd6p/+V3506ByNDevmfBhgvZXQgV
+KJbfBJFOZlOAT4fUEOd6z/S6uDpeiJuVMn8UFiXgcI+5i7B8ZII1k2hzgdkm9k8R
+Z8Hv/yVr3srgvfIPqCtLklegb1UPAgMBAAGjUzBRMB0GA1UdDgQWBBRsCiOezrSV
+9FkTE9vfc+pknrqsqTAfBgNVHSMEGDAWgBRsCiOezrSV9FkTE9vfc+pknrqsqTAP
+BgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQBGFAYGpEFQBF9BHqaf
+H9xKWKB1BkJvmvUUlqLmTjOiyB5KXr8Lsl0i3Jqn9sk4JbxSgIKFj+uXj4qr7aaq
+d3M7wZgWyFJ5QIF5XOD8CGIDPVQWyfRruSZGNedm6mUKtZ4qjScXrI5naFZCp4gk
+zF/MJ/Nc2Bl2dVJgYNCck+0L8YS5AxCEY1yelbqWdCx/uSt04gWrzHOmv1zuIO3+
+XF1yFf+C57UQVg5B6lDtyqugZ8+ZZ8o6Xgcb3LJS1GmFkIkcgGsoYlAnBUlPa5J7
+oZ32YWqz3bs+xCLFBO4YC6p0PrXKjFRo6tcQum0Vu5nXmRCa5Wi36XD/yVfI1AI5
+vtHN
+-----END CERTIFICATE-----
+subject=C=ES, ST=Catalonia, L=Barcelona, O=UPC, OU=Cybersecurity, CN=localhost
+issuer=C=ES, ST=Catalonia, L=Barcelona, O=UPC, OU=Cybersecurity, CN=localhost
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: rsa_pss_rsae_sha256
+Negotiated TLS1.3 group: X25519MLKEM768
+---
+SSL handshake has read 2607 bytes and written 1738 bytes
+Verification error: self-signed certificate
+---
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Protocol: TLSv1.3
+Server public key is 2048 bit
+This TLS version forbids renegotiation.
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 18 (self-signed certificate)
+---
+DONE
