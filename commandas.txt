@@ -13,3 +13,17 @@ rsync -av /media/sf_SharedFolder/AS/UPC_AlumNet/ ~/UPC_AlumNet/
 
 sudo chmod -R 755 frontend/
 docker logs alumnet_backend > /media/sf_SharedFolder/AS/UPC_AlumNet/backed/logs_backend.txt2>&1
+
+
+
+rsync -av /media/sf_SharedFolder/AS/UPC_AlumNet/ ~/UPC_AlumNet/
+
+chmod -R 755 frontend/
+
+docker compose up --build -d
+
+
+
+
+
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx/certs/key.pem -out nginx/certs/cert.pem
