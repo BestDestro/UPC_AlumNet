@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS users (
     is_active BOOLEAN DEFAULT TRUE,
     mfa_enabled BOOLEAN DEFAULT FALSE,
     mfa_secret VARCHAR(64),
+    avatar_url TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -25,6 +26,7 @@ CREATE TABLE IF NOT EXISTS offers (
     description TEXT NOT NULL,
     offer_type VARCHAR(50) NOT NULL,
     status VARCHAR(50) DEFAULT 'PUBLISHED',
+    removal_reason TEXT,
     author_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
@@ -37,6 +39,14 @@ CREATE TABLE IF NOT EXISTS posts (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS post_likes (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    post_id UUID NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
+    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT unique_post_user_like UNIQUE(post_id, user_id)
+);
+
 CREATE TABLE IF NOT EXISTS encrypted_documents (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     filename VARCHAR(255) NOT NULL,
@@ -45,6 +55,17 @@ CREATE TABLE IF NOT EXISTS encrypted_documents (
     owner_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     offer_id UUID REFERENCES offers(id) ON DELETE SET NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS offer_applications (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    offer_id UUID NOT NULL REFERENCES offers(id) ON DELETE CASCADE,
+    applicant_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    cv_document_id UUID REFERENCES encrypted_documents(id) ON DELETE SET NULL,
+    status VARCHAR(50) DEFAULT 'APPLIED',
+    cover_note TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT unique_offer_applicant UNIQUE(offer_id, applicant_id)
 );
 
 -- Inserción directa de los 3 roles principales de UPC AlumNet

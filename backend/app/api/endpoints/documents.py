@@ -76,8 +76,17 @@ def download_decrypted_document(
     if not doc:
         raise HTTPException(status_code=404, detail="Document not found")
 
-    if doc.owner_id != current_user.id and current_user.role.name != "Administrator":
-        raise HTTPException(status_code=403, detail="Not authorized to access this document")
+    is_owner = (doc.owner_id == current_user.id)
+    is_offer_author = False
+    if not is_owner:
+        from app.db.models import OfferApplicationModel, OfferModel
+        is_offer_author = db.query(OfferApplicationModel).join(OfferModel).filter(
+            OfferApplicationModel.cv_document_id == doc.id,
+            OfferModel.author_id == current_user.id
+        ).first() is not None
+
+    if not (is_owner or is_offer_author):
+        raise HTTPException(status_code=403, detail="No tienes autorización para acceder a este documento")
 
     decrypted_bytes = BlobCipher.decrypt_bytes(doc.encrypted_blob)
     return Response(

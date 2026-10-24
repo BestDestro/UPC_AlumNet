@@ -29,6 +29,8 @@ services:
       - DATABASE_URL=postgresql://alumnet_app_user:SuperSecretAlumNet2026!@db:5432/alumnet_db
     ports:
       - "8443:8443"
+    volumes:
+      - ./app:/app/app
     depends_on:
       db:
         condition: service_healthy
