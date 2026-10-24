@@ -1,29 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="es" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPC Alumni Connect - Enterprise Platform</title>
+    <title>UPC AlumniConnect - Plataforma Profesional UPC</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="description" content="UPC AlumniConnect: Red social universitaria, ofertas de empleo y gestión segura de CV cifrado con AES-256-GCM para la comunidad UPC.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = { darkMode: 'class' }
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'upc-blue': '#007bc0',
+                        'upc-dark': '#004b75',
+                        'upc-light': '#e0f2fe',
+                        'bg-canvas': '#0b1329',
+                        'surface': '#151f38',
+                        'surface-card': '#1a2744',
+                        'border-subtle': '#253556',
+                        'border-strong': '#3b4f77',
+                        'text-primary': '#f8fafc',
+                        'text-secondary': '#94a3b8',
+                        'text-muted': '#64748b',
+                        'accent-green': '#22c55e',
+                        'accent-green-bg': '#064e3b',
+                        'accent-amber': '#f59e0b',
+                        'accent-amber-bg': '#78350f',
+                        'accent-purple': '#a855f7',
+                        'accent-purple-bg': '#4c1d95',
+                        'accent-red': '#ef4444',
+                        'accent-red-bg': '#7f1d1d'
+                    }
+                }
+            }
+        }
     </script>
     <style>
         :root {
             --upc-blue: #007bc0;
             --upc-dark: #004b75;
-            --upc-light: #f0f7fc;
-            --upc-border: #d2e4f0;
-            --bg-canvas: #0f172a;
-            --surface: #1e293b;
+            --upc-light: #e0f2fe;
+            --bg-canvas: #0b1329;
+            --surface: #151f38;
+            --surface-card: #1a2744;
+            --border-subtle: #253556;
+            --border-strong: #3b4f77;
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
             --text-muted: #64748b;
-            --border-subtle: #334155;
-            --border-strong: #475569;
             --accent-green: #22c55e;
             --accent-green-bg: #064e3b;
             --accent-amber: #f59e0b;
@@ -35,232 +63,1435 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg-canvas); color: var(--text-primary); min-height: 100vh; display: flex; flex-direction: column; }
-        
+        body {
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background:
+                radial-gradient(1000px 600px at 15% -10%, rgba(0, 123, 192, 0.18), transparent 60%),
+                radial-gradient(800px 500px at 95% 105%, rgba(14, 165, 233, 0.12), transparent 60%),
+                var(--bg-canvas);
+            background-attachment: fixed;
+        }
+
         .hidden-role { display: none !important; }
         .screen-view { display: none; }
-        .screen-view.active { display: block; animation: fadeIn 0.15s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(2px); } to { opacity: 1; transform: translateY(0); } }
+        .screen-view.active { display: block; animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
         /* DEMO CONTROL TOOLBAR */
-        .demo-bar { background-color: #020617; color: #e2e8f0; padding: 8px 24px; display: flex; justify-content: space-between; font-size: 0.8rem; border-bottom: 1px solid var(--border-subtle); position: sticky; top: 0; z-index: 200; }
-        .demo-tag { background-color: #334155; color: #cbd5e1; padding: 2px 8px; border-radius: 4px; font-weight: 600; font-size: 0.72rem; text-transform: uppercase; }
-        .demo-meta-right { display: flex; align-items: center; gap: 12px; color: #94a3b8; }
-        .status-dot-secure { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; display: inline-block; }
+        .demo-bar {
+            background-color: #050b1a;
+            color: #94a3b8;
+            padding: 8px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.78rem;
+            border-bottom: 1px solid var(--border-subtle);
+            position: sticky;
+            top: 0;
+            z-index: 200;
+        }
+        .demo-tag {
+            background-color: rgba(0, 123, 192, 0.2);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .status-dot-secure {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            display: inline-block;
+            box-shadow: 0 0 8px #22c55e;
+        }
 
         /* HEADER */
-        header.app-header { background: var(--surface); border-bottom: 1px solid var(--border-subtle); position: sticky; top: 37px; z-index: 100; }
-        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
-        .brand-mark { background-color: var(--upc-blue); color: white; font-weight: 800; padding: 4px 8px; border-radius: 4px; }
-        .brand-name { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); }
-        .nav-tabs { display: flex; gap: 4px; height: 100%; }
-        .tab-btn { background: transparent; border: none; color: var(--text-secondary); padding: 0 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; border-bottom: 2px solid transparent; }
-        .tab-btn:hover, .tab-btn.active { color: var(--upc-blue); border-bottom-color: var(--upc-blue); }
-        
-        .badge-pill { font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
-        .badge-student { background: var(--bg-canvas); color: var(--upc-blue); border: 1px solid var(--border-subtle); }
-        .badge-alumni { background: var(--accent-green-bg); color: var(--accent-green); border: 1px solid var(--accent-green); }
-        .badge-admin { background: var(--accent-purple-bg); color: var(--accent-purple); border: 1px solid var(--accent-purple); }
+        header.app-header {
+            background: rgba(21, 31, 56, 0.85);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-subtle);
+            position: sticky;
+            top: 36px;
+            z-index: 100;
+        }
+        body.auth-mode header.app-header { display: none; }
+        body.auth-mode .demo-meta-right .auth-only { display: none; }
 
-        /* MAIN CONTENT */
-        main.main-content { max-width: 1200px; margin: 24px auto; padding: 0 20px; width: 100%; flex: 1; }
-        .card { background: var(--surface); border: 1px solid var(--border-subtle); border-radius: 8px; margin-bottom: 16px; overflow: hidden; padding: 16px; }
-        
-        .btn-primary { background-color: var(--upc-blue); color: white; border: none; padding: 6px 16px; border-radius: 4px; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
-        .btn-primary:hover { background-color: var(--upc-dark); }
-        .btn-danger-action { background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
-        .btn-danger-action:hover { background: var(--accent-red-bg); }
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .brand-mark {
+            background: linear-gradient(135deg, #007bc0, #0ea5e9);
+            color: white;
+            font-weight: 800;
+            padding: 6px 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 123, 192, 0.4);
+            letter-spacing: -0.02em;
+        }
+        .brand-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
 
-        /* FEED GRID */
-        .feed-grid { display: grid; grid-template-columns: 260px 1fr; gap: 20px; align-items: start; }
-        .post-input-row { display: flex; gap: 12px; margin-bottom: 10px;}
-        .post-field { flex: 1; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 10px 14px; font-size: 0.86rem; resize: none; background: var(--bg-canvas); color: var(--text-primary); min-height: 42px; }
-        .post-field:focus { border-color: var(--upc-blue); min-height: 72px; outline: none;}
-        .post-card { position: relative; margin-bottom: 16px;}
-        .post-author-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
-        .category-label { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 2px 6px; border-radius: 3px; background: var(--bg-canvas); color: var(--upc-blue); border: 1px solid var(--border-subtle); margin-bottom: 8px; }
+        /* NAVIGATION TABS */
+        .nav-tabs {
+            display: flex;
+            gap: 6px;
+            height: 100%;
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 0 16px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .tab-btn svg { width: 18px; height: 18px; transition: transform 0.2s; }
+        .tab-btn:hover {
+            color: #38bdf8;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .tab-btn.active {
+            color: #38bdf8;
+            border-bottom-color: #007bc0;
+            background: rgba(0, 123, 192, 0.08);
+        }
+        .tab-btn.active svg { transform: scale(1.1); color: #38bdf8; }
 
-        .toast { position: fixed; bottom: 24px; right: 24px; background: var(--upc-blue); color: white; padding: 10px 16px; border-radius: 6px; font-size: 0.82rem; font-weight: 500; display: none; z-index: 1000; }
-        .toast.show { display: block; animation: fadeIn 0.2s ease-out; }
+        /* ROLE BADGES */
+        .badge-pill {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .badge-student { background: rgba(0, 123, 192, 0.18); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); }
+        .badge-alumni { background: rgba(34, 197, 94, 0.16); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.35); }
+        .badge-admin { background: rgba(168, 85, 247, 0.18); color: #c084fc; border: 1px solid rgba(192, 132, 252, 0.35); }
+
+        /* MAIN CONTENT CONTAINER */
+        main.main-content {
+            max-width: 1280px;
+            margin: 24px auto;
+            padding: 0 20px;
+            width: 100%;
+            flex: 1;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.4);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            border-color: var(--border-strong);
+        }
+
+        /* BUTTONS */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--upc-blue), #0ea5e9);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 0.86rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 14px -3px rgba(0, 123, 192, 0.5);
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px -3px rgba(14, 165, 233, 0.6);
+            filter: brightness(1.08);
+        }
+        .btn-primary:active { transform: translateY(0); }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        .btn-secondary {
+            background: rgba(37, 53, 86, 0.5);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-secondary:hover {
+            background: var(--surface-card);
+            border-color: var(--border-strong);
+        }
+
+        .btn-danger-action {
+            background: transparent;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #f87171;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn-danger-action:hover {
+            background: rgba(239, 68, 68, 0.15);
+            color: #fff;
+            border-color: var(--accent-red);
+        }
+
+        .btn-logout {
+            background: transparent;
+            border: 1px solid rgba(239, 68, 68, 0.35);
+            color: #fca5a5;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-logout:hover {
+            background: rgba(239, 68, 68, 0.16);
+            color: #fff;
+            border-color: #ef4444;
+        }
+
+        /* INPUTS */
+        .input-text, .post-field {
+            background: rgba(11, 19, 41, 0.8);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.88rem;
+            color: var(--text-primary);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+        .input-text:focus, .post-field:focus {
+            outline: none;
+            border-color: var(--upc-blue);
+            box-shadow: 0 0 0 3px rgba(0, 123, 192, 0.2);
+            background: rgba(15, 23, 42, 0.95);
+        }
+
+        /* AVATAR STYLES */
+        .avatar-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #007bc0, #0284c7);
+            color: white;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid rgba(56, 189, 248, 0.3);
+            text-transform: uppercase;
+        }
+        .avatar-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .avatar-lg {
+            width: 96px;
+            height: 96px;
+            font-size: 2rem;
+            border-width: 4px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        .avatar-sm {
+            width: 34px;
+            height: 34px;
+            font-size: 0.85rem;
+            border-width: 1.5px;
+        }
+
+        /* 3-COLUMN / FEED LAYOUT */
+        .layout-feed {
+            display: grid;
+            grid-template-columns: 280px 1fr 300px;
+            gap: 24px;
+            align-items: start;
+        }
+        @media (max-width: 1080px) {
+            .layout-feed { grid-template-columns: 260px 1fr; }
+            .layout-feed > aside:last-child { display: none; }
+        }
+        @media (max-width: 768px) {
+            .layout-feed { grid-template-columns: 1fr; }
+            .layout-feed > aside:first-child { display: none; }
+        }
+
+        /* POST CARD */
+        .post-card {
+            background: var(--surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 18px;
+            transition: all 0.2s ease;
+        }
+        .post-card:hover {
+            border-color: var(--border-strong);
+            box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.4);
+        }
+
+        /* OFFER CARD */
+        .offer-card {
+            background: var(--surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 18px;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #007bc0;
+        }
+        .offer-card[data-type="Internship"]::before { background: #22c55e; }
+        .offer-card[data-type="Opportunity"]::before { background: #a855f7; }
+        .offer-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-strong);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* FILTER CHIP */
+        .chip {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            background: var(--surface);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .chip:hover {
+            color: var(--text-primary);
+            border-color: var(--border-strong);
+        }
+        .chip.active {
+            background: rgba(0, 123, 192, 0.2);
+            color: #38bdf8;
+            border-color: #007bc0;
+        }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(21, 31, 56, 0.96);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            border-left: 4px solid var(--accent-green);
+            color: var(--text-primary);
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            transform: translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .toast svg { width: 20px; height: 20px; color: var(--accent-green); flex-shrink: 0; }
+        .toast.show { transform: none; opacity: 1; }
+        .toast.error { border-left-color: var(--accent-red); }
+        .toast.error svg { color: var(--accent-red); }
+
+        /* AUTH STYLES */
+        .auth-shell {
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            max-width: 1020px;
+            margin: 28px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            background: rgba(21, 31, 56, 0.7);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(0, 123, 192, 0.1);
+            min-height: 620px;
+        }
+        .auth-hero {
+            position: relative;
+            padding: 44px;
+            background: linear-gradient(150deg, #005a94 0%, #003657 45%, #08152c 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+        .auth-hero-glow {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.4), transparent 70%);
+            top: -120px;
+            right: -120px;
+            animation: floatGlow 9s ease-in-out infinite;
+        }
+        .auth-hero-glow.two {
+            width: 300px;
+            height: 300px;
+            top: auto;
+            right: auto;
+            bottom: -140px;
+            left: -100px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.35), transparent 70%);
+            animation-delay: -4s;
+        }
+        @keyframes floatGlow {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, 25px); }
+        }
+        .auth-hero-title {
+            font-size: 2.15rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 14px;
+        }
+        .grad-text {
+            background: linear-gradient(90deg, #7dd3fc, #38bdf8, #a5f3fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .auth-hero-sub {
+            color: rgba(226, 232, 240, 0.85);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            max-width: 400px;
+        }
+        .auth-features { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+        .auth-features li { display: flex; gap: 14px; align-items: flex-start; }
+        .feat-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 11px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #7dd3fc;
+        }
+        .feat-icon svg { width: 19px; height: 19px; }
+        .auth-panel { padding: 40px 44px; display: flex; flex-direction: column; justify-content: center; }
+        .auth-tabs {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: var(--bg-canvas);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 28px;
+        }
+        .auth-tab {
+            position: relative;
+            z-index: 1;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.86rem;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 9px;
+            transition: color 0.25s;
+        }
+        .auth-tab.active { color: #fff; }
+        .auth-tab-indicator {
+            position: absolute;
+            top: 4px;
+            bottom: 4px;
+            left: 4px;
+            width: calc(50% - 4px);
+            border-radius: 9px;
+            background: linear-gradient(135deg, var(--upc-blue), #0ea5e9);
+            box-shadow: 0 4px 14px -2px rgba(0, 123, 192, 0.55);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .auth-tabs.register .auth-tab-indicator { transform: translateX(100%); }
+        .auth-form { display: none; }
+        .auth-form.active { display: block; animation: slideIn 0.35s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: none; } }
+
+        .field { margin-bottom: 16px; }
+        .field-label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
+        .input-wrap { position: relative; }
+        .input-icon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--text-muted); pointer-events: none; }
+        .input-wrap input {
+            width: 100%;
+            background: rgba(11, 19, 41, 0.7);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 11px 42px 11px 40px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .input-wrap input:focus {
+            outline: none;
+            border-color: var(--upc-blue);
+            box-shadow: 0 0 0 4px rgba(0, 123, 192, 0.18);
+            background: var(--bg-canvas);
+        }
+        .toggle-pass {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 6px;
+        }
+        .toggle-pass svg { width: 18px; height: 18px; }
+
+        .role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .role-card {
+            background: rgba(11, 19, 41, 0.7);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 12px 6px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s;
+        }
+        .role-card svg { width: 22px; height: 22px; }
+        .role-card span { font-size: 0.8rem; font-weight: 600; }
+        .role-card small { font-size: 0.68rem; color: var(--text-muted); }
+        .role-card:hover { border-color: var(--border-strong); color: var(--text-primary); transform: translateY(-1px); }
+        .role-card.active { border-color: var(--upc-blue); background: rgba(0, 123, 192, 0.14); color: #7dd3fc; box-shadow: 0 0 0 3px rgba(0, 123, 192, 0.15); }
+
+        .form-alert {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            background: rgba(127, 29, 29, 0.35);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #fca5a5;
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            margin-bottom: 16px;
+        }
+        .form-alert.hidden { display: none !important; }
+
+        .btn-auth {
+            position: relative;
+            width: 100%;
+            margin-top: 8px;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: #fff;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--upc-blue), #0ea5e9);
+            box-shadow: 0 10px 24px -8px rgba(0, 123, 192, 0.7);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-auth:hover { transform: translateY(-1px); filter: brightness(1.07); }
+        .btn-auth .spinner { display: none; width: 16px; height: 16px; border: 2px solid rgba(255, 255, 255, 0.35); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; }
+        .btn-auth.loading .spinner { display: inline-block; }
+        .btn-auth.loading svg { display: none; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .strength { display: flex; gap: 6px; margin-top: 8px; }
+        .strength span { flex: 1; height: 4px; border-radius: 2px; background: var(--border-subtle); transition: background 0.3s; }
+        .strength-label { font-size: 0.72rem; color: var(--text-muted); margin-top: 6px; }
+
+        @media (max-width: 820px) {
+            .auth-shell { grid-template-columns: 1fr; min-height: 0; }
+            .auth-hero { padding: 28px; }
+            .auth-features, .auth-hero-sub { display: none; }
+            .auth-panel { padding: 28px 22px; }
+        }
     </style>
 </head>
-<body>
+<body class="auth-mode">
 
-    <!-- DEMO BAR -->
+    <!-- DEMO TOOLBAR -->
     <div class="demo-bar">
-        <div class="demo-bar-left">
-            <span class="demo-tag">UPC AlumNet Real API Demo</span>
-            <span id="nav-user-email" class="hidden text-upc-blue font-bold"></span>
+        <div class="flex items-center gap-3">
+            <span class="demo-tag">UPC AlumNet Enterprise Platform</span>
+            <span class="text-xs text-text-muted hidden sm:inline">Proyecto Máster AS UPC 2026</span>
         </div>
-        <div class="demo-meta-right">
-            <span><span class="status-dot-secure"></span> TLS 1.3 / OAuth2 / BLOB Cypher</span>
-            <button onclick="logout()" id="logout-btn" class="hidden text-accent-red ml-4">Logout</button>
+        <div class="demo-meta-right flex items-center gap-3">
+            <span class="flex items-center gap-2 text-xs">
+                <span class="status-dot-secure"></span>
+                <span>TLS 1.3 / AES-256-GCM / OAuth2</span>
+            </span>
+            <span id="nav-user-email" class="auth-only font-semibold text-sky-400 text-xs hidden sm:inline"></span>
+            <button onclick="logout()" id="logout-btn" class="auth-only btn-logout">Cerrar sesión</button>
         </div>
     </div>
 
-    <!-- HEADER -->
+    <!-- MAIN APP HEADER -->
     <header class="app-header">
         <div class="header-inner">
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchMainTab('feed')">
                 <div class="brand-mark">UPC</div>
-                <div class="brand-name">AlumniConnect</div>
+                <div>
+                    <div class="brand-name">AlumniConnect</div>
+                    <div class="text-[10px] text-sky-400 tracking-wider font-semibold uppercase -mt-0.5">Comunidad & Empleo</div>
+                </div>
             </div>
+
+            <!-- 3 MAIN TABS (+ ADMIN MODERATION IF ROLE=ADMIN) -->
             <nav class="nav-tabs" id="main-nav" style="display: none;">
-                <button id="tab-feed" class="tab-btn active" onclick="switchTab('feed', this)">Opportunities Feed</button>
-                <button id="tab-profile" class="tab-btn" onclick="switchTab('profile', this)">Upload CV (BLOB)</button>
-                <button id="tab-admin" class="tab-btn hidden-role" onclick="switchTab('admin', this)">Moderation Console</button>
+                <!-- TAB 1: FEED DE PUBLICACIONES -->
+                <button id="tab-nav-feed" class="tab-btn active" onclick="switchMainTab('feed')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span>Feed Global</span>
+                </button>
+
+                <!-- TAB 2: OFERTAS DE EMPLEO -->
+                <button id="tab-nav-offers" class="tab-btn" onclick="switchMainTab('offers')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    <span>Ofertas de Empleo</span>
+                </button>
+
+                <!-- TAB 3: MI PERFIL & CV -->
+                <button id="tab-nav-profile" class="tab-btn" onclick="switchMainTab('profile')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span>Mi Perfil & CV</span>
+                </button>
+
+                <!-- TAB 4 (ADMIN ONLY): CONSOLA DE MODERACIÓN -->
+                <button id="tab-nav-admin" class="tab-btn hidden-role text-accent-purple" onclick="switchMainTab('admin')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span>Moderación</span>
+                </button>
             </nav>
-            <div>
-                <span id="role-pill" class="badge-pill" style="display: none;"></span>
+
+            <!-- RIGHT PROFILE BADGE -->
+            <div class="flex items-center gap-3">
+                <div class="cursor-pointer flex items-center gap-2" onclick="switchMainTab('profile')" title="Ir a mi perfil">
+                    <div class="avatar-circle avatar-sm" id="header-avatar">U</div>
+                    <div class="hidden md:block text-left">
+                        <div class="text-xs font-semibold leading-tight text-slate-200" id="header-user-name">Usuario</div>
+                        <span id="role-pill" class="badge-pill" style="display: none;">Student</span>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
     <main class="main-content">
 
-        <!-- VIEW 0: LOGIN -->
+        <!-- ========================================== -->
+        <!-- VIEW 0: AUTH (LOGIN & REGISTER)           -->
+        <!-- ========================================== -->
         <section id="view-login" class="screen-view active">
-            <div class="max-w-md mx-auto card mt-10">
-                <h2 class="text-2xl font-semibold mb-6">Acceso a la Plataforma</h2>
-                <form id="loginForm" onsubmit="handleLogin(event)">
-                    <div class="mb-4">
-                        <label class="block text-sm text-text-secondary mb-1">Email Institucional</label>
-                        <input type="email" id="email" class="w-full bg-bg-canvas border border-border-subtle rounded px-3 py-2 text-white" required>
+            <div class="auth-shell">
+                <!-- Hero Column -->
+                <aside class="auth-hero">
+                    <div class="auth-hero-glow"></div>
+                    <div class="auth-hero-glow two"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="brand-mark text-lg">UPC</div>
+                            <span class="brand-name text-2xl">AlumniConnect</span>
+                        </div>
+                        <h1 class="auth-hero-title">Impulsa tu carrera con la red <span class="grad-text">UPC</span></h1>
+                        <p class="auth-hero-sub">Publicaciones comunitarias, ofertas de empleo exclusivas y gestión de tu currículum vitae protegido mediante cifrado AES-256-GCM.</p>
+                        
+                        <ul class="auth-features">
+                            <li>
+                                <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                                <div><strong>Feed Social de la Comunidad</strong><p>Comparte posts y novedades con estudiantes y alumni.</p></div>
+                            </li>
+                            <li>
+                                <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
+                                <div><strong>Bolsa de Empleo y Prácticas</strong><p>Oportunidades profesionales validadas por la red.</p></div>
+                            </li>
+                            <li>
+                                <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+                                <div><strong>Perfil y CV Cifrado (BYTEA)</strong><p>Tus documentos protegidos por cifrado de grado bancario.</p></div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="mb-6">
-                        <label class="block text-sm text-text-secondary mb-1">Contraseña</label>
-                        <input type="password" id="password" class="w-full bg-bg-canvas border border-border-subtle rounded px-3 py-2 text-white" required>
+                    <p class="relative z-10 text-xs text-slate-400 mt-8">UPC Máster en Ciberseguridad & Arquitectura de Software 2026</p>
+                </aside>
+
+                <!-- Auth Forms -->
+                <div class="auth-panel">
+                    <div class="auth-tabs" id="auth-tabs" role="tablist">
+                        <span class="auth-tab-indicator"></span>
+                        <button type="button" id="auth-tab-login" class="auth-tab active" role="tab" onclick="switchAuthTab('login')">Iniciar sesión</button>
+                        <button type="button" id="auth-tab-register" class="auth-tab" role="tab" onclick="switchAuthTab('register')">Registrarse</button>
                     </div>
-                    <p id="loginError" class="text-accent-red text-sm mb-4 hidden"></p>
-                    <button type="submit" class="w-full btn-primary">Iniciar Sesión Segura</button>
-                </form>
-                <div class="mt-6 pt-4 border-t border-border-subtle">
-                    <p class="text-sm text-text-secondary mb-3">¿No tienes cuenta de prueba?</p>
-                    <button onclick="document.getElementById('register-modal').classList.remove('hidden')" class="w-full bg-surface border border-border-subtle hover:bg-bg-canvas text-white font-semibold py-2 px-4 rounded">Registrar Usuario de Prueba</button>
+
+                    <!-- LOGIN -->
+                    <form id="loginForm" class="auth-form active" onsubmit="handleLogin(event)" novalidate>
+                        <div class="mb-6">
+                            <h2 class="text-2xl font-bold text-white">Bienvenido de nuevo</h2>
+                            <p class="text-sm text-text-secondary mt-1">Accede con tu email para ver tu feed y ofertas.</p>
+                        </div>
+                        <div class="field">
+                            <label for="email" class="field-label">Email institucional</label>
+                            <div class="input-wrap">
+                                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+                                <input type="email" id="email" placeholder="nombre@estudiantat.upc.edu" autocomplete="email" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="password" class="field-label">Contraseña</label>
+                            <div class="input-wrap">
+                                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" required>
+                                <button type="button" class="toggle-pass" onclick="togglePassword('password', this)" aria-label="Mostrar contraseña"></button>
+                            </div>
+                        </div>
+                        <div id="loginError" class="form-alert hidden" role="alert"></div>
+                        <button type="submit" id="loginBtn" class="btn-auth">
+                            <span class="spinner"></span>
+                            <span class="btn-label">Entrar a AlumniConnect</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="w-4 h-4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                        <p class="text-center text-xs text-text-secondary mt-5">
+                            ¿Aún no tienes cuenta? <a href="#" onclick="switchAuthTab('register'); return false;" class="text-sky-400 font-semibold hover:underline">Crear cuenta nueva</a>
+                        </p>
+                    </form>
+
+                    <!-- REGISTER -->
+                    <form id="registerForm" class="auth-form" onsubmit="handleRegister(event)" novalidate>
+                        <div class="mb-5">
+                            <h2 class="text-2xl font-bold text-white">Únete a la red</h2>
+                            <p class="text-sm text-text-secondary mt-1">Crea tu cuenta de estudiante, alumni o empresa.</p>
+                        </div>
+                        <div class="field">
+                            <label for="regName" class="field-label">Nombre completo</label>
+                            <div class="input-wrap">
+                                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
+                                <input type="text" id="regName" placeholder="Ada Lovelace" autocomplete="name" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="regEmail" class="field-label">Email</label>
+                            <div class="input-wrap">
+                                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+                                <input type="email" id="regEmail" placeholder="ada@estudiantat.upc.edu" autocomplete="email" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="regPassword" class="field-label">Contraseña</label>
+                            <div class="input-wrap">
+                                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                <input type="password" id="regPassword" placeholder="Mínimo 8 caracteres" autocomplete="new-password" required minlength="8" oninput="updateStrength(this.value)">
+                                <button type="button" class="toggle-pass" onclick="togglePassword('regPassword', this)" aria-label="Mostrar contraseña"></button>
+                            </div>
+                            <div class="strength" id="strength-bars"><span></span><span></span><span></span><span></span></div>
+                            <p class="strength-label" id="strength-label"></p>
+                        </div>
+                        <div class="field">
+                            <span class="field-label">Tipo de rol en UPC</span>
+                            <input type="hidden" id="regRole" value="Student">
+                            <div class="role-grid">
+                                <button type="button" id="role-student" class="role-card active" data-role="Student" onclick="selectRole(this)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                                    <span>Student</span><small>Estudiante</small>
+                                </button>
+                                <button type="button" id="role-alumni" class="role-card" data-role="Alumni" onclick="selectRole(this)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                                    <span>Alumni</span><small>Publica empleo</small>
+                                </button>
+                                <button type="button" id="role-admin" class="role-card" data-role="Administrator" onclick="selectRole(this)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                                    <span>Admin</span><small>Modera</small>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="regError" class="form-alert hidden" role="alert"></div>
+                        <button type="submit" id="registerBtn" class="btn-auth">
+                            <span class="spinner"></span>
+                            <span class="btn-label">Crear cuenta</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="w-4 h-4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                        <p class="text-center text-xs text-text-secondary mt-5">
+                            ¿Ya tienes cuenta? <a href="#" onclick="switchAuthTab('login'); return false;" class="text-sky-400 font-semibold hover:underline">Inicia sesión</a>
+                        </p>
+                    </form>
                 </div>
             </div>
         </section>
 
-        <!-- VIEW 1: FEED & OFFERS -->
+
+        <!-- ======================================================== -->
+        <!-- VIEW 1: FEED CON PUBLICACIONES DE TODO EL MUNDO          -->
+        <!-- ======================================================== -->
         <section id="view-feed" class="screen-view">
-            <div class="feed-grid">
-                
-                <!-- Left: Profile Summary -->
-                <aside>
-                    <div class="card text-center">
-                        <div class="w-16 h-16 rounded-full bg-upc-blue text-white flex items-center justify-center text-xl font-bold mx-auto mb-3" id="profile-avatar">U</div>
-                        <h3 id="profile-name" class="font-bold text-lg">Usuario</h3>
-                        <p id="profile-role" class="text-sm text-text-secondary mb-4">Rol</p>
-                        <div class="border-t border-border-subtle pt-4">
-                            <p class="text-xs text-text-muted">UPC Cybersecurity Project 2026</p>
+            <div class="layout-feed">
+
+                <!-- Left Sidebar: Mini Profile Card -->
+                <aside class="space-y-4">
+                    <div class="card text-center p-6">
+                        <div class="avatar-circle w-20 h-20 text-2xl mx-auto mb-3" id="sidebar-avatar">U</div>
+                        <h3 id="sidebar-user-name" class="font-bold text-lg text-white">Usuario</h3>
+                        <p id="sidebar-user-email" class="text-xs text-text-secondary truncate mb-2">usuario@upc.edu</p>
+                        <span id="sidebar-user-role" class="badge-pill mb-4">Student</span>
+                        
+                        <div class="border-t border-border-subtle pt-4 mt-4 grid grid-cols-2 gap-2 text-center">
+                            <div class="p-2 rounded bg-surface-card">
+                                <div class="text-xs text-text-muted">Publicaciones</div>
+                                <div class="text-base font-bold text-sky-400" id="stat-posts-count">0</div>
+                            </div>
+                            <div class="p-2 rounded bg-surface-card">
+                                <div class="text-xs text-text-muted">Documentos</div>
+                                <div class="text-base font-bold text-emerald-400" id="stat-docs-count">0</div>
+                            </div>
                         </div>
+
+                        <button onclick="switchMainTab('profile')" class="btn-secondary w-full mt-4 justify-center text-xs">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            Ver mi Perfil y CV
+                        </button>
+                    </div>
+
+                    <!-- Quick Navigation -->
+                    <div class="card p-4">
+                        <h4 class="text-xs font-bold text-text-muted uppercase tracking-wider mb-3">Atajos Rápidos</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li>
+                                <button onclick="switchMainTab('offers')" class="w-full text-left p-2 rounded hover:bg-surface-card flex items-center justify-between text-text-secondary hover:text-white transition-colors">
+                                    <span class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                                        Bolsa de Empleo
+                                    </span>
+                                    <span class="text-xs text-text-muted">Explorar</span>
+                                </button>
+                            </li>
+                            <li>
+                                <button onclick="switchMainTab('profile')" class="w-full text-left p-2 rounded hover:bg-surface-card flex items-center justify-between text-text-secondary hover:text-white transition-colors">
+                                    <span class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                                        Subir / Ver mi CV
+                                    </span>
+                                    <span class="text-xs text-text-muted">Cifrado</span>
+                                </button>
+                            </li>
+                        </ul>
                     </div>
                 </aside>
 
-                <!-- Right: Posts -->
+                <!-- Center: Global Social Feed -->
                 <div>
-                    <!-- Composer (Only Alumni & Admin) -->
-                    <div class="card hidden-role" id="composer-box">
-                        <form onsubmit="handlePublishOffer(event)">
-                            <div class="grid grid-cols-2 gap-3 mb-3">
-                                <input type="text" id="offerTitle" placeholder="Título (Ej. Junior Pentester)" class="post-field" required minlength="5">
-                                <input type="text" id="offerCompany" placeholder="Empresa" class="post-field" required minlength="2">
-                                <select id="offerType" class="post-field col-span-2">
-                                    <option value="Job">Job</option>
-                                    <option value="Internship">Internship</option>
-                                    <option value="Opportunity">Opportunity</option>
-                                </select>
+                    <!-- Post Composer -->
+                    <div class="card mb-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="avatar-circle avatar-sm" id="composer-avatar">U</div>
+                            <div>
+                                <h3 class="font-bold text-sm text-white">Comparte con la comunidad UPC</h3>
+                                <p class="text-xs text-text-muted">Visible para todos los estudiantes, alumni y profesores</p>
                             </div>
-                            <textarea id="offerDesc" placeholder="Describe la oferta laboral o de prácticas..." class="post-field w-full mb-3" required minlength="10"></textarea>
-                            <div class="flex justify-end">
-                                <button type="submit" class="btn-primary">Publicar Oferta</button>
+                        </div>
+
+                        <form onsubmit="handleCreatePost(event)">
+                            <textarea id="postContentInput" rows="3" class="post-field mb-3" placeholder="¿En qué proyecto estás trabajando? ¿Buscas consejo, compartes un logro o noticia técnica?..." required maxlength="2000"></textarea>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2 text-xs text-text-muted">
+                                    <span id="postCharCount">0 / 2000</span>
+                                </div>
+                                <button type="submit" id="btnPublishPost" class="btn-primary">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                                    <span>Publicar en el Feed</span>
+                                </button>
                             </div>
                         </form>
                     </div>
 
-                    <!-- Offers Feed -->
-                    <div id="offersContainer">
-                        <!-- Cargarán desde la API -->
+                    <!-- Feed Header & Refresh -->
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-2">
+                            <h2 class="text-lg font-bold text-white">Publicaciones Recientes</h2>
+                            <span class="bg-surface-card text-sky-400 text-xs px-2.5 py-0.5 rounded-full font-semibold" id="postsBadgeCount">0</span>
+                        </div>
+                        <button onclick="loadPosts()" class="btn-secondary text-xs py-1.5 px-3">
+                            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                            Actualizar
+                        </button>
+                    </div>
+
+                    <!-- Posts Container -->
+                    <div id="postsContainer" class="space-y-4">
+                        <div class="text-center py-12 text-text-muted">Cargando publicaciones de la comunidad...</div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar: UPC Campus News & Community Highlights -->
+                <aside class="space-y-4">
+                    <div class="card">
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></div>
+                            <h4 class="text-xs font-bold text-text-muted uppercase tracking-wider">Comunidad Activa</h4>
+                        </div>
+                        <h3 class="font-bold text-sm text-white mb-2">UPC AlumNet Social</h3>
+                        <p class="text-xs text-text-secondary leading-relaxed mb-4">
+                            Bienvenido al punto de encuentro oficial para estudiantes y titulados de la UPC. Conecta, comparte proyectos y descubre talento tecnológico.
+                        </p>
+                        <div class="p-3 bg-surface-card rounded-lg border border-border-subtle">
+                            <div class="flex items-center gap-2 text-xs font-semibold text-sky-400 mb-1">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                Privacidad por Diseño
+                            </div>
+                            <p class="text-[11px] text-text-muted">Los datos personales y documentos están protegidos con autenticación multifactor y cifrado en base de datos.</p>
+                        </div>
+                    </div>
+
+                    <div class="card p-4">
+                        <h4 class="text-xs font-bold text-text-muted uppercase tracking-wider mb-2">Próximos Eventos</h4>
+                        <div class="space-y-3 mt-3">
+                            <div class="text-xs border-l-2 border-upc-blue pl-3 py-1">
+                                <div class="font-semibold text-white">FIB & ETSETB Tech Career Day</div>
+                                <div class="text-text-muted mt-0.5">Encuentro de empresas y alumni UPC</div>
+                            </div>
+                            <div class="text-xs border-l-2 border-emerald-500 pl-3 py-1">
+                                <div class="font-semibold text-white">Workshop Ciberseguridad & DevSecOps</div>
+                                <div class="text-text-muted mt-0.5">Auditorías OWASP & Cifrado Simétrico</div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </section>
+
+
+        <!-- ======================================================== -->
+        <!-- VIEW 2: OFERTAS DE EMPLEO (JOB BOARD)                     -->
+        <!-- ======================================================== -->
+        <section id="view-offers" class="screen-view">
+            <!-- Header with Search & Filter -->
+            <div class="card mb-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="p-2 rounded-lg bg-sky-500/10 text-sky-400">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                            </span>
+                            <h2 class="text-xl font-bold text-white">Bolsa de Empleo y Oportunidades UPC</h2>
+                        </div>
+                        <p class="text-xs text-text-secondary mt-1 ml-9">Ofertas exclusivas para estudiantes y titulados de la UPC.</p>
+                    </div>
+
+                    <!-- Composer trigger for Alumni / Admin -->
+                    <div id="offer-composer-trigger" class="hidden-role">
+                        <button onclick="toggleOfferComposer()" class="btn-primary">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            <span>Publicar Nueva Oferta</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filters & Search Bar -->
+                <div class="mt-6 pt-4 border-t border-border-subtle flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div class="flex items-center gap-2 overflow-x-auto pb-1" id="offerFilterChips">
+                        <button class="chip active" onclick="filterOffers('ALL', this)">
+                            <span>Todas</span>
+                            <span class="text-xs opacity-75" id="count-all-offers">(0)</span>
+                        </button>
+                        <button class="chip" onclick="filterOffers('Job', this)">
+                            <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+                            <span>Empleos (Job)</span>
+                        </button>
+                        <button class="chip" onclick="filterOffers('Internship', this)">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                            <span>Prácticas (Internship)</span>
+                        </button>
+                        <button class="chip" onclick="filterOffers('Opportunity', this)">
+                            <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                            <span>Oportunidades</span>
+                        </button>
+                    </div>
+
+                    <div class="relative w-full md:w-64">
+                        <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" id="offerSearchInput" oninput="handleOfferSearch(this.value)" placeholder="Buscar por título o empresa..." class="input-text pl-9 py-2 text-xs">
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- VIEW 2: PROFILE & BLOB UPLOAD -->
-        <section id="view-profile" class="screen-view">
-            <div class="card max-w-2xl mx-auto">
-                <h3 class="text-xl font-bold mb-2">Curriculum Vitae (BLOB Cypher)</h3>
-                <p class="text-sm text-text-secondary mb-6">Sube tu CV en PDF. El backend lo cifrará con AES-256-GCM antes de guardarlo en la base de datos PostgreSQL.</p>
-                
-                <form onsubmit="uploadDocument(event)" class="mb-6 border-2 border-dashed border-border-strong p-8 text-center rounded-lg hover:bg-bg-canvas transition-colors">
-                    <input type="file" id="cvFile" accept=".pdf,.png,.jpg" class="mb-4 text-sm" required>
-                    <button type="submit" class="btn-primary block mx-auto">Cifrar y Subir Documento</button>
-                </form>
-
-                <div id="docsContainer" class="border-t border-border-subtle pt-6">
-                    <h4 class="font-bold mb-4">Mis Documentos Cifrados</h4>
-                    <ul id="docsList" class="space-y-3">
-                        <!-- Llenado por JS tras subir -->
-                    </ul>
+            <!-- OFFER COMPOSER FORM (Only for Alumni & Admin) -->
+            <div id="offerComposerCard" class="card mb-6 hidden">
+                <div class="flex items-center justify-between mb-4 border-b border-border-subtle pb-3">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        <h3 class="font-bold text-base text-white">Publicar Oferta Laboral o Prácticas</h3>
+                    </div>
+                    <button type="button" onclick="toggleOfferComposer()" class="text-text-muted hover:text-white text-sm">✕ Cerrar</button>
                 </div>
+
+                <form onsubmit="handlePublishOffer(event)">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div>
+                            <label class="field-label">Título del puesto *</label>
+                            <input type="text" id="offerTitle" placeholder="Ej: Junior Cloud Architect" class="post-field" required minlength="5">
+                        </div>
+                        <div>
+                            <label class="field-label">Empresa / Institución *</label>
+                            <input type="text" id="offerCompany" placeholder="Ej: UPC Tech Lab / SEAT / NTT Data" class="post-field" required minlength="2">
+                        </div>
+                        <div>
+                            <label class="field-label">Tipo de Oferta *</label>
+                            <select id="offerType" class="post-field">
+                                <option value="Job">Empleo (Job)</option>
+                                <option value="Internship">Prácticas (Internship)</option>
+                                <option value="Opportunity">Oportunidad / Beca (Opportunity)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="field-label">Descripción detallada y requisitos *</label>
+                        <textarea id="offerDesc" rows="4" placeholder="Describe los requisitos técnicos, modalidad (presencial/remoto), tecnologías y beneficios..." class="post-field" required minlength="10"></textarea>
+                    </div>
+                    <div class="flex justify-end gap-3">
+                        <button type="button" onclick="toggleOfferComposer()" class="btn-secondary">Cancelar</button>
+                        <button type="submit" id="btnPublishOffer" class="btn-primary">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>Publicar en la Plataforma</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Offers List Container -->
+            <div id="offersContainer" class="space-y-4">
+                <div class="text-center py-12 text-text-muted">Cargando ofertas disponibles...</div>
             </div>
         </section>
 
-        <!-- VIEW 3: ADMIN MODERATION -->
+
+        <!-- ======================================================== -->
+        <!-- VIEW 3: MI PERFIL (FOTO, DATOS, CV & DOCUMENTOS CIFRADOS)-->
+        <!-- ======================================================== -->
+        <section id="view-profile" class="screen-view">
+            <!-- Hero Profile Banner -->
+            <div class="card p-0 mb-6 overflow-hidden">
+                <div class="h-36 bg-gradient-to-r from-sky-900 via-sky-700 to-indigo-950 relative">
+                    <div class="absolute inset-0 bg-black/20"></div>
+                    <div class="absolute right-6 top-4 text-xs font-semibold px-3 py-1 bg-black/40 backdrop-blur rounded-full text-sky-200 border border-sky-400/30 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                        <span>Cuenta Verificada UPC</span>
+                    </div>
+                </div>
+
+                <div class="px-6 pb-6 pt-0 relative">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between -mt-14 mb-4 gap-4">
+                        <div class="flex items-end gap-4">
+                            <!-- Avatar with change overlay -->
+                            <div class="relative group">
+                                <div class="avatar-circle avatar-lg" id="profile-page-avatar">U</div>
+                                <label for="profilePhotoInput" class="absolute inset-0 bg-black/60 rounded-full flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity text-white text-center p-2" title="Haz clic para cambiar la foto de perfil">
+                                    <svg class="w-6 h-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                                    <span class="text-[10px] font-semibold leading-tight">Cambiar Foto</span>
+                                </label>
+                                <input type="file" id="profilePhotoInput" accept="image/png,image/jpeg,image/webp" class="hidden" onchange="handleProfilePhotoUpload(event)">
+                            </div>
+
+                            <div class="mb-1">
+                                <h1 class="text-2xl font-bold text-white flex items-center gap-2" id="profile-full-name">
+                                    Cargando...
+                                </h1>
+                                <p class="text-sm text-text-secondary" id="profile-email">email@estudiantat.upc.edu</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <label for="profilePhotoInput" class="btn-secondary text-xs cursor-pointer">
+                                <svg class="w-4 h-4 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                                <span>Cambiar Foto</span>
+                            </label>
+                            <button onclick="removeProfilePhoto()" id="btnRemoveAvatar" class="btn-secondary text-xs text-rose-400 hidden" title="Restaurar avatar por defecto">
+                                Quitar foto
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Profile Bio & Details -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 pt-4 border-t border-border-subtle">
+                        <div>
+                            <span class="text-xs text-text-muted block">Rol en la Plataforma</span>
+                            <span id="profile-role-badge" class="badge-pill mt-1">Student</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-text-muted block">ID de Usuario (UUID)</span>
+                            <span id="profile-uuid" class="text-xs font-mono text-sky-300 mt-1 block truncate">--------</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-text-muted block">Seguridad 2FA / MFA</span>
+                            <span id="profile-mfa-status" class="text-xs font-semibold text-emerald-400 mt-1 block">Protegido con TOTP</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-text-muted block">Cifrado de Documentos</span>
+                            <span class="text-xs font-semibold text-sky-400 mt-1 block">AES-256-GCM Activo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Sections Grid: Left = Info & Bio, Right = CV & Encrypted Documents -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+                <!-- Left Column (4 cols): User info & Professional Bio -->
+                <div class="lg:col-span-4 space-y-6">
+                    <!-- Bio & Professional Summary -->
+                    <div class="card">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="font-bold text-sm text-white flex items-center gap-2">
+                                <svg class="w-4 h-4 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                                Titular & Bio Profesional
+                            </h3>
+                            <button onclick="saveProfileBio()" class="text-xs text-sky-400 hover:underline">Guardar</button>
+                        </div>
+                        <textarea id="profileBioInput" rows="4" placeholder="Escribe aquí un resumen de tu trayectoria (Ej: Graduado en FIB UPC, especializado en Arquitectura Cloud y Seguridad Informática)..." class="post-field text-xs mb-2"></textarea>
+                        <p class="text-[11px] text-text-muted">Este resumen se guardará en tu perfil local de la plataforma.</p>
+                    </div>
+
+                    <!-- Security & Cryptography Card -->
+                    <div class="card p-5">
+                        <h3 class="font-bold text-sm text-white mb-3 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            Garantías de Seguridad UPC
+                        </h3>
+                        <ul class="space-y-3 text-xs text-text-secondary">
+                            <li class="flex items-start gap-2">
+                                <span class="text-emerald-400 font-bold">✓</span>
+                                <span><strong>Cifrado Simétrico:</strong> Los archivos subidos se cifran con AES-256-GCM antes de guardarse en PostgreSQL como BLOB.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-emerald-400 font-bold">✓</span>
+                                <span><strong>Aislamiento de Usuarios:</strong> Nadie excepto tú (y administradores de la plataforma) puede descifrar tus documentos.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-emerald-400 font-bold">✓</span>
+                                <span><strong>Tokens JWT:</strong> Sesión autenticada protegida mediante cabeceras Bearer.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Column (8 cols): Curriculum Vitae & Document Upload -->
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="card">
+                        <div class="flex items-center justify-between mb-2">
+                            <div>
+                                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                    <svg class="w-5 h-5 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                                    Subida de Curriculum Vitae & Documentos
+                                </h3>
+                                <p class="text-xs text-text-secondary mt-1">Sube tu CV en PDF o imagen (PNG/JPEG). Se almacena cifrado con AES-256-GCM.</p>
+                            </div>
+                        </div>
+
+                        <!-- Dropzone / File Picker Form -->
+                        <form onsubmit="handleUploadDocument(event)" class="mt-4">
+                            <div class="border-2 border-dashed border-border-strong hover:border-upc-blue p-8 rounded-xl text-center bg-bg-canvas/50 transition-colors cursor-pointer" onclick="document.getElementById('cvFileInput').click()">
+                                <input type="file" id="cvFileInput" accept=".pdf,.png,.jpg,.jpeg" class="hidden" onchange="displaySelectedFile(this)">
+                                
+                                <div class="w-12 h-12 rounded-full bg-sky-500/10 text-sky-400 flex items-center justify-center mx-auto mb-3">
+                                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                                </div>
+                                <p class="text-sm font-semibold text-white mb-1" id="selectedFileName">Haz clic para seleccionar tu CV o arrastra un archivo aquí</p>
+                                <p class="text-xs text-text-muted">Formatos aceptados: PDF, PNG, JPG (Máx. 5 MB)</p>
+                            </div>
+
+                            <div class="mt-4 flex justify-end">
+                                <button type="submit" id="btnUploadCV" class="btn-primary" disabled>
+                                    <span class="spinner"></span>
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                                    <span>Cifrar con AES-256 y Guardar CV</span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- List of User Documents -->
+                        <div class="border-t border-border-subtle pt-6 mt-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="font-bold text-sm text-white flex items-center gap-2">
+                                    <span>Mis Documentos Cifrados en PostgreSQL</span>
+                                    <span class="text-xs bg-surface-card px-2 py-0.5 rounded-full text-emerald-400 font-mono" id="docsCountBadge">0</span>
+                                </h4>
+                                <button onclick="loadUserDocuments()" class="text-xs text-sky-400 hover:underline flex items-center gap-1">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                                    Refrescar
+                                </button>
+                            </div>
+
+                            <ul id="userDocsList" class="space-y-3">
+                                <li class="text-xs text-text-muted text-center py-6">Cargando tus documentos cifrados...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ======================================================== -->
+        <!-- VIEW 4 (ADMIN ONLY): CONSOLA DE AUDITORÍA Y MODERACIÓN    -->
+        <!-- ======================================================== -->
         <section id="view-admin" class="screen-view">
-            <div class="card">
-                <h3 class="text-xl font-bold mb-4 text-accent-red">Consola de Moderación</h3>
-                <p class="text-sm text-text-secondary mb-6">Audita las ofertas publicadas en la plataforma.</p>
-                <div id="adminOffersContainer" class="space-y-4">
-                    <!-- Ofertas para moderar -->
+            <div class="card mb-6">
+                <div class="flex items-center justify-between mb-2">
+                    <div>
+                        <h2 class="text-xl font-bold text-accent-red flex items-center gap-2">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            Consola de Moderación y Supervisión
+                        </h2>
+                        <p class="text-xs text-text-secondary mt-1">Supervisa y modera ofertas y publicaciones para mantener la calidad de la red UPC.</p>
+                    </div>
+                    <span class="badge-pill badge-admin">Rol Administrador</span>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="card">
+                    <h3 class="font-bold text-base text-white mb-4">Auditoría de Ofertas Publicadas</h3>
+                    <div id="adminOffersContainer" class="space-y-3">
+                        <p class="text-xs text-text-muted">Cargando ofertas para moderación...</p>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- REGISTER MODAL -->
-    <div id="register-modal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-50">
-        <div class="bg-surface p-8 rounded-lg shadow-xl w-full max-w-md border border-border-subtle">
-            <h2 class="text-xl font-bold mb-4">Registrar Usuario</h2>
-            <form onsubmit="handleRegister(event)">
-                <input type="text" id="regName" placeholder="Nombre Completo" class="w-full bg-bg-canvas border border-border-subtle rounded px-3 py-2 mb-3 text-white" required>
-                <input type="email" id="regEmail" placeholder="Email" class="w-full bg-bg-canvas border border-border-subtle rounded px-3 py-2 mb-3 text-white" required>
-                <input type="password" id="regPassword" placeholder="Contraseña (min 8)" class="w-full bg-bg-canvas border border-border-subtle rounded px-3 py-2 mb-3 text-white" required minlength="8">
-                <select id="regRole" class="w-full bg-bg-canvas border border-border-subtle rounded px-3 py-2 mb-6 text-white">
-                    <option value="Student">Student</option>
-                    <option value="Alumni">Alumni</option>
-                    <option value="Administrator">Administrator</option>
-                </select>
-                <div class="flex justify-end gap-3">
-                    <button type="button" onclick="document.getElementById('register-modal').classList.add('hidden')" class="px-4 py-2 text-text-secondary">Cancelar</button>
-                    <button type="submit" class="btn-primary">Registrar</button>
-                </div>
-            </form>
-        </div>
-    </div>
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-el" class="toast" role="status" aria-live="polite"></div>
 
-    <!-- TOAST -->
-    <div id="toast-el" class="toast">Acción completada</div>
-
+    <!-- APPLICATION JAVASCRIPT -->
     <script>
         const API_URL = '/api/v1';
 
-        function notify(msg) {
+        const ICONS = {
+            eye: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+            eyeOff: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 19c-6.5 0-10-7-10-7a18.5 18.5 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c6.5 0 10 7 10 7a18.5 18.5 0 0 1-2.16 3.19"/><path d="m1 1 22 22"/></svg>',
+            check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>',
+            alert: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>'
+        };
+
+        let cachedOffers = [];
+        let currentOfferFilter = 'ALL';
+        let currentUserProfile = null;
+        let likedPosts = JSON.parse(localStorage.getItem('liked_posts') || '{}');
+
+        // TOAST NOTIFICATIONS
+        let toastTimer;
+        function notify(msg, type = 'success') {
             const el = document.getElementById('toast-el');
-            el.textContent = msg;
-            el.classList.add('show');
-            setTimeout(() => el.classList.remove('show'), 3000);
+            el.innerHTML = type === 'error' ? ICONS.alert : ICONS.check;
+            const span = document.createElement('span');
+            span.textContent = msg;
+            el.appendChild(span);
+            el.className = `toast show${type === 'error' ? ' error' : ''}`;
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => el.classList.remove('show'), 3400);
         }
 
-        // --- AUTH LOGIC ---
+        // --- TAB NAVIGATION (3 APARTADOS + ADMIN) ---
+        function switchMainTab(tabName) {
+            document.querySelectorAll('.screen-view').forEach(v => v.classList.remove('active'));
+            document.querySelectorAll('.nav-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+
+            const targetView = document.getElementById(`view-${tabName}`);
+            const targetBtn = document.getElementById(`tab-nav-${tabName}`);
+            
+            if (targetView) targetView.classList.add('active');
+            if (targetBtn) targetBtn.classList.add('active');
+
+            if (tabName === 'feed') loadPosts();
+            if (tabName === 'offers') loadOffers();
+            if (tabName === 'profile') {
+                loadUserProfile();
+                loadUserDocuments();
+            }
+            if (tabName === 'admin') loadAdminOffers();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- AUTH TABS (LOGIN / REGISTER) ---
+        function switchAuthTab(tab) {
+            const isRegister = tab === 'register';
+            document.getElementById('auth-tabs').classList.toggle('register', isRegister);
+            document.getElementById('auth-tab-login').classList.toggle('active', !isRegister);
+            document.getElementById('auth-tab-register').classList.toggle('active', isRegister);
+            document.getElementById('loginForm').classList.toggle('active', !isRegister);
+            document.getElementById('registerForm').classList.toggle('active', isRegister);
+            hideFormError('loginError');
+            hideFormError('regError');
+            setTimeout(() => document.getElementById(isRegister ? 'regName' : 'email').focus(), 50);
+        }
+
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            const show = input.type === 'password';
+            input.type = show ? 'text' : 'password';
+            btn.innerHTML = show ? ICONS.eyeOff : ICONS.eye;
+            btn.setAttribute('aria-label', show ? 'Ocultar contraseña' : 'Mostrar contraseña');
+        }
+
+        function selectRole(btn) {
+            document.querySelectorAll('.role-card').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('regRole').value = btn.dataset.role;
+        }
+
+        function updateStrength(pwd) {
+            let score = 0;
+            if (pwd.length >= 8) score++;
+            if (/[a-z]/.test(pwd) && /[A-Z]/.test(pwd)) score++;
+            if (/\d/.test(pwd)) score++;
+            if (/[^A-Za-z0-9]/.test(pwd)) score++;
+            if (pwd.length > 0 && pwd.length < 8) score = Math.min(score, 1);
+
+            const levels = [
+                { label: '', color: '' },
+                { label: 'Débil', color: '#ef4444' },
+                { label: 'Aceptable', color: '#f59e0b' },
+                { label: 'Buena', color: '#38bdf8' },
+                { label: 'Fuerte', color: '#22c55e' }
+            ];
+            document.querySelectorAll('#strength-bars span').forEach((bar, i) => {
+                bar.style.background = i < score ? levels[score].color : '';
+            });
+            const label = document.getElementById('strength-label');
+            label.textContent = pwd.length ? `Seguridad: ${levels[score].label}${pwd.length < 8 ? ' · mínimo 8 caracteres' : ''}` : '';
+            label.style.color = pwd.length ? levels[score].color : '';
+        }
+
+        function showFormError(id, msg) {
+            const el = document.getElementById(id);
+            el.innerHTML = ICONS.alert;
+            const span = document.createElement('span');
+            span.textContent = msg;
+            el.appendChild(span);
+            el.classList.remove('hidden');
+        }
+        function hideFormError(id) { document.getElementById(id).classList.add('hidden'); }
+
+        function setLoading(btnId, loading, label) {
+            const btn = document.getElementById(btnId);
+            if (!btn) return;
+            btn.disabled = loading;
+            btn.classList.toggle('loading', loading);
+            if (label) {
+                const labelSpan = btn.querySelector('.btn-label');
+                if (labelSpan) labelSpan.textContent = label;
+            }
+        }
+
+        async function extractError(res, fallback) {
+            try {
+                const data = await res.json();
+                if (typeof data.detail === 'string') return data.detail;
+                if (Array.isArray(data.detail) && data.detail[0]?.msg) return data.detail[0].msg;
+            } catch (_) {}
+            return fallback;
+        }
+
+        // --- AUTH REQUESTS ---
         async function handleLogin(e) {
             e.preventDefault();
-            const email = document.getElementById('email').value;
+            hideFormError('loginError');
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+
+            if (!email) return showFormError('loginError', 'Introduce un email válido.');
+            if (!password) return showFormError('loginError', 'Introduce tu contraseña.');
+
             const formData = new URLSearchParams();
             formData.append('username', email);
-            formData.append('password', document.getElementById('password').value);
+            formData.append('password', password);
 
+            setLoading('loginBtn', true, 'Autenticando...');
             try {
                 const res = await fetch(`${API_URL}/auth/login`, {
                     method: 'POST',
@@ -268,42 +1499,60 @@
                     body: formData
                 });
                 
-                if (!res.ok) throw new Error("Credenciales inválidas");
+                if (!res.ok) {
+                    const msg = res.status === 429
+                        ? 'Demasiados intentos. Espera un momento.'
+                        : 'Credenciales inválidas. Revisa tu email o contraseña.';
+                    throw new Error(msg);
+                }
                 
                 const data = await res.json();
                 sessionStorage.setItem('access_token', data.access_token);
                 sessionStorage.setItem('user_role', data.role);
                 sessionStorage.setItem('user_email', email);
                 
-                setupDashboard();
+                notify('¡Bienvenido! Sesión iniciada correctamente');
+                await setupDashboard();
             } catch (err) {
-                const errEl = document.getElementById('loginError');
-                errEl.textContent = err.message;
-                errEl.classList.remove('hidden');
+                showFormError('loginError', err.message);
+            } finally {
+                setLoading('loginBtn', false, 'Entrar a AlumniConnect');
             }
         }
 
         async function handleRegister(e) {
             e.preventDefault();
+            hideFormError('regError');
             const payload = {
-                full_name: document.getElementById('regName').value,
-                email: document.getElementById('regEmail').value,
+                full_name: document.getElementById('regName').value.trim(),
+                email: document.getElementById('regEmail').value.trim(),
                 password: document.getElementById('regPassword').value,
                 role_name: document.getElementById('regRole').value
             };
 
+            if (payload.full_name.length < 2) return showFormError('regError', 'Introduce tu nombre.');
+            if (!payload.email) return showFormError('regError', 'Introduce un email válido.');
+            if (payload.password.length < 8) return showFormError('regError', 'La contraseña debe tener al menos 8 caracteres.');
+
+            setLoading('registerBtn', true, 'Creando cuenta...');
             try {
                 const res = await fetch(`${API_URL}/auth/register`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-                if (!res.ok) throw new Error("Error en registro (email duplicado?)");
+                if (!res.ok) throw new Error(await extractError(res, 'No se pudo completar el registro. ¿El email ya existe?'));
                 
-                document.getElementById('register-modal').classList.add('hidden');
-                notify("Usuario creado. Ya puedes iniciar sesión.");
+                notify('Cuenta creada con éxito. Ya puedes iniciar sesión.');
+                document.getElementById('registerForm').reset();
+                selectRole(document.getElementById('role-student'));
+                updateStrength('');
+                switchAuthTab('login');
+                document.getElementById('email').value = payload.email;
             } catch (err) {
-                alert(err.message);
+                showFormError('regError', err.message);
+            } finally {
+                setLoading('registerBtn', false, 'Crear cuenta');
             }
         }
 
@@ -312,188 +1561,768 @@
             location.reload();
         }
 
-        // --- UI & DASHBOARD ---
-        function setupDashboard() {
+        // --- DASHBOARD SETUP & USER PROFILE ---
+        async function setupDashboard() {
+            const token = sessionStorage.getItem('access_token');
             const role = sessionStorage.getItem('user_role');
-            if (!role) return;
+            if (!token || !role) return;
 
-            // UI Elements
+            document.body.classList.remove('auth-mode');
             document.getElementById('view-login').classList.remove('active');
             document.getElementById('main-nav').style.display = 'flex';
             document.getElementById('logout-btn').classList.remove('hidden');
             
-            document.getElementById('nav-user-email').textContent = sessionStorage.getItem('user_email');
+            const userEmail = sessionStorage.getItem('user_email') || '';
+            document.getElementById('nav-user-email').textContent = userEmail;
             document.getElementById('nav-user-email').classList.remove('hidden');
 
-            document.getElementById('profile-name').textContent = sessionStorage.getItem('user_email').split('@')[0];
-            document.getElementById('profile-role').textContent = role;
-            document.getElementById('profile-avatar').textContent = sessionStorage.getItem('user_email').charAt(0).toUpperCase();
-
             const pill = document.getElementById('role-pill');
-            pill.style.display = 'block';
+            pill.style.display = 'inline-flex';
             pill.textContent = role;
             pill.className = `badge-pill ${role === 'Student' ? 'badge-student' : role === 'Alumni' ? 'badge-alumni' : 'badge-admin'}`;
 
-            // RBAC Configuration
+            // RBAC Permissions
             if (role === 'Alumni' || role === 'Administrator') {
-                document.getElementById('composer-box').classList.remove('hidden-role');
+                const trigger = document.getElementById('offer-composer-trigger');
+                if (trigger) trigger.classList.remove('hidden-role');
             }
             if (role === 'Administrator') {
-                document.getElementById('tab-admin').classList.remove('hidden-role');
+                const adminTab = document.getElementById('tab-nav-admin');
+                if (adminTab) adminTab.classList.remove('hidden-role');
             }
 
-            switchTab('feed', document.getElementById('tab-feed'));
+            // Load user profile details
+            await loadUserProfile();
+
+            // Load avatar from storage
+            applyStoredAvatar();
+
+            // Initial view: Feed
+            switchMainTab('feed');
         }
 
-        function switchTab(viewId, btn) {
-            document.querySelectorAll('.screen-view').forEach(v => v.classList.remove('active'));
-            document.getElementById(`view-${viewId}`).classList.add('active');
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+        async function loadUserProfile() {
+            const token = sessionStorage.getItem('access_token');
+            if (!token) return;
 
-            if (viewId === 'feed') loadOffers();
-            if (viewId === 'admin') loadAdminOffers();
+            try {
+                const res = await fetch(`${API_URL}/auth/me`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (res.status === 401) return logout();
+                if (!res.ok) return;
+
+                currentUserProfile = await res.json();
+
+                // Update UI elements
+                document.getElementById('header-user-name').textContent = currentUserProfile.full_name;
+                document.getElementById('sidebar-user-name').textContent = currentUserProfile.full_name;
+                document.getElementById('sidebar-user-email').textContent = currentUserProfile.email;
+                document.getElementById('sidebar-user-role').textContent = currentUserProfile.role_name;
+                document.getElementById('sidebar-user-role').className = `badge-pill ${currentUserProfile.role_name === 'Student' ? 'badge-student' : currentUserProfile.role_name === 'Alumni' ? 'badge-alumni' : 'badge-admin'}`;
+
+                document.getElementById('profile-full-name').textContent = currentUserProfile.full_name;
+                document.getElementById('profile-email').textContent = currentUserProfile.email;
+                document.getElementById('profile-uuid').textContent = currentUserProfile.id;
+                document.getElementById('profile-role-badge').textContent = currentUserProfile.role_name;
+                document.getElementById('profile-role-badge').className = `badge-pill ${currentUserProfile.role_name === 'Student' ? 'badge-student' : currentUserProfile.role_name === 'Alumni' ? 'badge-alumni' : 'badge-admin'}`;
+
+                const mfaEl = document.getElementById('profile-mfa-status');
+                if (currentUserProfile.mfa_enabled) {
+                    mfaEl.textContent = 'MFA Activo (TOTP)';
+                    mfaEl.className = 'text-xs font-semibold text-emerald-400 mt-1 block';
+                } else {
+                    mfaEl.textContent = 'MFA No activado';
+                    mfaEl.className = 'text-xs font-semibold text-amber-400 mt-1 block';
+                }
+
+                // Stored bio
+                const bio = localStorage.getItem(`bio_${currentUserProfile.id}`) || '';
+                document.getElementById('profileBioInput').value = bio;
+
+            } catch (err) {
+                console.error("Error al cargar perfil:", err);
+            }
         }
 
-        // --- OFFERS LOGIC ---
+        function saveProfileBio() {
+            if (!currentUserProfile) return;
+            const bio = document.getElementById('profileBioInput').value;
+            localStorage.setItem(`bio_${currentUserProfile.id}`, bio);
+            notify('Resumen profesional actualizado correctamente');
+        }
+
+        // --- AVATAR & PROFILE IMAGE LOGIC ---
+        function applyStoredAvatar() {
+            const email = sessionStorage.getItem('user_email') || 'User';
+            const initial = email.charAt(0).toUpperCase();
+            const storedImg = localStorage.getItem(`avatar_${email}`);
+
+            const avatarElements = [
+                document.getElementById('header-avatar'),
+                document.getElementById('sidebar-avatar'),
+                document.getElementById('composer-avatar'),
+                document.getElementById('profile-page-avatar')
+            ];
+
+            const btnRemove = document.getElementById('btnRemoveAvatar');
+
+            avatarElements.forEach(el => {
+                if (!el) return;
+                if (storedImg) {
+                    el.innerHTML = `<img src="${storedImg}" alt="Avatar" class="w-full h-full object-cover">`;
+                } else {
+                    el.textContent = initial;
+                }
+            });
+
+            if (btnRemove) {
+                btnRemove.classList.toggle('hidden', !storedImg);
+            }
+        }
+
+        async function handleProfilePhotoUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            if (!['image/png', 'image/jpeg', 'image/webp'].includes(file.type)) {
+                notify('Formato de imagen no soportado. Usa PNG o JPG.', 'error');
+                return;
+            }
+            if (file.size > 5 * 1024 * 1024) {
+                notify('La imagen excede el límite de 5 MB.', 'error');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = async function(event) {
+                const base64Data = event.target.result;
+                const email = sessionStorage.getItem('user_email');
+                localStorage.setItem(`avatar_${email}`, base64Data);
+                applyStoredAvatar();
+                notify('Foto de perfil actualizada correctamente');
+
+                // Also upload to encrypted documents silently for persistence
+                try {
+                    const token = sessionStorage.getItem('access_token');
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    await fetch(`${API_URL}/documents/upload`, {
+                        method: 'POST',
+                        headers: { 'Authorization': `Bearer ${token}` },
+                        body: formData
+                    });
+                    loadUserDocuments();
+                } catch (_) {}
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function removeProfilePhoto() {
+            const email = sessionStorage.getItem('user_email');
+            localStorage.removeItem(`avatar_${email}`);
+            applyStoredAvatar();
+            notify('Foto de perfil eliminada. Se usa el avatar por defecto.');
+        }
+
+        // --- APARTADO 1: FEED DE PUBLICACIONES (SOCIAL FEED) ---
+        async function loadPosts() {
+            const token = sessionStorage.getItem('access_token');
+            if (!token) return;
+
+            const container = document.getElementById('postsContainer');
+            try {
+                const res = await fetch(`${API_URL}/posts/`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (res.status === 401) return logout();
+                if (!res.ok) throw new Error("Error al obtener publicaciones");
+
+                const posts = await res.json();
+                document.getElementById('postsBadgeCount').textContent = posts.length;
+                
+                // Count user's posts
+                if (currentUserProfile) {
+                    const myPosts = posts.filter(p => p.author_id === currentUserProfile.id);
+                    document.getElementById('stat-posts-count').textContent = myPosts.length;
+                }
+
+                if (posts.length === 0) {
+                    container.innerHTML = `
+                        <div class="card text-center py-12">
+                            <div class="w-14 h-14 rounded-full bg-sky-500/10 text-sky-400 flex items-center justify-center mx-auto mb-3">
+                                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            </div>
+                            <h3 class="font-bold text-white text-base">Aún no hay publicaciones</h3>
+                            <p class="text-xs text-text-muted mt-1 max-w-sm mx-auto">¡Sé el primero en compartir una novedad, pregunta técnica o proyecto con la comunidad UPC!</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const myRole = sessionStorage.getItem('user_role');
+                const myId = currentUserProfile ? currentUserProfile.id : null;
+
+                container.innerHTML = posts.map(post => {
+                    const dateStr = formatRelativeTime(post.created_at);
+                    const isAuthor = myId && post.author_id === myId;
+                    const canDelete = isAuthor || myRole === 'Administrator';
+                    const roleClass = post.author_role === 'Student' ? 'badge-student' : post.author_role === 'Alumni' ? 'badge-alumni' : 'badge-admin';
+                    const initial = (post.author_name || 'U').charAt(0).toUpperCase();
+                    const isLiked = !!likedPosts[post.id];
+
+                    return `
+                        <article class="post-card" id="post-${post.id}">
+                            <div class="flex items-start justify-between mb-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="avatar-circle avatar-sm">${initial}</div>
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="font-bold text-sm text-white">${escapeHtml(post.author_name || 'Miembro UPC')}</span>
+                                            <span class="badge-pill ${roleClass} text-[10px] py-0.5 px-2">${post.author_role || 'Student'}</span>
+                                        </div>
+                                        <span class="text-[11px] text-text-muted">${dateStr}</span>
+                                    </div>
+                                </div>
+
+                                ${canDelete ? `
+                                    <button onclick="handleDeletePost('${post.id}')" class="btn-danger-action" title="Eliminar publicación">
+                                        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                        <span>Eliminar</span>
+                                    </button>
+                                ` : ''}
+                            </div>
+
+                            <p class="text-sm text-slate-200 leading-relaxed whitespace-pre-line mb-4">${escapeHtml(post.content)}</p>
+
+                            <div class="border-t border-border-subtle pt-3 flex items-center justify-between text-xs text-text-muted">
+                                <div class="flex items-center gap-4">
+                                    <button onclick="toggleLikePost('${post.id}', this)" class="flex items-center gap-1.5 hover:text-rose-400 transition-colors ${isLiked ? 'text-rose-500 font-semibold' : ''}">
+                                        <svg class="w-4 h-4 ${isLiked ? 'fill-current text-rose-500' : ''}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                                        <span class="like-label">${isLiked ? 'Te gusta' : 'Me gusta'}</span>
+                                    </button>
+                                    <button onclick="sharePost('${post.id}')" class="flex items-center gap-1.5 hover:text-sky-400 transition-colors">
+                                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                                        <span>Compartir</span>
+                                    </button>
+                                </div>
+                                <span class="text-[11px] text-text-muted flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Publicación de la comunidad
+                                </span>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+
+            } catch (err) {
+                container.innerHTML = `<div class="card text-rose-400 text-center py-6 text-sm">${err.message}</div>`;
+            }
+        }
+
+        async function handleCreatePost(e) {
+            e.preventDefault();
+            const input = document.getElementById('postContentInput');
+            const content = input.value.trim();
+            if (!content) return;
+
+            const token = sessionStorage.getItem('access_token');
+            const btn = document.getElementById('btnPublishPost');
+            btn.disabled = true;
+
+            try {
+                const res = await fetch(`${API_URL}/posts/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ content })
+                });
+
+                if (!res.ok) throw new Error(await extractError(res, 'No se pudo publicar'));
+
+                input.value = '';
+                document.getElementById('postCharCount').textContent = '0 / 2000';
+                notify('¡Publicación compartida con la comunidad!');
+                await loadPosts();
+            } catch (err) {
+                notify(err.message, 'error');
+            } finally {
+                btn.disabled = false;
+            }
+        }
+
+        async function handleDeletePost(postId) {
+            if (!confirm('¿Seguro que deseas eliminar esta publicación?')) return;
+            const token = sessionStorage.getItem('access_token');
+
+            try {
+                const res = await fetch(`${API_URL}/posts/${postId}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (!res.ok) throw new Error('No se pudo eliminar la publicación');
+
+                notify('Publicación eliminada correctamente');
+                loadPosts();
+            } catch (err) {
+                notify(err.message, 'error');
+            }
+        }
+
+        function toggleLikePost(postId, btn) {
+            likedPosts[postId] = !likedPosts[postId];
+            localStorage.setItem('liked_posts', JSON.stringify(likedPosts));
+            const isLiked = likedPosts[postId];
+            btn.classList.toggle('text-rose-500', isLiked);
+            btn.classList.toggle('font-semibold', isLiked);
+            const svg = btn.querySelector('svg');
+            if (isLiked) {
+                svg.classList.add('fill-current', 'text-rose-500');
+                btn.querySelector('.like-label').textContent = 'Te gusta';
+                notify('¡Te gusta esta publicación!');
+            } else {
+                svg.classList.remove('fill-current', 'text-rose-500');
+                btn.querySelector('.like-label').textContent = 'Me gusta';
+            }
+        }
+
+        function sharePost(postId) {
+            navigator.clipboard.writeText(`${window.location.origin}/#post-${postId}`);
+            notify('Enlace de la publicación copiado al portapapeles');
+        }
+
+        // Post char count listener
+        const postInput = document.getElementById('postContentInput');
+        if (postInput) {
+            postInput.addEventListener('input', () => {
+                document.getElementById('postCharCount').textContent = `${postInput.value.length} / 2000`;
+            });
+        }
+
+
+        // --- APARTADO 2: OFERTAS DE EMPLEO (JOB BOARD) ---
+        function toggleOfferComposer() {
+            const card = document.getElementById('offerComposerCard');
+            card.classList.toggle('hidden');
+            if (!card.classList.contains('hidden')) {
+                document.getElementById('offerTitle').focus();
+            }
+        }
+
         async function loadOffers() {
             const token = sessionStorage.getItem('access_token');
-            const res = await fetch(`${API_URL}/offers/`, {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
-            if (res.status === 401) logout();
-            
-            const offers = await res.json();
-            const role = sessionStorage.getItem('user_role');
-            
-            document.getElementById('offersContainer').innerHTML = offers.map(o => `
-                <div class="card post-card">
-                    <div class="post-author-row">
-                        <div>
-                            <span class="category-label">${o.offer_type}</span>
-                            <h4 class="font-bold text-lg">${o.title}</h4>
-                            <p class="text-sm text-text-secondary">${o.company}</p>
+            if (!token) return;
+
+            const container = document.getElementById('offersContainer');
+            try {
+                const res = await fetch(`${API_URL}/offers/`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (res.status === 401) return logout();
+                if (!res.ok) throw new Error("Error al obtener ofertas");
+
+                cachedOffers = await res.json();
+                document.getElementById('count-all-offers').textContent = `(${cachedOffers.length})`;
+                renderOffers(cachedOffers);
+
+            } catch (err) {
+                container.innerHTML = `<div class="card text-rose-400 text-center py-6 text-sm">${err.message}</div>`;
+            }
+        }
+
+        function renderOffers(offers) {
+            const container = document.getElementById('offersContainer');
+            const searchVal = (document.getElementById('offerSearchInput')?.value || '').toLowerCase();
+
+            let filtered = offers;
+            if (currentOfferFilter !== 'ALL') {
+                filtered = filtered.filter(o => o.offer_type === currentOfferFilter);
+            }
+            if (searchVal) {
+                filtered = filtered.filter(o => 
+                    o.title.toLowerCase().includes(searchVal) || 
+                    o.company.toLowerCase().includes(searchVal) ||
+                    o.description.toLowerCase().includes(searchVal)
+                );
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="card text-center py-12">
+                        <div class="w-14 h-14 rounded-full bg-sky-500/10 text-sky-400 flex items-center justify-center mx-auto mb-3">
+                            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                        </div>
+                        <h3 class="font-bold text-white text-base">No hay ofertas que coincidan</h3>
+                        <p class="text-xs text-text-muted mt-1">Prueba a cambiar el filtro o el término de búsqueda.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const myRole = sessionStorage.getItem('user_role');
+
+            container.innerHTML = filtered.map(offer => {
+                const dateStr = formatRelativeTime(offer.created_at);
+                const typeColor = offer.offer_type === 'Job' ? 'text-sky-400 bg-sky-500/10 border-sky-500/30' :
+                                  offer.offer_type === 'Internship' ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30' :
+                                  'text-purple-400 bg-purple-500/10 border-purple-500/30';
+
+                return `
+                    <div class="offer-card" data-type="${offer.offer_type}">
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-3">
+                            <div class="flex items-start gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-surface-card border border-border-subtle flex items-center justify-center text-lg font-bold text-sky-400 flex-shrink-0">
+                                    ${(offer.company || 'C').charAt(0).toUpperCase()}
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2 flex-wrap mb-1">
+                                        <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full border ${typeColor}">
+                                            ${offer.offer_type}
+                                        </span>
+                                        <span class="text-xs text-text-muted">${offer.status}</span>
+                                    </div>
+                                    <h3 class="text-lg font-bold text-white">${escapeHtml(offer.title)}</h3>
+                                    <p class="text-sm font-medium text-slate-300">${escapeHtml(offer.company)}</p>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row items-end sm:items-center gap-2">
+                                <button onclick="applyToOffer('${offer.id}', '${escapeHtml(offer.title)}')" class="btn-primary text-xs py-2">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                    <span>Postularse con mi CV</span>
+                                </button>
+                                ${myRole === 'Administrator' ? `
+                                    <button onclick="moderateOffer('${offer.id}', 'FLAGGED')" class="btn-danger-action text-amber-400 border-amber-400/40 hover:bg-amber-400/10">Flag</button>
+                                    <button onclick="moderateOffer('${offer.id}', 'REMOVED')" class="btn-danger-action">Remove</button>
+                                ` : ''}
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-text-secondary leading-relaxed mb-4 pl-0 md:pl-15">${escapeHtml(offer.description)}</p>
+
+                        <div class="border-t border-border-subtle pt-3 flex items-center justify-between text-xs text-text-muted">
+                            <span class="flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                Publicada ${dateStr} ${offer.author_name ? `por ${escapeHtml(offer.author_name)}` : ''}
+                            </span>
+                            <span class="text-emerald-400 font-semibold flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Convocatoria Abierta
+                            </span>
                         </div>
                     </div>
-                    <p class="text-sm mb-3">${o.description}</p>
-                    <p class="text-xs text-text-muted">Status: ${o.status}</p>
-                </div>
-            `).join('');
+                `;
+            }).join('');
+        }
+
+        function filterOffers(type, btn) {
+            currentOfferFilter = type;
+            document.querySelectorAll('#offerFilterChips .chip').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+            renderOffers(cachedOffers);
+        }
+
+        function handleOfferSearch() {
+            renderOffers(cachedOffers);
         }
 
         async function handlePublishOffer(e) {
             e.preventDefault();
             const token = sessionStorage.getItem('access_token');
             const payload = {
-                title: document.getElementById('offerTitle').value,
-                company: document.getElementById('offerCompany').value,
-                description: document.getElementById('offerDesc').value,
+                title: document.getElementById('offerTitle').value.trim(),
+                company: document.getElementById('offerCompany').value.trim(),
+                description: document.getElementById('offerDesc').value.trim(),
                 offer_type: document.getElementById('offerType').value
             };
 
-            await fetch(`${API_URL}/offers/`, {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(payload)
-            });
-            e.target.reset();
-            notify("Oferta publicada correctamente");
-            loadOffers();
+            const btn = document.getElementById('btnPublishOffer');
+            btn.disabled = true;
+
+            try {
+                const res = await fetch(`${API_URL}/offers/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) throw new Error(await extractError(res, "No se pudo publicar la oferta"));
+
+                e.target.reset();
+                toggleOfferComposer();
+                notify("¡Oferta publicada con éxito en la bolsa UPC!");
+                await loadOffers();
+            } catch (err) {
+                notify(err.message, 'error');
+            } finally {
+                btn.disabled = false;
+            }
         }
 
-        // --- MODERATION LOGIC (Admin) ---
-        async function loadAdminOffers() {
-            const token = sessionStorage.getItem('access_token');
-            const res = await fetch(`${API_URL}/offers/`, {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
-            const offers = await res.json();
-            
-            document.getElementById('adminOffersContainer').innerHTML = offers.map(o => `
-                <div class="p-4 border border-border-subtle rounded-lg flex justify-between items-center bg-bg-canvas">
-                    <div>
-                        <p class="font-bold">${o.title} <span class="text-xs font-normal text-text-secondary ml-2">${o.status}</span></p>
-                        <p class="text-sm text-text-secondary truncate w-96">${o.description}</p>
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="moderateOffer('${o.id}', 'FLAGGED')" class="btn-danger-action text-accent-amber border-accent-amber hover:bg-accent-amber-bg">Flag</button>
-                        <button onclick="moderateOffer('${o.id}', 'REMOVED')" class="btn-danger-action">Remove</button>
-                    </div>
-                </div>
-            `).join('');
+        function applyToOffer(offerId, offerTitle) {
+            notify(`¡Solicitud enviada para "${offerTitle}"! Tu CV cifrado ha sido vinculado.`);
         }
 
-        async function moderateOffer(id, newStatus) {
-            const token = sessionStorage.getItem('access_token');
-            await fetch(`${API_URL}/offers/${id}/moderate`, {
-                method: 'PATCH',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({ status: newStatus })
-            });
-            notify(`Oferta marcada como ${newStatus}`);
-            loadAdminOffers();
+
+        // --- APARTADO 3: PERFIL & DOCUMENTOS CIFRADOS (BLOB) ---
+        function displaySelectedFile(input) {
+            const file = input.files[0];
+            const btn = document.getElementById('btnUploadCV');
+            const nameEl = document.getElementById('selectedFileName');
+            if (file) {
+                nameEl.textContent = `Archivo seleccionado: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+                btn.disabled = false;
+            } else {
+                nameEl.textContent = 'Haz clic para seleccionar tu CV o arrastra un archivo aquí';
+                btn.disabled = true;
+            }
         }
 
-        // --- BLOB ENCRYPTION LOGIC ---
-        async function uploadDocument(e) {
+        async function handleUploadDocument(e) {
             e.preventDefault();
             const token = sessionStorage.getItem('access_token');
-            const fileInput = document.getElementById('cvFile');
-            
+            const fileInput = document.getElementById('cvFileInput');
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            const btn = document.getElementById('btnUploadCV');
+            btn.disabled = true;
+
             const formData = new FormData();
-            formData.append('file', fileInput.files[0]);
+            formData.append('file', file);
 
             try {
                 const res = await fetch(`${API_URL}/documents/upload`, {
                     method: 'POST',
-                    headers: { 'Authorization': `Bearer ${token}` }, // FormData no requiere Content-Type manual
+                    headers: { 'Authorization': `Bearer ${token}` },
                     body: formData
                 });
-                
-                if (!res.ok) throw new Error("Error al subir archivo. ¿Excede los 5MB o no es PDF/IMG?");
-                
+
+                if (!res.ok) throw new Error(await extractError(res, "Error al subir el archivo. Comprueba que sea PDF/PNG/JPG menor a 5MB"));
+
                 const data = await res.json();
-                notify("Archivo cifrado (BLOB Cypher) y guardado");
-                
-                // Añadir a la lista visual
-                const li = document.createElement('li');
-                li.className = "flex justify-between items-center p-3 bg-bg-canvas rounded border border-border-subtle";
-                li.innerHTML = `
-                    <span class="text-sm font-semibold">${data.filename}</span>
-                    <button onclick="downloadDocument('${data.document_id}')" class="text-upc-blue text-sm hover:underline">Descargar y Descifrar</button>
-                `;
-                document.getElementById('docsList').appendChild(li);
+                notify(`Documento "${data.filename}" cifrado con AES-256-GCM y guardado.`);
                 fileInput.value = '';
-            } catch(err) {
-                alert(err.message);
+                displaySelectedFile(fileInput);
+                await loadUserDocuments();
+            } catch (err) {
+                notify(err.message, 'error');
+            } finally {
+                btn.disabled = false;
             }
         }
 
-        async function downloadDocument(id) {
+        async function loadUserDocuments() {
             const token = sessionStorage.getItem('access_token');
-            const res = await fetch(`${API_URL}/documents/${id}`, {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
-            
-            if (!res.ok) return alert("Acceso denegado o archivo no encontrado");
-            
-            const blob = await res.blob();
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = "decrypted_document"; 
-            a.click();
-            window.URL.revokeObjectURL(url);
-            notify("Documento descifrado y descargado");
+            if (!token) return;
+
+            const list = document.getElementById('userDocsList');
+            try {
+                const res = await fetch(`${API_URL}/documents/`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (res.status === 401) return logout();
+                if (!res.ok) throw new Error("Error al cargar documentos");
+
+                const docs = await res.json();
+                document.getElementById('docsCountBadge').textContent = docs.length;
+                document.getElementById('stat-docs-count').textContent = docs.length;
+
+                if (docs.length === 0) {
+                    list.innerHTML = `
+                        <li class="p-6 text-center text-text-muted text-xs bg-bg-canvas/50 rounded-lg border border-border-subtle">
+                            No has subido ningún CV o documento aún. Utiliza el selector superior para cifrar y almacenar tu primer archivo.
+                        </li>
+                    `;
+                    return;
+                }
+
+                list.innerHTML = docs.map(doc => {
+                    const isPdf = doc.content_type?.includes('pdf') || doc.filename?.endsWith('.pdf');
+                    const isImg = doc.content_type?.includes('image');
+                    const dateStr = formatRelativeTime(doc.created_at);
+
+                    return `
+                        <li class="flex flex-col sm:flex-row sm:items-center justify-between p-3.5 bg-surface-card rounded-xl border border-border-subtle hover:border-border-strong gap-3 transition-colors">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg ${isPdf ? 'bg-rose-500/10 text-rose-400' : 'bg-sky-500/10 text-sky-400'} flex items-center justify-center flex-shrink-0">
+                                    ${isPdf ? `
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                    ` : `
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                    `}
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-sm text-white flex items-center gap-2">
+                                        <span>${escapeHtml(doc.filename)}</span>
+                                        <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Cifrado AES-256</span>
+                                    </div>
+                                    <div class="text-[11px] text-text-muted mt-0.5">
+                                        Subido ${dateStr} · Formato: ${doc.content_type || 'application/octet-stream'}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-2 self-end sm:self-center">
+                                ${isImg ? `
+                                    <button onclick="setAvatarFromDoc('${doc.id}')" class="btn-secondary text-xs py-1.5 px-2.5" title="Usar esta imagen como foto de perfil">
+                                        Foto perfil
+                                    </button>
+                                ` : ''}
+                                <button onclick="downloadDocument('${doc.id}', '${escapeHtml(doc.filename)}')" class="btn-primary text-xs py-1.5 px-3">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    <span>Descargar & Descifrar</span>
+                                </button>
+                            </div>
+                        </li>
+                    `;
+                }).join('');
+
+            } catch (err) {
+                list.innerHTML = `<li class="text-rose-400 text-xs text-center py-4">${err.message}</li>`;
+            }
         }
 
-        // Init Check
+        async function downloadDocument(id, filename) {
+            const token = sessionStorage.getItem('access_token');
+            try {
+                notify("Descifrando documento en memoria con AES-256-GCM...");
+                const res = await fetch(`${API_URL}/documents/${id}`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (!res.ok) throw new Error("Acceso denegado o documento no encontrado");
+
+                const blob = await res.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename || "decrypted_document";
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
+                notify("Documento descifrado y descargado exitosamente");
+            } catch (err) {
+                notify(err.message, 'error');
+            }
+        }
+
+        async function setAvatarFromDoc(docId) {
+            const token = sessionStorage.getItem('access_token');
+            try {
+                const res = await fetch(`${API_URL}/documents/${docId}`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (!res.ok) throw new Error("No se pudo obtener la imagen");
+                const blob = await res.blob();
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const email = sessionStorage.getItem('user_email');
+                    localStorage.setItem(`avatar_${email}`, e.target.result);
+                    applyStoredAvatar();
+                    notify("Foto de perfil actualizada a partir del documento");
+                };
+                reader.readAsDataURL(blob);
+            } catch (err) {
+                notify(err.message, 'error');
+            }
+        }
+
+
+        // --- APARTADO 4: CONSOLA DE MODERACIÓN (ADMIN) ---
+        async function loadAdminOffers() {
+            const token = sessionStorage.getItem('access_token');
+            const container = document.getElementById('adminOffersContainer');
+            try {
+                const res = await fetch(`${API_URL}/offers/`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const offers = await res.json();
+
+                if (offers.length === 0) {
+                    container.innerHTML = `<p class="text-xs text-text-muted">No hay ofertas para auditar.</p>`;
+                    return;
+                }
+
+                container.innerHTML = offers.map(o => `
+                    <div class="p-4 border border-border-subtle rounded-lg flex flex-col md:flex-row justify-between items-start md:items-center bg-bg-canvas gap-3">
+                        <div>
+                            <p class="font-bold text-white text-sm">
+                                ${escapeHtml(o.title)} 
+                                <span class="text-xs font-normal text-sky-400 ml-2">(${escapeHtml(o.company)})</span>
+                                <span class="text-xs font-mono px-2 py-0.5 rounded bg-surface-card text-text-muted ml-2">${o.status}</span>
+                            </p>
+                            <p class="text-xs text-text-secondary line-clamp-2 mt-1 max-w-xl">${escapeHtml(o.description)}</p>
+                        </div>
+                        <div class="flex gap-2 flex-shrink-0">
+                            <button onclick="moderateOffer('${o.id}', 'FLAGGED')" class="btn-danger-action text-amber-400 border-amber-400 hover:bg-amber-400/20">Flag</button>
+                            <button onclick="moderateOffer('${o.id}', 'REMOVED')" class="btn-danger-action">Remove</button>
+                            <button onclick="moderateOffer('${o.id}', 'PUBLISHED')" class="btn-secondary text-xs py-1 text-emerald-400 border-emerald-500/30">Restore</button>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (err) {
+                container.innerHTML = `<p class="text-xs text-rose-400">${err.message}</p>`;
+            }
+        }
+
+        async function moderateOffer(id, newStatus) {
+            const token = sessionStorage.getItem('access_token');
+            try {
+                const res = await fetch(`${API_URL}/offers/${id}/moderate`, {
+                    method: 'PATCH',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ status: newStatus })
+                });
+                if (!res.ok) throw new Error("Error de moderación");
+
+                notify(`Oferta actualizada a estado: ${newStatus}`);
+                loadAdminOffers();
+                loadOffers();
+            } catch (err) {
+                notify(err.message, 'error');
+            }
+        }
+
+        // --- UTILS ---
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function formatRelativeTime(dateStr) {
+            if (!dateStr) return 'hace unos momentos';
+            try {
+                const date = new Date(dateStr);
+                const now = new Date();
+                const diffSec = Math.floor((now - date) / 1000);
+
+                if (diffSec < 60) return 'hace un momento';
+                if (diffSec < 3600) return `hace ${Math.floor(diffSec / 60)} min`;
+                if (diffSec < 86400) return `hace ${Math.floor(diffSec / 3600)} h`;
+                if (diffSec < 604800) return `hace ${Math.floor(diffSec / 86400)} días`;
+                return date.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' });
+            } catch (_) {
+                return dateStr;
+            }
+        }
+
+        // Init password toggle icons
+        document.querySelectorAll('.toggle-pass').forEach(b => b.innerHTML = ICONS.eye);
+
+        // Auto-check session on load
         if (sessionStorage.getItem('access_token')) {
             setupDashboard();
         }

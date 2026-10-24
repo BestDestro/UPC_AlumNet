@@ -10,7 +10,8 @@ from app.schemas.schemas import (
     TokenResponseSchema,
     MFASetupResponseSchema,
     MFAVerifySchema,
-    MFALoginSchema
+    MFALoginSchema,
+    UserProfileSchema
 )
 from app.core.security import hash_password, verify_password, create_access_token
 from app.api.deps import get_current_user
@@ -62,6 +63,20 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
         data={"sub": str(user.id), "role": user.role.name, "email": user.email}
     )
     return TokenResponseSchema(access_token=token, role=user.role.name)
+
+
+@router.get("/me", response_model=UserProfileSchema)
+def read_current_user(current_user: UserModel = Depends(get_current_user)):
+    """Devuelve los datos de perfil del usuario autenticado (sin secretos)."""
+    return UserProfileSchema(
+        id=current_user.id,
+        email=current_user.email,
+        full_name=current_user.full_name,
+        role_name=current_user.role.name,
+        is_active=current_user.is_active,
+        mfa_enabled=bool(current_user.mfa_enabled),
+        created_at=current_user.created_at
+    )
 
 
 @router.post("/mfa/setup", response_model=MFASetupResponseSchema)

@@ -43,6 +43,34 @@ class OfferModel(Base):
 
     author = relationship("UserModel")
 
+    @property
+    def author_name(self):
+        return self.author.full_name if self.author else None
+
+    @property
+    def author_role(self):
+        return self.author.role.name if self.author and self.author.role else None
+
+
+class PostModel(Base):
+    __tablename__ = "posts"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    content = Column(Text, nullable=False)
+    status = Column(String(50), default="PUBLISHED")  # 'PUBLISHED', 'FLAGGED', 'REMOVED'
+    author_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), nullable=False)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+
+    author = relationship("UserModel")
+
+    @property
+    def author_name(self):
+        return self.author.full_name if self.author else None
+
+    @property
+    def author_role(self):
+        return self.author.role.name if self.author and self.author.role else None
+
 
 class EncryptedDocumentModel(Base):
     __tablename__ = "encrypted_documents"
