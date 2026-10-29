@@ -47,6 +47,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/certs:/etc/nginx/certs
+      - ./nginx/security:/etc/nginx/security:ro
       - ./frontend:/usr/share/nginx/html
 
 volumes:
