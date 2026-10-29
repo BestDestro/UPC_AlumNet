@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.db.connection import Base, engine
 from app.core.error_handler import global_exception_handler
+from app.core.rate_limit import RateLimitMiddleware
 from app.api.endpoints import auth, offers, documents, posts
 
 # Creación de tablas en caso de no usar init.sql
@@ -14,6 +15,10 @@ app = FastAPI(
     docs_url="/docs",       # Swagger UI habilitado para escaneo activo con OWASP ZAP
     openapi_url="/openapi.json"
 )
+
+# Capa 3 de seguridad: rate limiting y proteccion de fuerza bruta (app/core/rate_limit.py).
+# Se registra antes que CORS para que CORS siga siendo la capa mas externa.
+app.add_middleware(RateLimitMiddleware)
 
 app.add_middleware(
     CORSMiddleware,
