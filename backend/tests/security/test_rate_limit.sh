@@ -36,6 +36,17 @@ evaluate() { # $1 = nombre, $2 = codigos HTTP obtenidos
 evaluate "login    " "$(login_burst)"
 evaluate "registro " "$(register_burst)"
 
+# El rechazo de Nginx debe ser JSON con "detail": es lo que el frontend muestra al usuario.
+resp=$(curl -sk -i -X POST "$BASE/api/v1/auth/login" -d "username=$NOUSER&password=incorrecta")
+if echo "$resp" | head -n 1 | grep -q " 429" \
+   && echo "$resp" | grep -qi '^content-type: *application/json' \
+   && echo "$resp" | grep -q '"detail"'; then
+  echo "PASS  el 429 de Nginx es JSON con 'detail'"
+else
+  echo "FAIL  el 429 de Nginx no es JSON con 'detail' (si ya estabas limitado, espera 60 s y repite)"
+  fail=1
+fi
+
 health=$(curl -sk -o /dev/null -w "%{http_code}" "$BASE/health")
 offers=$(curl -sk -o /dev/null -w "%{http_code}" "$BASE/api/v1/offers/")
 
