@@ -27,6 +27,9 @@ services:
     restart: always
     environment:
       - DATABASE_URL=postgresql://alumnet_app_user:SuperSecretAlumNet2026!@db:5432/alumnet_db
+      - "BLOB_ENCRYPTION_KEY=${BLOB_ENCRYPTION_KEY:?Define BLOB_ENCRYPTION_KEY en backend/.env (ver backend/.env.example)}"
+      - "BLOB_ENCRYPTION_OLD_KEYS=${BLOB_ENCRYPTION_OLD_KEYS:-}"
+      - "BLOB_LEGACY_KEY=${BLOB_LEGACY_KEY:-}"
     ports:
       - "8443:8443"
     volumes:
