@@ -1,7 +1,6 @@
 """Validacion de ficheros subidos: firma real del contenido y nombres de fichero seguros.
 
-Solo biblioteca estandar. El tipo MIME que declara el cliente NO es de fiar: se comprueba
-la firma (magic bytes) del contenido. Limitacion: una firma valida no garantiza que el
+Solo biblioteca estandar. Una firma valida no garantiza que el
 fichero sea inofensivo (p. ej. un PDF puede contener scripts); por eso las descargas se
 sirven como "attachment" y con "X-Content-Type-Options: nosniff".
 """
