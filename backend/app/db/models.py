@@ -1,5 +1,5 @@
 import uuid
-from sqlalchemy import Column, Integer, String, Boolean, Text, ForeignKey, DateTime, LargeBinary, func
+from sqlalchemy import CheckConstraint, Column, DateTime, ForeignKey, Index, Integer, LargeBinary, String, Text, Boolean, func, text
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from app.db.connection import Base
@@ -25,9 +25,50 @@ class UserModel(Base):
     mfa_enabled = Column(Boolean, default=False)
     mfa_secret = Column(String(64), nullable=True)
     avatar_url = Column(Text, nullable=True)
+    bio = Column(Text, nullable=True)
+    current_position = Column(String(150), nullable=True)
+    company = Column(String(150), nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     role = relationship("RoleModel")
+
+
+class UserFollowModel(Base):
+    __tablename__ = "user_follows"
+    __table_args__ = (
+        CheckConstraint("follower_id <> followed_id", name="ck_user_follow_not_self"),
+    )
+
+    follower_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
+    followed_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+
+
+class RoleChangeRequestModel(Base):
+    __tablename__ = "role_change_requests"
+    __table_args__ = (
+        CheckConstraint('"current_role" <> requested_role', name="ck_role_change_request_different_roles"),
+        Index(
+            "uq_role_change_requests_pending_user",
+            "user_id",
+            unique=True,
+            postgresql_where=text("status = 'PENDING'"),
+        ),
+    )
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    current_role = Column(String(50), nullable=False)
+    requested_role = Column(String(50), nullable=False)
+    reason = Column(Text, nullable=False)
+    status = Column(String(20), nullable=False, default="PENDING")
+    reviewed_by = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
+    review_note = Column(Text, nullable=True)
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    reviewed_at = Column(DateTime(timezone=True), nullable=True)
+
+    requester = relationship("UserModel", foreign_keys=[user_id])
+    reviewer = relationship("UserModel", foreign_keys=[reviewed_by])
 
 
 class OfferModel(Base):
