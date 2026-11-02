@@ -1,7 +1,7 @@
 from uuid import UUID
 from datetime import datetime
 from typing import Literal, Optional
-from pydantic import BaseModel, EmailStr, Field, ConfigDict
+from pydantic import BaseModel, EmailStr, Field, ConfigDict, field_validator
 
 
 # --- ESQUEMAS DE USUARIO Y AUTENTICACIÓN ---
@@ -11,7 +11,15 @@ class UserCreateSchema(BaseModel):
     email: EmailStr
     full_name: str = Field(..., min_length=2, max_length=150)
     password: str = Field(..., min_length=8, max_length=128)
-    role_name: Literal["Student", "Alumni", "Administrator"] = "Student"
+    role_name: Literal["Student", "Alumni"] = "Student"
+
+
+class ProfileUpdateSchema(BaseModel):
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+
+    bio: Optional[str] = Field(None, max_length=2000)
+    current_position: Optional[str] = Field(None, max_length=150)
+    company: Optional[str] = Field(None, max_length=150)
 
 
 class UserResponseSchema(BaseModel):
@@ -34,7 +42,59 @@ class UserProfileSchema(BaseModel):
     is_active: bool
     mfa_enabled: bool
     avatar_url: Optional[str] = None
+    bio: Optional[str] = None
+    current_position: Optional[str] = None
+    company: Optional[str] = None
     created_at: Optional[datetime] = None
+
+
+class CommunityMemberSchema(BaseModel):
+    id: UUID
+    full_name: str
+    role_name: str
+    avatar_url: Optional[str] = None
+    current_position: Optional[str] = None
+    company: Optional[str] = None
+    is_following: bool = False
+
+
+class CommunityProfileSchema(CommunityMemberSchema):
+    email: EmailStr
+    bio: Optional[str] = None
+    followers_count: int = 0
+    following_count: int = 0
+
+
+class FollowStatusSchema(BaseModel):
+    following: bool
+
+
+class RoleChangeRequestCreateSchema(BaseModel):
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+
+    requested_role: Literal["Student", "Alumni"]
+    reason: str = Field(..., min_length=15, max_length=1000)
+
+
+class RoleChangeRequestReviewSchema(BaseModel):
+    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+
+    decision: Literal["APPROVED", "REJECTED"]
+    review_note: Optional[str] = Field(None, max_length=1000)
+
+
+class RoleChangeRequestResponseSchema(BaseModel):
+    id: UUID
+    user_id: UUID
+    requester_name: str
+    requester_email: EmailStr
+    current_role: str
+    requested_role: str
+    reason: str
+    status: str
+    review_note: Optional[str] = None
+    created_at: datetime
+    reviewed_at: Optional[datetime] = None
 
 
 class AvatarUpdateSchema(BaseModel):
@@ -127,9 +187,16 @@ class ApplicationResponseSchema(BaseModel):
 
 # --- ESQUEMAS DE PUBLICACIONES (FEED SOCIAL) ---
 class PostCreateSchema(BaseModel):
-    model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
+    model_config = ConfigDict(extra="forbid")
 
     content: str = Field(..., min_length=1, max_length=2000)
+
+    @field_validator("content")
+    @classmethod
+    def content_must_not_be_blank(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("La publicación no puede estar vacía")
+        return value
 
 
 class PostModerationSchema(BaseModel):

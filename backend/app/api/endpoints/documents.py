@@ -43,6 +43,9 @@ async def upload_encrypted_document(
     current_user: UserModel = Depends(get_current_user)
 ):
     """Cifra un archivo multimedia o documento antes de guardarlo como BLOB (BYTEA) en PostgreSQL."""
+    if current_user.role.name == "Administrator":
+        raise HTTPException(status_code=403, detail="Administrator accounts cannot upload CVs")
+
     if file.content_type not in ALLOWED_MIME_TYPES:
         raise HTTPException(status_code=400, detail="Unsupported file type. Allowed: PDF, PNG, JPEG")
 

@@ -1,9 +1,11 @@
 import pyotp
+from datetime import datetime, timezone
+from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from app.db.connection import get_db
-from app.db.models import UserModel, RoleModel
+from app.db.models import RoleChangeRequestModel, UserModel, RoleModel
 from app.schemas.schemas import (
     UserCreateSchema,
     UserResponseSchema,
@@ -13,10 +15,14 @@ from app.schemas.schemas import (
     MFALoginSchema,
     MFACredentialsSchema,
     UserProfileSchema,
-    AvatarUpdateSchema
+    AvatarUpdateSchema,
+    ProfileUpdateSchema,
+    RoleChangeRequestCreateSchema,
+    RoleChangeRequestReviewSchema,
+    RoleChangeRequestResponseSchema
 )
 from app.core.security import hash_password, verify_password, create_access_token
-from app.api.deps import get_current_user
+from app.api.deps import get_current_user, require_roles
 
 router = APIRouter(prefix="/api/v1/auth", tags=["Authentication"])
 
@@ -33,7 +39,7 @@ def validate_upc_email(email: str):
 
 @router.post("/register", response_model=UserResponseSchema, status_code=status.HTTP_201_CREATED)
 def register(payload: UserCreateSchema, db: Session = Depends(get_db)):
-    """Registra un nuevo usuario (Student, Alumni o Administrator) con contraseña hasheada en Argon2id."""
+    """Registra un usuario Student o Alumni con contraseña hasheada en Argon2id."""
     validate_upc_email(payload.email)
 
     if db.query(UserModel).filter(UserModel.email == payload.email).first():
@@ -92,8 +98,131 @@ def read_current_user(current_user: UserModel = Depends(get_current_user)):
         is_active=current_user.is_active,
         mfa_enabled=bool(current_user.mfa_enabled),
         avatar_url=current_user.avatar_url,
+        bio=current_user.bio,
+        current_position=current_user.current_position,
+        company=current_user.company,
         created_at=current_user.created_at
     )
+
+
+@router.patch("/profile", response_model=UserProfileSchema)
+def update_current_user_profile(
+    payload: ProfileUpdateSchema,
+    current_user: UserModel = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Actualiza el perfil laboral solo para cuentas Student y Alumni."""
+    if current_user.role.name not in {"Student", "Alumni"}:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only Student and Alumni accounts can edit their profile"
+        )
+
+    for field, value in payload.model_dump(exclude_unset=True).items():
+        setattr(current_user, field, value or None)
+    db.commit()
+    db.refresh(current_user)
+
+    return read_current_user(current_user)
+
+
+def serialize_role_change_request(request: RoleChangeRequestModel):
+    return RoleChangeRequestResponseSchema(
+        id=request.id,
+        user_id=request.user_id,
+        requester_name=request.requester.full_name,
+        requester_email=request.requester.email,
+        current_role=request.current_role,
+        requested_role=request.requested_role,
+        reason=request.reason,
+        status=request.status,
+        review_note=request.review_note,
+        created_at=request.created_at,
+        reviewed_at=request.reviewed_at
+    )
+
+
+@router.post("/role-requests", response_model=RoleChangeRequestResponseSchema, status_code=status.HTTP_201_CREATED)
+def create_role_change_request(
+    payload: RoleChangeRequestCreateSchema,
+    current_user: UserModel = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    current_role = current_user.role.name
+    if current_role not in {"Student", "Alumni"}:
+        raise HTTPException(status_code=403, detail="Only Student and Alumni can request this change")
+    if payload.requested_role == current_role:
+        raise HTTPException(status_code=400, detail="The requested role must be different from your current role")
+    pending = db.query(RoleChangeRequestModel).filter(
+        RoleChangeRequestModel.user_id == current_user.id,
+        RoleChangeRequestModel.status == "PENDING"
+    ).first()
+    if pending:
+        raise HTTPException(status_code=409, detail="You already have a pending role change request")
+
+    request = RoleChangeRequestModel(
+        user_id=current_user.id,
+        current_role=current_role,
+        requested_role=payload.requested_role,
+        reason=payload.reason
+    )
+    db.add(request)
+    db.commit()
+    db.refresh(request)
+    return serialize_role_change_request(request)
+
+
+@router.get("/role-requests/me", response_model=list[RoleChangeRequestResponseSchema])
+def list_my_role_change_requests(
+    current_user: UserModel = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    requests = db.query(RoleChangeRequestModel).filter(
+        RoleChangeRequestModel.user_id == current_user.id
+    ).order_by(RoleChangeRequestModel.created_at.desc()).all()
+    return [serialize_role_change_request(request) for request in requests]
+
+
+@router.get("/role-requests/pending", response_model=list[RoleChangeRequestResponseSchema])
+def list_pending_role_change_requests(
+    db: Session = Depends(get_db),
+    _: UserModel = Depends(require_roles(["Administrator"]))
+):
+    requests = db.query(RoleChangeRequestModel).filter(
+        RoleChangeRequestModel.status == "PENDING"
+    ).order_by(RoleChangeRequestModel.created_at.asc()).all()
+    return [serialize_role_change_request(request) for request in requests]
+
+
+@router.patch("/role-requests/{request_id}/review", response_model=RoleChangeRequestResponseSchema)
+def review_role_change_request(
+    request_id: UUID,
+    payload: RoleChangeRequestReviewSchema,
+    db: Session = Depends(get_db),
+    admin: UserModel = Depends(require_roles(["Administrator"]))
+):
+    request = db.query(RoleChangeRequestModel).filter(
+        RoleChangeRequestModel.id == request_id
+    ).with_for_update().first()
+    if request is None:
+        raise HTTPException(status_code=404, detail="Role change request not found")
+    if request.status != "PENDING":
+        raise HTTPException(status_code=409, detail="This request has already been reviewed")
+
+    if payload.decision == "APPROVED":
+        role = db.query(RoleModel).filter(RoleModel.name == request.requested_role).first()
+        if role is None:
+            raise HTTPException(status_code=500, detail="Requested role is not configured")
+        request.requester.role = role
+        request.requester.role_id = role.id
+
+    request.status = payload.decision
+    request.review_note = payload.review_note
+    request.reviewed_by = admin.id
+    request.reviewed_at = datetime.now(timezone.utc)
+    db.commit()
+    db.refresh(request)
+    return serialize_role_change_request(request)
 
 
 @router.patch("/avatar", response_model=UserProfileSchema)
@@ -114,6 +243,9 @@ def update_user_avatar(
         is_active=current_user.is_active,
         mfa_enabled=bool(current_user.mfa_enabled),
         avatar_url=current_user.avatar_url,
+        bio=current_user.bio,
+        current_position=current_user.current_position,
+        company=current_user.company,
         created_at=current_user.created_at
     )
 
