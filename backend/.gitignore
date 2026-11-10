@@ -8,6 +8,8 @@ env/
 commandas.txt
 
 .env
+cert.pem
+key.pem
 
 postgres_data/
 
