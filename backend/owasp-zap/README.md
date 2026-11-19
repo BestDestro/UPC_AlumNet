@@ -50,7 +50,6 @@ The exported evidence also contained low-risk observations unrelated to SQL inje
 - `evidence/02-scan-policy.png`: SQL injection rules enabled in the active-scan policy.
 - `evidence/03-scan-results.png`: Scan completion and SQL injection results.
 - `evidence/04-manual-response.png`: Manual inspection of an API response.
-- `evidence/05-exported-zap-files.png`: Saved session and exported assessment files.
 - `reports/zap-report-redacted.html`: HTML report with authentication data redacted.
 - `reports/Progress_ZAP.txt`: Detailed active-scan progress.
 
