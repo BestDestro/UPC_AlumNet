@@ -1,0 +1,59 @@
+	Fuerza	Progreso	Transcurrido	Peticiones	Alertas	Estado
+Analizador			00:00.124	10		
+						
+Plugin						
+Ruta Transversal	Medio	100	00:06.436	756	0	Completado
+Inclusión Remota de Archivos	Medio	100	00:03.613	430	0	Completado
+Divulgación del código fuente: carpeta /WEB-INF	Medio	100	00:00.023	2	0	Completado
+Ejecución Remota de Código - Shell Shock	Medio	100	00:00.879	86	0	Completado
+Vulnerabilidades de OpenSSL HeartBleed	Medio	100	00:00.022	3	0	Completado
+Divulgación del Código Fuente - CVE-2012-1823	Medio	100	00:02.524	9	0	Completado
+Ejecución Remota de Código - CVE-2012-1823	Medio	100	00:00.704	72	0	Completado
+Redirección Externa	Medio	100	00:03.481	387	0	Completado
+Server Side Include	Medio	100	00:01.699	172	0	Completado
+Cross Site Scripting (Reflected)	Medio	100	00:01.562	182	0	Completado
+Cross Site Scripting (Persistente) - Prime	Medio	100	00:00.642	43	0	Completado
+Cross Site Scripting (Persistente) - Spider	Medio	100	00:10.312	36	0	Completado
+Cross Site Scripting XSS (Persistente)	Medio	100	10:00.809	787	5	Completado
+Inyección SQL	Medio	100	10:11.165	946	0	Completado
+SQL Injection - MySQL (Time Based)	Medio	100	04:52.092	430	0	Completado
+SQL Injection - Hypersonic SQL (Time Based)	Medio	100	00:04.870	430	0	Completado
+SQL Injection - Oracle (Time Based)	Medio	100	00:02.338	215	0	Completado
+SQL Injection - PostgreSQL (Time Based)	Medio	100	00:02.550	215	0	Completado
+Sitio cruzado de Scripting (Basado en DOM)	Medio	100	03:12.361	80	0	Completado
+SQL Injection - MsSQL (Time Based)	Medio	100	00:06.172	428	0	Completado
+Log4Shell	Medio	100	00:00.039	0	0	Evitado, no se ha seleccionado ningún servicio de Escaneo Activo OAST..
+Spring4Shell	Medio	100	00:10.822	71	0	Completado
+Remote Code Execution (React2Shell)	Medio	100	00:00.034	1	0	Completado
+Server Side Code Injection	Medio	100	00:04.078	344	0	Completado
+Remote OS Command Injection (Inyección Remota de Comandos del Sistema Operativo)	Medio	100	00:08.774	816	0	Completado
+Inyección XPath	Medio	100	00:01.368	129	0	Completado
+Ataque de Entidad Externa XML	Medio	100	00:00.141	0	0	Completado
+Padding Oracle Genérico	Medio	100	00:00.362	0	0	Completado
+Metadatos de la Nube Potencialmente Expuestos	Medio	100	00:00.441	13	0	Completado
+Server Side Template Injection (SSTI) Plantilla de Inyección del Lado del Servidor	Medio	100	14:01.214	590	0	Completado
+Server Side Template Injection (Blind-Ciego)	Medio	100	10:26.018	516	0	Completado
+Remote OS Command Injection (Time Based)	Medio	100	10:17.285	688	0	Completado
+Directory Browsing (Exploración de directorios)	Medio	100	10:19.520	36	0	Completado
+Sitio Solo HTTP	Medio	100	00:00.097	0	0	Completado
+Buffer Overflow	Medio	100	10:15.945	43	0	Completado
+Format String Error (Error de formato de cadena)	Medio	100	10:06.297	129	0	Completado
+Inyección CRLF	Medio	100	10:08.625	301	0	Completado
+Parameter Tampering (Manipulación de Parámetros)	Medio	100	10:03.844	79	0	Completado
+ELMAH Information Leak (Fuga de información ELMAH)	Medio	100	00:00.036	1	0	Completado
+Filtrado de información en Trace.axd	Medio	100	10:00.552	15	0	Completado
+Filtrado de información en .htaccess	Medio	100	10:00.261	10	0	Completado
+Fuga de información .env	Medio	99	09:23.998	10	0	Ejecutando
+Hidden File Finder (Buscador de Archivos Ocultos)	Medio			0	0	Pendiente
+Fuga de información de Spring Actuator	Medio			0	0	Pendiente
+Expansión de entidad exponencial (Billion Laughs Attack)	Medio			0	0	Pendiente
+Inyección XSLT	Medio			0	0	Pendiente
+Contenido HTTPS Disponible vía HTTP	Medio			0	0	Pendiente
+GET para POST	Medio			0	0	Pendiente
+User Agent Fuzzer	Medio			0	0	Pendiente
+Reglas de Script Activas para el Escaneo	Medio			0	0	Pendiente
+Acción SOAP de suplantación de identidad	Medio			0	0	Pendiente
+Inyección XML SOAP	Medio			0	0	Pendiente
+Swagger UI Secret & Vulnerability Detector	Medio			0	0	Pendiente
+						
+Totales			144:43.296	9826	5	

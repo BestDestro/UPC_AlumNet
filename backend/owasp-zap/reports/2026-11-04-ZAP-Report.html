@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZAP por Informe de Escaneo</title>
+<link
+	href="2026-11-04-ZAP-Report/normalize/normalize.css" rel="stylesheet">
+<link
+	href="2026-11-04-ZAP-Report/themes/original/main.css" rel="stylesheet">
+<link
+	href="2026-11-04-ZAP-Report/themes/original/colors.css" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<h1>ZAP por Informe de Escaneo</h1>
+		<p>
+			<span>Generated with</span> <a href="https://zaproxy.org"><img
+				src="2026-11-04-ZAP-Report/zap32x32.png" alt="The ZAP logo" class="zap-logo">ZAP</a>
+			<span>on mié 4 nov 2026, at 03:14:09</span>
+		</p>
+		<p>ZAP Versión: 2.17.0</p>
+		<p>
+			ZAP by <a href="https://checkmarx.com/">Checkmarx</a>
+		</p>
+	</header>
+
+	<main>
+
+		<section id="contents" class="contents">
+			<h2>Contents</h2>
+			<nav>
+				<ol>
+					<li><a
+						href="#about-this-report">About This Report</a>
+						<ol>
+							
+							<li><a
+								href="#report-parameters">Report Parameters</a></li>
+						</ol></li>
+					<data-th-block>
+					<li><a
+						href="#summaries">Summaries</a>
+						<ol>
+							<li><a
+								href="#risk-confidence-counts">Alert Counts by Risk and Confidence</a></li>
+							<li><a
+								href="#site-risk-counts">Alert Counts by Site and Risk</a></li>
+							<li><a
+								href="#alert-type-counts">Alert Counts by Alert Type</a></li>
+							<li><a
+								href="#insights">Insights</a></li>
+						</ol></li>
+					<li><a
+						href="#alerts">Alerts</a>
+						<ol>
+							
+							 
+							 
+							
+							
+							
+							
+							
+							
+							<li><a
+								href="#alerts--risk-1-confidence-2"><span>Risk</span>=<span
+									class="risk-level">Bajo</span>, <span>Confidence</span>=<span
+									class="confidence-level">Media</span> <span>(1)</span></a></li>
+							
+							<li><a
+								href="#alerts--risk-1-confidence-1"><span>Risk</span>=<span
+									class="risk-level">Bajo</span>, <span>Confidence</span>=<span
+									class="confidence-level">Baja</span> <span>(1)</span></a></li>
+							  
+							
+							
+							
+							
+							<li><a
+								href="#alerts--risk-0-confidence-3"><span>Risk</span>=<span
+									class="risk-level">Informativo</span>, <span>Confidence</span>=<span
+									class="confidence-level">Alta</span> <span>(1)</span></a></li>
+							
+							
+							
+							
+							  
+						</ol></li>
+					<li><a
+						href="#appendix">Appendix</a>
+						<ol>
+							<li><a
+								href="#alert-types">Alert Types</a></li>
+						</ol></li>
+					</data-th-block>
+				</ol>
+			</nav>
+		</section>
+
+		<section
+			id="about-this-report" class="about-this-report">
+			<h2>About This Report</h2>
+
+			
+
+			<section
+				id="report-parameters">
+				<h3>Report Parameters</h3>
+				<div class="report-parameters--container">
+					<h4>Contexts</h4>
+					
+					
+					<p>No contexts were selected, so all contexts were included by default.</p>
+					  
+
+					<h4>Sites</h4>
+					
+					<p>The following sites were included:</p>
+					<ul class="sites-list">
+						<li><span class="site">http://localhost:8443</span></li>
+					</ul>
+					
+					<p>(If no sites were selected, all sites were included by default.)</p>
+					<p>An included site must also be within one of the included contexts for its data to be included in the report.</p>
+
+					<h4>Risk levels</h4>
+					<p>
+						<span>Included</span>:
+						 
+						<span class="included-risk-codes"><span class="risk-level">Alto</span>, <span class="risk-level">Medio</span>, <span class="risk-level">Bajo</span>, <span class="risk-level">Informativo</span></span>
+					</p>
+					<p>
+						<span>Excluded</span>:
+						 <span>None</span>
+						
+					</p>
+
+					<h4>Confidence levels</h4>
+					<p>
+						<span>Included</span>:
+						
+						
+						<span class="included-confidence-codes"><span class="confidence-level">Confirmado por Usuario</span>, <span class="confidence-level">Alta</span>, <span class="confidence-level">Media</span>, <span class="confidence-level">Baja</span></span>
+					</p>
+					<p>
+						<span>Excluded</span>:
+						
+						
+						<span class="included-confidence-codes"> <span class="confidence-level">Confirmado por Usuario</span>, <span class="confidence-level">Alta</span>, <span class="confidence-level">Media</span>, <span class="confidence-level">Baja</span>, <span class="confidence-level">Falso positivo</span></span>
+					</p>
+				</div>
+			</section>
+		</section>
+
+		
+		<section>
+			
+		</section>
+		
+		<section id="summaries" class="summaries">
+			<h2>Summaries</h2>
+
+			<section
+				id="risk-confidence-counts">
+				<h3>Alert Counts by Risk and Confidence</h3>
+				<table class="risk-confidence-counts-table">
+					<caption>
+						<p>This table shows the number of alerts for each level of risk and confidence included in the report.</p>
+						<p>(The percentages in brackets represent the count as a percentage of the total number of alerts included in the report, rounded to one decimal place.)</p>
+					</caption>
+					<colgroup>
+						<col>
+						<col>
+					</colgroup>
+					<colgroup>
+						<col
+							style="width: 14.0%"><col
+							style="width: 14.0%"><col
+							style="width: 14.0%"><col
+							style="width: 14.0%">
+						<col style="width: 14.0%">
+					</colgroup>
+					<thead>
+						<tr>
+							<td colspan="2" rowspan="2"></td>
+							<th scope="colgroup"
+								colspan="5">Confidence</th>
+						</tr>
+						<tr>
+							<th scope="col">Confirmado por Usuario</th>
+							<th scope="col">Alta</th>
+							<th scope="col">Media</th>
+							<th scope="col">Baja</th>
+							<th scope="col">Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="rowgroup"
+								rowspan="5">Risk</th>
+							<th scope="row">Alto</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span class="additional-info-percentages">(0,0 %)</span></td>
+						</tr>
+						<tr>
+							
+							<th scope="row">Medio</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span class="additional-info-percentages">(0,0 %)</span></td>
+						</tr>
+						<tr>
+							
+							<th scope="row">Bajo</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(33,3 %)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(33,3 %)</span></td>
+							<td><span>2</span><br> <span class="additional-info-percentages">(66,7 %)</span></td>
+						</tr>
+						<tr>
+							
+							<th scope="row">Informativo</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(33,3 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>1</span><br> <span class="additional-info-percentages">(33,3 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row">Total</th>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0,0 %)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(33,3 %)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(33,3 %)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(33,3 %)</span></td>
+							<td><span>3</span><br> <span
+								class="additional-info-percentages">(100%)</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section
+				id="site-risk-counts">
+				<h3>Alert Counts by Site and Risk</h3>
+				<table class="site-risk-counts-table">
+					<caption>
+						<p>This table shows, for each site for which one or more alerts were raised, the number of alerts raised at each risk level.</p>
+						<p>Alerts with a confidence level of &quot;False Positive&quot; have been excluded from these counts.</p>
+						<p>(The numbers in brackets are the number of alerts raised for the site at or above that risk level.)</p>
+					</caption>
+					<colgroup>
+						<col>
+						<col>
+					</colgroup>
+					<colgroup>
+						<col
+							style="width: 16.25%"><col
+							style="width: 16.25%"><col
+							style="width: 16.25%"><col
+							style="width: 16.25%">
+					</colgroup>
+					<thead>
+						<tr>
+							<td colspan="2" rowspan="2"></td>
+							<th scope="colgroup" colspan="4">Risk</th>
+						</tr>
+						<tr>
+							<th scope="col">
+								<span>Alto</span><br>  <span
+									class="additional-info-percentages">(= Alto)</span>  
+							</th>
+							<th scope="col">
+								<span>Medio</span><br>   <span
+									class="additional-info-percentages">(&gt;= Medio)</span> 
+							</th>
+							<th scope="col">
+								<span>Bajo</span><br>   <span
+									class="additional-info-percentages">(&gt;= Bajo)</span> 
+							</th>
+							<th scope="col">
+								<span>Informativo</span><br>   <span
+									class="additional-info-percentages">(&gt;= Informativo)</span> 
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="rowgroup"
+								rowspan="1">Site</th>
+							<th scope="row">http://localhost:8443</th>
+							
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0)</span></td>
+							<td><span>0</span><br> <span
+								class="additional-info-percentages">(0)</span></td>
+							<td><span>2</span><br> <span
+								class="additional-info-percentages">(2)</span></td>
+							<td><span>1</span><br> <span
+								class="additional-info-percentages">(3)</span></td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</section>
+
+			<section
+				id="alert-type-counts">
+				<h3>Alert Counts by Alert Type</h3>
+				<table class="alert-type-counts-table">
+					<caption>
+						<p>This table shows the number of alerts of each alert type, together with the alert type&#39;s risk level.</p>
+						<p>(The percentages in brackets represent each count as a percentage, rounded to one decimal place, of the total number of alerts included in this report.)</p>
+					</caption>
+					<thead>
+						<tr>
+							<th scope="col">Alert type</th>
+							<th scope="col">Risk</th>
+							<th scope="col">Count</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-0">Cross Site Scripting (Persistente en la respuesta JSON)</a></th>
+							<td class="risk-level">Bajo</td>
+							<td><span>5</span><br> <span
+								class="additional-info-percentages">(166,7 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-1">Falta encabezado X-Content-Type-Options</a></th>
+							<td class="risk-level">Bajo</td>
+							<td><span>5</span><br> <span
+								class="additional-info-percentages">(166,7 %)</span></td>
+						</tr>
+						<tr>
+							<th scope="row"><a
+								href="#alert-type-2">Petición de Autenticación Identificada</a></th>
+							<td class="risk-level">Informativo</td>
+							<td><span>4</span><br> <span
+								class="additional-info-percentages">(133,3 %)</span></td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th scope="row">Total</th>
+							<td></td>
+							<td>3</td>
+						</tr>
+					</tfoot>
+				</table>
+			</section>
+			
+			<section
+				id="insights">
+				<h3 class="left-header">Insights</h3>
+				
+				<table class="insights-table">
+						<caption>
+						<p>This table shows information that is likely to be very relevant to you, but which is not related to vulnerabilities, or potentially even related to the application in question.</p>
+					</caption>
+					<thead>
+					<tr>
+						<th scope="col">Level</th>
+						<th scope="col">Razón</th>
+						<th scope="col">Site</th>
+						<th scope="col">Descripción</th>
+						<th scope="col">Statistic</th>
+					</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+						<td class="risk-2">
+							<div>Medio</div>
+						</td>
+						<td>
+							<div>Exceeded High</div>
+						</td>
+						<td>
+							<div>http://localhost:8443</div>
+						</td>
+						<td>
+							<div>Percentage of responses with status code 4xx</div>
+						</td>
+						<td align="center">
+							<div>74 %</div>
+						</td>
+						</tr>
+					
+						<tr>
+						<td class="risk-1">
+							<div>Bajo</div>
+						</td>
+						<td>
+							<div>Advertencia</div>
+						</td>
+						<td>
+							<div></div>
+						</td>
+						<td>
+							<div>ZAP errors logged - see the zap.log file for details</div>
+						</td>
+						<td align="center">
+							<div>1   </div>
+						</td>
+						</tr>
+					
+						<tr>
+						<td class="risk-1">
+							<div>Bajo</div>
+						</td>
+						<td>
+							<div>Advertencia</div>
+						</td>
+						<td>
+							<div></div>
+						</td>
+						<td>
+							<div>ZAP warnings logged - see the zap.log file for details</div>
+						</td>
+						<td align="center">
+							<div>9   </div>
+						</td>
+						</tr>
+					
+						<tr>
+						<td class="risk-0">
+							<div>Información</div>
+						</td>
+						<td>
+							<div>Informativo</div>
+						</td>
+						<td>
+							<div>http://localhost:8443</div>
+						</td>
+						<td>
+							<div>Percentage of responses with status code 2xx</div>
+						</td>
+						<td align="center">
+							<div>23 %</div>
+						</td>
+						</tr>
+					
+						<tr>
+						<td class="risk-0">
+							<div>Información</div>
+						</td>
+						<td>
+							<div>Informativo</div>
+						</td>
+						<td>
+							<div>http://localhost:8443</div>
+						</td>
+						<td>
+							<div>Percentage of responses with status code 3xx</div>
+						</td>
+						<td align="center">
+							<div>1 %</div>
+						</td>
+						</tr>
+					
+						<tr>
+						<td class="risk-0">
+							<div>Información</div>
+						</td>
+						<td>
+							<div>Informativo</div>
+						</td>
+						<td>
+							<div>http://localhost:8443</div>
+						</td>
+						<td>
+							<div>Percentage of endpoints with content type application/json</div>
+						</td>
+						<td align="center">
+							<div>100 %</div>
+						</td>
+						</tr>
+					
+						<tr>
+						<td class="risk-0">
+							<div>Información</div>
+						</td>
+						<td>
+							<div>Informativo</div>
+						</td>
+						<td>
+							<div>http://localhost:8443</div>
+						</td>
+						<td>
+							<div>Percentage of endpoints with method DELETE</div>
+						</td>
+						<td align="center">
+							<div>7 %</div>
+						</td>
+						</tr>
+					
+						<tr>
+						<td class="risk-0">
+							<div>Información</div>
+						</td>
+						<td>
+							<div>Informativo</div>
+						</td>
+						<td>
+							<div>http://localhost:8443</div>
+						</td>
+						<td>
+							<div>Percentage of endpoints with method GET</div>
+						</td>
+						<td align="center">
+							<div>30 %</div>
+						</td>
+						</tr>
+					
+						<tr>
+						<td class="risk-0">
+							<div>Información</div>
+						</td>
+						<td>
+							<div>Informativo</div>
+						</td>
+						<td>
+							<div>http://localhost:8443</div>
+						</td>
+						<td>
+							<div>Percentage of endpoints with method PATCH</div>
+						</td>
+						<td align="center">
+							<div>11 %</div>
+						</td>
+						</tr>
+					
+						<tr>
+						<td class="risk-0">
+							<div>Información</div>
+						</td>
+						<td>
+							<div>Informativo</div>
+						</td>
+						<td>
+							<div>http://localhost:8443</div>
+						</td>
+						<td>
+							<div>Percentage of endpoints with method POST</div>
+						</td>
+						<td align="center">
+							<div>50 %</div>
+						</td>
+						</tr>
+					
+						<tr>
+						<td class="risk-0">
+							<div>Información</div>
+						</td>
+						<td>
+							<div>Informativo</div>
+						</td>
+						<td>
+							<div>http://localhost:8443</div>
+						</td>
+						<td>
+							<div>Count of total endpoints</div>
+						</td>
+						<td align="center">
+							<div>26   </div>
+						</td>
+						</tr>
+					
+						<tr>
+						<td class="risk-0">
+							<div>Información</div>
+						</td>
+						<td>
+							<div>Exceeded Low</div>
+						</td>
+						<td>
+							<div>http://localhost:8443</div>
+						</td>
+						<td>
+							<div>Percentage of slow responses</div>
+						</td>
+						<td align="center">
+							<div>31 %</div>
+						</td>
+						</tr>
+					
+					</tbody>
+				</table>
+			</section>
+		</section>
+
+		<section id="alerts" class="alerts">
+			<h2>Alerts</h2>
+			<ol>
+				
+				 
+				 
+				 
+				
+				
+				
+				
+				<li id="alerts--risk-1-confidence-2">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Bajo</span>, <span>Confidence</span>=<span
+							class="confidence-level">Media</span> <span>(1)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">http://localhost:8443</span> <span>(1)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-1">Falta encabezado X-Content-Type-Options</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET http://localhost:8443/api/v1/auth/me</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://owasp.org/Top10/2021/A05_2021-Security_Misconfiguration/">OWASP_2021_A05</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_QA_STD = </span>
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic">SYSTEMIC</a></span> 
+				</li>
+				<li>
+					<span><a href="https://cwe.mitre.org/data/definitions/693.html">CWE-693</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html">OWASP_2017_A06</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/">OWASP_2025_A02</a></span> 
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>La cabecera Anti-MIME-Sniffing X-Content-Type-Options no se ha establecido en &#39;nosniff&#39;. Esto permite que las versiones anteriores de Internet Explorer y Chrome realicen MIME-sniffing en el cuerpo de la respuesta, lo que puede provocar que el cuerpo dé la respuesta se interprete y se muestre como un tipo de contenido distinto del tipo de contenido declarado. Las versiones actuales (principios de 2014) y heredadas de Firefox utilizarán el tipo de contenido declarado (si se establece uno), en lugar de realizar MIME-sniffing.</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Other info</th>
+		<td> 
+<p>Este problema aún se aplica a las páginas de tipo error (401, 403, 500, etc.), ya que esas páginas a menudo se ven afectadas por problemas de inyección, en cuyo caso aún existe la preocupación de que los navegadores husmeen las páginas lejos de su tipo de contenido real.</p>
+
+<p>En el umbral «Alto» esta regla de análisis no alertará sobre respuestas de error del cliente o servidor.</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (549 bytes)</summary>
+				
+				<pre><code>GET http://localhost:8443/api/v1/auth/me HTTP/1.1
+host: localhost:8443
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+accept: application/json
+content-length: 0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmYjc2NTRkZS1hOGJlLTQxYjEtYjI5NC02ZDFmZmQ4ODgxNWUiLCJyb2xlIjoiQWx1bW5pIiwiZW1haWwiOiJhbHVtbmkxQGVzdHVkaWFudGF0LnVwYy5lZHUiLCJleHAiOjE3OTM3NTE2Mzd9.fhc9Y6a5yagE0WHtCtWVL3CVewxk7VY0Qr0nivJT_e0
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (126 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 200 OK
+date: Tue, 03 Nov 2026 23:48:44 GMT
+server: uvicorn
+content-length: 303
+content-type: application/json
+
+</code></pre>
+				
+				
+			</details> <details class="response-body" open="open">
+				<summary>Response body (303 bytes)</summary>
+				
+				<pre><code>{&quot;id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;email&quot;:&quot;alumni1@estudiantat.upc.edu&quot;,&quot;full_name&quot;:&quot;Alumni Prueba&quot;,&quot;role_name&quot;:&quot;Alumni&quot;,&quot;is_active&quot;:true,&quot;mfa_enabled&quot;:false,&quot;avatar_url&quot;:&quot;John Doe / case when cast(pg_sleep(15.0) as varchar) &gt; &#39;&#39; then 0 else 1 end&quot;,&quot;created_at&quot;:&quot;2026-11-03T22:42:33.763437Z&quot;}</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Parameter</th>
+		<td><pre><code>x-content-type-options</code></pre></td>
+	</tr>
+	
+	
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Asegúrese de que la aplicación/servidor web establece el encabezado Content-Type adecuadamente, y que establece el encabezado X-Content-Type-Options a &#39;nosniff&#39; para todas las páginas web.</p>
+
+<p>Si es posible, asegúrese de que el usuario final utiliza un navegador web moderno y compatible con los estándares que no realiza MIME-sniffing en absoluto, o que puede ser dirigido por la aplicación web/servidor web para que no realice MIME-sniffing.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				
+				<li id="alerts--risk-1-confidence-1">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Bajo</span>, <span>Confidence</span>=<span
+							class="confidence-level">Baja</span> <span>(1)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">http://localhost:8443</span> <span>(1)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-0">Cross Site Scripting (Persistente en la respuesta JSON)</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">GET http://localhost:8443/api/v1/posts/</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				<li>
+					<span><a href="https://owasp.org/Top10/2025/A05_2025-Injection/">OWASP_2025_A05</a></span> 
+				</li>
+				<li>
+					<span><a href="https://cwe.mitre.org/data/definitions/79.html">CWE-79</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/Top10/2021/A03_2021-Injection/">OWASP_2021_A03</a></span> 
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#compliance">PCI_DSS</a></span> 
+				</li>
+				<li>
+					 <span>POLICY_DEV_FULL = </span>
+				</li>
+				<li>
+					 <span>POLICY_QA_STD = </span>
+				</li>
+				<li>
+					 <span>POLICY_QA_FULL = </span>
+				</li>
+				<li>
+					 <span>POLICY_PENTEST = </span>
+				</li>
+				<li>
+					<span><a href="https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#compliance">HIPAA</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/07-Input_Validation_Testing/02-Testing_for_Stored_Cross_Site_Scripting">WSTG-v42-INPV-02</a></span> 
+				</li>
+				<li>
+					<span><a href="https://owasp.org/www-project-top-ten/2017/A7_2017-Cross-Site_Scripting_(XSS).html">OWASP_2017_A07</a></span> 
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>Se encontró un ataque XSS en una respuesta JSON, esto podría dejar a los usuarios del contenido vulnerables a un ataque si no controlan adecuadamente los datos (respuesta).</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Other info</th>
+		<td> 
+<p>Generado con BAJA confianza, ya que el Content-Type no es HTML.</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (529 bytes)</summary>
+				
+				<pre><code>GET http://localhost:8443/api/v1/posts/ HTTP/1.1
+host: localhost:8443
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmYjc2NTRkZS1hOGJlLTQxYjEtYjI5NC02ZDFmZmQ4ODgxNWUiLCJyb2xlIjoiQWx1bW5pIiwiZW1haWwiOiJhbHVtbmkxQGVzdHVkaWFudGF0LnVwYy5lZHUiLCJleHAiOjE3OTM3NTM2NjZ9.mB1VcMoOHth1JXKELmLd0318ALQ_CpHPS93jQeIEN9I
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (0 bytes)</summary>
+				
+				<pre><code></code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (128 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 200 OK
+date: Tue, 03 Nov 2026 23:56:44 GMT
+server: uvicorn
+content-length: 36949
+content-type: application/json
+
+</code></pre>
+				
+				
+			</details> <details class="response-body">
+				<summary>Response body (36949 bytes)</summary>
+				
+				<pre><code>[{&quot;id&quot;:&quot;847fea64-6e27-458a-b76e-2ab03ece2eaa&quot;,&quot;content&quot;:&quot;&lt;script&gt;alert(1);&lt;/script&gt;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:45.157034Z&quot;},{&quot;id&quot;:&quot;651710b3-6dfd-41e4-b03b-4dae717fe194&quot;,&quot;content&quot;:&quot;0W45pz4p&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:44.058325Z&quot;},{&quot;id&quot;:&quot;5e8221e3-8fa4-48a3-980c-e52beafa19a8&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:34.068344Z&quot;},{&quot;id&quot;:&quot;b5fa01d7-7c5b-4755-bf9b-cb6e7a0cf115&quot;,&quot;content&quot;:&quot;zApPX31sS&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:33.060073Z&quot;},{&quot;id&quot;:&quot;67211b53-4fde-44e7-8ef1-1f09e2112c08&quot;,&quot;content&quot;:&quot;&lt;scrIpt&gt;alert(1);&lt;/scRipt&gt;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:32.432645Z&quot;},{&quot;id&quot;:&quot;8c3b0058-40d0-49bd-ab03-65ddbf6d4892&quot;,&quot;content&quot;:&quot;0W45pz4p&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:32.285684Z&quot;},{&quot;id&quot;:&quot;5c44e64a-86ef-4d28-9090-eb66bfa5622e&quot;,&quot;content&quot;:&quot;\&quot;&gt;&lt;!--#EXEC cmd=\&quot;dir \\\&quot;--&gt;&lt;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:30.794144Z&quot;},{&quot;id&quot;:&quot;8ef8f76c-e330-4fc1-8d63-bac63e6c40ed&quot;,&quot;content&quot;:&quot;&lt;!--#EXEC cmd=\&quot;dir \\\&quot;--&gt;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:30.643739Z&quot;},{&quot;id&quot;:&quot;be16d1e0-2ac8-49ae-99fd-37c34b3e93b2&quot;,&quot;content&quot;:&quot;\&quot;&gt;&lt;!--#EXEC cmd=\&quot;ls /\&quot;--&gt;&lt;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:30.508285Z&quot;},{&quot;id&quot;:&quot;6b5eebc4-355a-4467-beef-0ba6f1b0bb18&quot;,&quot;content&quot;:&quot;&lt;!--#EXEC cmd=\&quot;ls /\&quot;--&gt;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:30.394330Z&quot;},{&quot;id&quot;:&quot;08a621ce-f2ca-43ed-8a59-cd23c21f3b12&quot;,&quot;content&quot;:&quot;http://\\6555841484086005274.owasp.org&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:28.765329Z&quot;},{&quot;id&quot;:&quot;a45f7402-5ea3-4a75-96a0-eaca76a7bf6a&quot;,&quot;content&quot;:&quot;https://\\6555841484086005274.owasp.org&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:28.718873Z&quot;},{&quot;id&quot;:&quot;5db271dc-cfdb-40a2-bc6e-6fe42b624759&quot;,&quot;content&quot;:&quot;5;URL=&#39;https://6555841484086005274.owasp.org/?Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&#39;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:28.659204Z&quot;},{&quot;id&quot;:&quot;c97056d3-7afb-4b7b-8ee4-418bffe1773d&quot;,&quot;content&quot;:&quot;https://6555841484086005274.owasp.org/?Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:28.576487Z&quot;},{&quot;id&quot;:&quot;a9a07349-aa77-4413-b06c-e936c3b0e535&quot;,&quot;content&quot;:&quot;URL=&#39;http://6555841484086005274.owasp.org&#39;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:28.497351Z&quot;},{&quot;id&quot;:&quot;59995a79-aac1-4ea9-9e9b-75108ae7472d&quot;,&quot;content&quot;:&quot;5;URL=&#39;https://6555841484086005274.owasp.org&#39;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:28.336480Z&quot;},{&quot;id&quot;:&quot;50d023eb-f9ce-411a-862e-59c0a6d0d59e&quot;,&quot;content&quot;:&quot;https://6555841484086005274%2eowasp%2eorg&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:28.227758Z&quot;},{&quot;id&quot;:&quot;e482334d-fdc1-43d7-8541-88d3610a54aa&quot;,&quot;content&quot;:&quot;https://6555841484086005274.owasp.org&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:28.132646Z&quot;},{&quot;id&quot;:&quot;0b0fc8db-74ac-43ef-8459-90f0640f4a98&quot;,&quot;content&quot;:&quot;6555841484086005274.owasp.org&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:27.943033Z&quot;},{&quot;id&quot;:&quot;4641c22c-48f1-464a-aeac-9a2038f91e30&quot;,&quot;content&quot;:&quot;() { :;}; /bin/sleep 15&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:22.565065Z&quot;},{&quot;id&quot;:&quot;453f9190-5e45-4431-b7ec-76162cd83b2d&quot;,&quot;content&quot;:&quot;() { :;}; echo &#39;x-powered-by: ShellShock-Vulnerable&#39;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:22.417567Z&quot;},{&quot;id&quot;:&quot;d10224c2-6e01-4d6a-a4ba-bdfc70067ae6&quot;,&quot;content&quot;:&quot;www.google.com:80/search?q=ZAP&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:21.115821Z&quot;},{&quot;id&quot;:&quot;ca48e3f3-f4f5-4818-a0bd-90254ce5a3a6&quot;,&quot;content&quot;:&quot;www.google.com/search?q=ZAP&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:21.078010Z&quot;},{&quot;id&quot;:&quot;2f399088-c522-45d9-904c-2ce041891e90&quot;,&quot;content&quot;:&quot;www.google.com&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:21.038421Z&quot;},{&quot;id&quot;:&quot;8d4805b4-e787-4b89-9a3f-0d2e74e177dc&quot;,&quot;content&quot;:&quot;www.google.com:80/&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:20.956580Z&quot;},{&quot;id&quot;:&quot;382dad7b-806c-4052-964c-4aacccd724f3&quot;,&quot;content&quot;:&quot;www.google.com/&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:20.856549Z&quot;},{&quot;id&quot;:&quot;8d5fb790-dc11-4a41-bac4-bfdd52db3aa5&quot;,&quot;content&quot;:&quot;http://www.google.com:80/search?q=ZAP&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:20.711075Z&quot;},{&quot;id&quot;:&quot;6af4df49-55c4-417a-93da-7e6c94ad3a36&quot;,&quot;content&quot;:&quot;http://www.google.com/search?q=ZAP&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:20.562161Z&quot;},{&quot;id&quot;:&quot;8f3a4110-e1f7-41e9-a025-7b6e4824488a&quot;,&quot;content&quot;:&quot;http://www.google.com&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:20.412999Z&quot;},{&quot;id&quot;:&quot;9dbed49e-82ae-46a9-911b-47762bbcb46f&quot;,&quot;content&quot;:&quot;http://www.google.com:80/&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:20.254464Z&quot;},{&quot;id&quot;:&quot;cb9c7857-edcc-40d5-acd1-4997c2cb306a&quot;,&quot;content&quot;:&quot;http://www.google.com/&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:20.051230Z&quot;},{&quot;id&quot;:&quot;893a017c-3c4f-4729-90c6-5824d1abbd34&quot;,&quot;content&quot;:&quot;thishouldnotexistandhopefullyitwillnot&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:17.382266Z&quot;},{&quot;id&quot;:&quot;8598de03-d6c8-4265-87d7-8fd0382b6c96&quot;,&quot;content&quot;:&quot;\\WEB-INF\\web.xml&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:17.324307Z&quot;},{&quot;id&quot;:&quot;fe22de82-4b77-4327-8fb6-d9a4a8982e68&quot;,&quot;content&quot;:&quot;/WEB-INF/web.xml&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:17.278283Z&quot;},{&quot;id&quot;:&quot;a0115b4e-17df-4e74-81bc-71e5dcac56fd&quot;,&quot;content&quot;:&quot;WEB-INF\\web.xml&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:17.253264Z&quot;},{&quot;id&quot;:&quot;28397050-4981-4475-9f73-4fc62054045a&quot;,&quot;content&quot;:&quot;WEB-INF/web.xml&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:17.206728Z&quot;},{&quot;id&quot;:&quot;0e986071-9e6a-49ad-bbee-4e38a62d8337&quot;,&quot;content&quot;:&quot;c:\\&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:17.149899Z&quot;},{&quot;id&quot;:&quot;80840329-e774-4b95-b577-578552e8f772&quot;,&quot;content&quot;:&quot;c:/&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:17.078199Z&quot;},{&quot;id&quot;:&quot;d3307a0d-6fd3-4344-899a-443076b7fb2e&quot;,&quot;content&quot;:&quot;../../../../../../../../../../../../../../../../&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:16.915987Z&quot;},{&quot;id&quot;:&quot;5538bb5f-4a04-45a3-9071-786e8b3885f7&quot;,&quot;content&quot;:&quot;/&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:16.795095Z&quot;},{&quot;id&quot;:&quot;0c102407-eb5a-4216-a560-6426a1f000c5&quot;,&quot;content&quot;:&quot;../../../../../../../../../../../../../../../../etc/passwd&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:16.632182Z&quot;},{&quot;id&quot;:&quot;fe886f2b-a9ae-4363-a664-77576af7d699&quot;,&quot;content&quot;:&quot;/etc/passwd&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:16.482553Z&quot;},{&quot;id&quot;:&quot;6c1b16e7-0b84-4c2e-9cf2-eaffca30b52f&quot;,&quot;content&quot;:&quot;..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\Windows\\system.ini&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:16.235697Z&quot;},{&quot;id&quot;:&quot;3f73fa7d-2b0b-4d20-b827-befb70295060&quot;,&quot;content&quot;:&quot;c:\\Windows\\system.ini&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:16.054050Z&quot;},{&quot;id&quot;:&quot;11554d91-a205-4c57-b7e5-70ebf9735faf&quot;,&quot;content&quot;:&quot;../../../../../../../../../../../../../../../../Windows/system.ini&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:15.901696Z&quot;},{&quot;id&quot;:&quot;ae576a45-7b82-4988-8b90-474e5139daee&quot;,&quot;content&quot;:&quot;c:/Windows/system.ini&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:56:15.778933Z&quot;},{&quot;id&quot;:&quot;ac22314e-efef-4d4b-959b-45aa6f46afaf&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:48:48.446857Z&quot;},{&quot;id&quot;:&quot;253673b3-a5fc-4fbc-b5a2-6ac580a3b6b2&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos. / case when cast(pg_sleep(15.0) as varchar) &gt; &#39;&#39; then 0 else 1 end&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:28.011356Z&quot;},{&quot;id&quot;:&quot;8d088b33-b23c-462e-9453-794fd8ea2d21&quot;,&quot;content&quot;:&quot;\&quot;case when cast(pg_sleep(15.0) as varchar) &gt; &#39;&#39; then 0 else 1 end --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:27.899731Z&quot;},{&quot;id&quot;:&quot;048cad3c-5e47-4311-83d9-da5be29f17b6&quot;,&quot;content&quot;:&quot;&#39;case when cast(pg_sleep(15.0) as varchar) &gt; &#39;&#39; then 0 else 1 end --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:27.724599Z&quot;},{&quot;id&quot;:&quot;71cbd3a6-25f0-4bec-bcb5-d083aa7b08db&quot;,&quot;content&quot;:&quot;case when cast(pg_sleep(15.0) as varchar) &gt; &#39;&#39; then 0 else 1 end --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:27.566127Z&quot;},{&quot;id&quot;:&quot;cbb3e364-014f-4f34-b2be-06c0b9b62c6b&quot;,&quot;content&quot;:&quot;case when cast(pg_sleep(15.0) as varchar) &gt; &#39;&#39; then 0 else 1 end&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:27.330944Z&quot;},{&quot;id&quot;:&quot;65d05b28-c8dc-4b83-8ca9-bb132a74a4f0&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos. and exists (DBMS_SESSION.SLEEP(15)) --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:25.346531Z&quot;},{&quot;id&quot;:&quot;6b4cb0fa-6fa3-4445-b3fe-1240ff3c96e5&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.\&quot; / (DBMS_SESSION.SLEEP(15)) / \&quot;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:25.261058Z&quot;},{&quot;id&quot;:&quot;2c286e43-97cb-46da-9bc0-ab50dbfc112e&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&#39; / (DBMS_SESSION.SLEEP(15)) / &#39;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:25.095726Z&quot;},{&quot;id&quot;:&quot;945e5eb1-1f32-418a-aba8-c9357c0c2520&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos. / (DBMS_SESSION.SLEEP(15))&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:24.885686Z&quot;},{&quot;id&quot;:&quot;b30bc6e8-cf73-4375-a651-07060dc973b7&quot;,&quot;content&quot;:&quot;(DBMS_SESSION.SLEEP(15))&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:24.703798Z&quot;},{&quot;id&quot;:&quot;aa106804-8b67-4418-8e50-b7812bae8dae&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&#39; and exists ( select \&quot;java.lang.Thread.sleep\&quot;(15000) from INFORMATION_SCHEMA.SYSTEM_COLUMNS where TABLE_NAME = &#39;SYSTEM_COLUMNS&#39; and COLUMN_NAME = &#39;TABLE_NAME&#39;) --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:22.583250Z&quot;},{&quot;id&quot;:&quot;1b164f6c-e808-46eb-b8ea-632959731bdd&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos. and exists ( select \&quot;java.lang.Thread.sleep\&quot;(15000) from INFORMATION_SCHEMA.SYSTEM_COLUMNS where TABLE_NAME = &#39;SYSTEM_COLUMNS&#39; and COLUMN_NAME = &#39;TABLE_NAME&#39;) --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:22.461547Z&quot;},{&quot;id&quot;:&quot;ae590c42-efd1-4133-9097-b17b91519c02&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.\&quot; / \&quot;java.lang.Thread.sleep\&quot;(15000) / \&quot;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:22.326572Z&quot;},{&quot;id&quot;:&quot;5aa9a556-97c3-4186-9e82-57116303c745&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&#39; / \&quot;java.lang.Thread.sleep\&quot;(15000) / &#39;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:22.203799Z&quot;},{&quot;id&quot;:&quot;7a2e1a68-e5e5-4e0b-a84b-be2d7529d2fe&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos. / \&quot;java.lang.Thread.sleep\&quot;(15000)&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:21.993820Z&quot;},{&quot;id&quot;:&quot;23e8440a-0461-474e-b0bb-d9d15de6ccfd&quot;,&quot;content&quot;:&quot;\&quot;java.lang.Thread.sleep\&quot;(15000)&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:21.778432Z&quot;},{&quot;id&quot;:&quot;8571f4c0-b82c-4a9b-b088-604707f7c427&quot;,&quot;content&quot;:&quot;); select \&quot;java.lang.Thread.sleep\&quot;(15000) from INFORMATION_SCHEMA.SYSTEM_COLUMNS where TABLE_NAME = &#39;SYSTEM_COLUMNS&#39; and COLUMN_NAME = &#39;TABLE_NAME&#39; --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:21.558985Z&quot;},{&quot;id&quot;:&quot;f394ba13-e6a8-4826-a770-d0f210261b66&quot;,&quot;content&quot;:&quot;\&quot;; select \&quot;java.lang.Thread.sleep\&quot;(15000) from INFORMATION_SCHEMA.SYSTEM_COLUMNS where TABLE_NAME = &#39;SYSTEM_COLUMNS&#39; and COLUMN_NAME = &#39;TABLE_NAME&#39; --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:21.407705Z&quot;},{&quot;id&quot;:&quot;31fa7701-fb95-407d-9ea4-d7132a2a434f&quot;,&quot;content&quot;:&quot;&#39;; select \&quot;java.lang.Thread.sleep\&quot;(15000) from INFORMATION_SCHEMA.SYSTEM_COLUMNS where TABLE_NAME = &#39;SYSTEM_COLUMNS&#39; and COLUMN_NAME = &#39;TABLE_NAME&#39; --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:21.208592Z&quot;},{&quot;id&quot;:&quot;cee7822e-2347-40d0-ab42-bd4815b22735&quot;,&quot;content&quot;:&quot;; select \&quot;java.lang.Thread.sleep\&quot;(15000) from INFORMATION_SCHEMA.SYSTEM_COLUMNS where TABLE_NAME = &#39;SYSTEM_COLUMNS&#39; and COLUMN_NAME = &#39;TABLE_NAME&#39; --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:20.980994Z&quot;},{&quot;id&quot;:&quot;d9bc32f0-fd85-4a18-b8b5-6be9957a84ad&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos. or 0 in (select sleep(15) ) --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:17.672295Z&quot;},{&quot;id&quot;:&quot;8103e5e9-bf71-4869-b2e8-284910eea3aa&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.\&quot; where 0 in (select sleep(15) ) --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:17.574668Z&quot;},{&quot;id&quot;:&quot;85e972f6-8664-4cb2-931c-d337a1d252ab&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&#39; where 0 in (select sleep(15) ) --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:17.449706Z&quot;},{&quot;id&quot;:&quot;6a7251da-c2c2-49be-8633-d558d1fe2450&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos. where 0 in (select sleep(15) ) --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:17.317857Z&quot;},{&quot;id&quot;:&quot;32409e73-9239-417e-b925-7d04d1d3976d&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.\&quot; and 0 in (select sleep(15) ) --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:17.137029Z&quot;},{&quot;id&quot;:&quot;bb18aaf2-1b73-40bc-880d-3d862e5d88da&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&#39; and 0 in (select sleep(15) ) --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:16.954550Z&quot;},{&quot;id&quot;:&quot;5b979efc-ca43-4480-ba9e-8a9ca2f72cc7&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos. and 0 in (select sleep(15) ) --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:16.668726Z&quot;},{&quot;id&quot;:&quot;c6a33979-cc71-4583-a077-79f35d96a963&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.\&quot; / sleep(15) / \&quot;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:16.401493Z&quot;},{&quot;id&quot;:&quot;dd4d5b35-e9c2-4000-80c2-45b33cb7cbdd&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&#39; / sleep(15) / &#39;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:16.215864Z&quot;},{&quot;id&quot;:&quot;848ee931-ac54-4aa6-90bd-7eb869781916&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos. / sleep(15)&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:15.990713Z&quot;},{&quot;id&quot;:&quot;2e422be8-5ec5-4d4e-9c69-1d73fe6f3c04&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:12.037353Z&quot;},{&quot;id&quot;:&quot;6951d5f7-1b16-4b91-82d3-c09895c7be00&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&#39;) UNION ALL select NULL --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:11.908221Z&quot;},{&quot;id&quot;:&quot;dc0dfd38-036a-4474-bef3-f1cf4aad1668&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.) UNION ALL select NULL --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:11.788610Z&quot;},{&quot;id&quot;:&quot;4a6592cf-8d28-456e-8dd6-03a6e2763a06&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.\&quot; UNION ALL select NULL --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:11.657988Z&quot;},{&quot;id&quot;:&quot;d7601956-dd5a-44b1-b346-120af66f3df3&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&#39; UNION ALL select NULL --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:11.539516Z&quot;},{&quot;id&quot;:&quot;66810e37-428e-477f-a215-8b15937a8369&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos. UNION ALL select NULL --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:11.388388Z&quot;},{&quot;id&quot;:&quot;4dd15c71-dc05-458f-852b-85d318026a00&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.\&quot; AND \&quot;1\&quot;=\&quot;1&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:11.253850Z&quot;},{&quot;id&quot;:&quot;841ec352-83ec-4419-98b3-df9bc91e6948&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&#39; AND &#39;1&#39;=&#39;1&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:11.010867Z&quot;},{&quot;id&quot;:&quot;e02eec64-7d32-4bda-8a86-e0e7d1cf6e74&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos. AND 1=1&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:10.891082Z&quot;},{&quot;id&quot;:&quot;814a566f-7ca5-4838-95a9-075ee8f6b6d0&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.\&quot; AND \&quot;1\&quot;=\&quot;1\&quot; --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:10.750090Z&quot;},{&quot;id&quot;:&quot;3f574d38-b783-4a8f-b7c2-e2db11383adc&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&#39; AND &#39;1&#39;=&#39;1&#39; --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:10.583237Z&quot;},{&quot;id&quot;:&quot;5e736b97-7b85-4efa-92ef-6a6a1cf677c9&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos. AND 1=1 --&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:10.406105Z&quot;},{&quot;id&quot;:&quot;19498750-c98b-41a0-9b86-df61024f4264&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:10.223318Z&quot;},{&quot;id&quot;:&quot;953d6b26-99ae-4ae2-8728-3a34e8a9e8d2&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:10.071245Z&quot;},{&quot;id&quot;:&quot;80df3e94-04df-4803-95af-87ed995f2218&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&#39;(&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:09.864840Z&quot;},{&quot;id&quot;:&quot;44fc7f86-cf47-40d1-9be0-f19b90551010&quot;,&quot;content&quot;:&quot;&#39;(&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:09.745194Z&quot;},{&quot;id&quot;:&quot;ec9c3126-6799-4f2e-b359-8d71bcb4fb98&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:09.618352Z&quot;},{&quot;id&quot;:&quot;bb4f3372-285f-424d-954e-80d3a26ec4c2&quot;,&quot;content&quot;:&quot;;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:09.454732Z&quot;},{&quot;id&quot;:&quot;5bf80f92-0e6b-44e9-8cf6-45b3d91d9e47&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.\&quot;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:09.262885Z&quot;},{&quot;id&quot;:&quot;d769d1bc-329a-4241-8e12-d54e49df4d7d&quot;,&quot;content&quot;:&quot;\&quot;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:09.085429Z&quot;},{&quot;id&quot;:&quot;3d037230-f7bd-43f7-bec1-97cf659387ef&quot;,&quot;content&quot;:&quot;Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.&#39;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:08.921062Z&quot;},{&quot;id&quot;:&quot;766408e6-6dcc-40e2-bf95-6de92187a035&quot;,&quot;content&quot;:&quot;&#39;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:32:08.742877Z&quot;},{&quot;id&quot;:&quot;fcff9588-8943-4ce7-a5ef-44703b9e1ce5&quot;,&quot;content&quot;:&quot;&lt;script&gt;alert(1);&lt;/script&gt;&quot;,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;author_id&quot;:&quot;fb7654de-a8be-41b1-b294-6d1ffd88815e&quot;,&quot;author_name&quot;:&quot;Alumni Prueba&quot;,&quot;author_role&quot;:&quot;Alumni&quot;,&quot;author_avatar&quot;:&quot;0W45pz4p&quot;,&quot;likes_count&quot;:0,&quot;has_liked&quot;:false,&quot;created_at&quot;:&quot;2026-11-03T23:23:23.454862Z&quot;}]</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Parameter</th>
+		<td><pre><code>content</code></pre></td>
+	</tr>
+	<tr>
+		<th scope="row">Attack</th>
+		<td><pre><code>&lt;script&gt;alert(1);&lt;/script&gt;</code></pre></td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Fase: Arquitectura y Diseño</p>
+
+<p>Utilizar una biblioteca o framework verificado y confiable que evite esta vulnerabilidad o proporcione elementos que faciliten evitarla.</p>
+
+<p>Los ejemplos de las bibliotecas y marcos que facilitan el origen de resultados que son codificados de forma correcta incluyen la biblioteca Anti-XSS de Microsoft, el módulo de codificación OWASP ESAPI y Apache Wicket.</p>
+
+<p>Fases: Implementación; Arquitectura y Diseño</p>
+
+<p>Comprenda el contexto en el que se va a utilizar sus datos y la condificación que se va a esperar. Esto es fundamentalmente importante cuando se transmiten los datos entre diferentes componentes o cuando se generan las salidas que pueden comprender múltiples codificaciones al mismo tiempo, como paginas web o mensajes de correos de varias zonas. Estudie todos los protocolos de comunicacón y representaciones de los datos que son esperadas para poder determinar las estrategias de codificación que son necesarias.</p>
+
+<p>Por cualquier dato que se enviará a otra página web, en especial cualquier dato recibido de las entradas externas, utiice la codificación que sea conveniente en todos los caracteres que no sean alfanuméricos.</p>
+
+<p>Consulte la hoja de referencia de prevención de CSS para poder obtener más información detallada de los diferentes tipos de condificación y escape que se requieren.</p>
+
+<p>Fase: Arquitectura y Diseño</p>
+
+<p>Cualquier comprobación de seguridad que se vaya a realizar en el lado del cliente, asegúrese de que estas comprobaciones se encuentre duplicadas en el lado del servidor, para evitar el CWE-602. Los atacantes pueden eludir las comprobaciones del lado del cliente modificando los valores después de que se hayan realizado las comprobaciones, o cambiando al cliente para poder eliminar de forma completa las comprobaciones del lado del cliente. Después, estos valores que fueron modificados serán enviados al servidor.</p>
+
+<p>Si se encuentra disponible, utilice los mecanismos estructurados que apliquen de forma automática la separación entre los datos y códigos. Estos mecanismos pueden otorgar la cotización, codificación y validación relevantes de manera automática, en lugar de confiar en que el desarrollador proporcione esta capacidad en cada uno de los puntos donde se origina la salida.</p>
+
+<p>Fase: Implementación</p>
+
+<p>Para cada una de las páginas web que se origina, utilice y especifique una codificación de caracteres como ISO-8859 o UTF-8. Cuando no se puede especificar una condificación, el navegador web podría selaccionar una codificación distinta adivinando que codificiación está siendo utilizada en verdad por la página web. Esto puede permitir que el navegador web trate varias secuencias como especiales, abriendo al cliente a leves ataques XSS. Consulte CWE-116 para conseguir más mitigaciones con respecto a la codificación/escape.</p>
+
+<p>Para ayudar a mitigar los ataques XSS contra las cookies de la sesión del usuario, es necesario establecer que la cookie de la sesión sea HttpOnly. En navegadores que son compatibles con la característica HttpOnly (como las versiones más actualizadas de internet explorer y firefox), esta característica puede prevenir que la cookie de sesión del usuario sea accesible para las secuencias de comandos del lado del cliente malignas que utilizan document.cookie. Esta no es una solución muy completa, ya que HttpOnly no es compatible con todos los navegadores que hay. Más importante aún, XMLHTTPRequest y otras tecnologías poderosas de navegador otorgan acceso de lectura a los encabezados HTTP, incluido el encabezado Set-Cookie en el cual se establece el indicador HttpOnly.</p>
+
+<p>Asuma que toda la entrada es maliciosa. Utilizar una estrategia de validación de entradas de tipo &quot;aceptar lo bueno conocido&quot;, es decir, utilizar una lista de entradas aceptables que se ajusten estrictamente a las especificaciones. Rechace cualquier entrada que no se adapte de forma estricta a las especificaciones, o cambielas por algo que sí lo haga. No confíe exclusivamente en la búsqueda de entradas maliciosas o malformadas (es decir, no confíe en una lista de denegación). Sin embargo, las listas de denegación pueden ser útiles para detectar posibles ataques o para determinar qué entradas están tan malformadas que deben ser rechazadas directamente.</p>
+
+<p>Al realizar la validación de entrada, usted debe considerar todas las propiedades potencialmente destacadas, incluida la longitud, el tipo de entrada, el rango completo de valores aceptables, las entradas faltantes o adicionales, la sintaxis, el sentido entre los campos que se encuentran relacionados y la conformidad con todas las reglas comerciales. Como ejemplo de lógica de regla de negocio, &quot;barco&quot; puede ser sintácticamente válido porque sólo contiene caracteres alfanuméricos, pero no es válido si se esperan colores como &quot;rojo&quot; o &quot;azul&quot;.</p>
+
+<p>Asegúrese de realizar la validación de entradas en interfaces bien definidas dentro de la aplicación. Esto ayudará a cuidar la aplicación, incluso si un elemento se utiliza de nuevo o traslada a otro sitio.</p>
+
+<p>	</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				  
+				 
+				
+				
+				<li id="alerts--risk-0-confidence-3">
+					<h3>
+						<span>Risk</span>=<span
+							class="risk-level">Informativo</span>, <span>Confidence</span>=<span
+							class="confidence-level">Alta</span> <span>(1)</span>
+					</h3>
+					<ol>
+						
+						<li class="alerts--site-li">
+							<h4>
+								<span class="site">http://localhost:8443</span> <span>(1)</span>
+							</h4>
+							<ol>
+								
+								<li>
+									<h5>
+										<a
+											href="#alert-type-2">Petición de Autenticación Identificada</a> <span>(1)</span>
+									</h5>
+									<ol>
+										<li><details>
+												<summary>
+													<span class="request-method-n-url">POST http://localhost:8443/api/v1/auth/login</span>
+												</summary>
+												
+<table class="alerts-table">
+	<tr>
+		<th scope="row">Alert tags</th>
+		<td>
+			<ul class="alert-tags-list">
+				
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">Alert description</th>
+		<td> 
+<p>La petición en cuestión se ha identificado como una petición de autenticación. El campo &quot;Otra información&quot; contiene un conjunto de líneas key=vvalue que identifican cualquier campo relevante. Si la solicitud está en un contexto que tiene un método de autenticación configurado como &quot;Detección automática&quot;, esta regla cambiará la autenticación para que coincida con la petición identificada.</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Other info</th>
+		<td> 
+<p>userParam=username</p>
+
+<p>userValue=username</p>
+
+<p>passwordParam=password</p>
+ </td>
+	</tr>
+	<tr>
+		<th scope="row">Request</th>
+		<td><details open="open">
+				<summary>Request line and header section (604 bytes)</summary>
+				
+				<pre><code>POST http://localhost:8443/api/v1/auth/login HTTP/1.1
+host: localhost:8443
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+pragma: no-cache
+cache-control: no-cache
+accept: application/json
+content-type: application/x-www-form-urlencoded
+content-length: 122
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmYjc2NTRkZS1hOGJlLTQxYjEtYjI5NC02ZDFmZmQ4ODgxNWUiLCJyb2xlIjoiQWx1bW5pIiwiZW1haWwiOiJhbHVtbmkxQGVzdHVkaWFudGF0LnVwYy5lZHUiLCJleHAiOjE3OTM3NTE2Mzd9.fhc9Y6a5yagE0WHtCtWVL3CVewxk7VY0Qr0nivJT_e0
+
+</code></pre>
+				
+				
+			</details> <details class="request-body" open="open">
+				<summary>Request body (122 bytes)</summary>
+				
+				<pre><code>grant_type=%22John+Doe%22&amp;username=username&amp;password=ZAP&amp;scope=scope&amp;client_id=%22John+Doe%22&amp;client_secret=%22John+Doe%22</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Response</th>
+		<td><details open="open">
+				<summary>Status line and header section (144 bytes)</summary>
+				
+				<pre><code>HTTP/1.1 422 Unprocessable Entity
+date: Tue, 03 Nov 2026 23:48:44 GMT
+server: uvicorn
+content-length: 174
+content-type: application/json
+
+</code></pre>
+				
+				
+			</details> <details class="response-body" open="open">
+				<summary>Response body (174 bytes)</summary>
+				
+				<pre><code>{&quot;detail&quot;:[{&quot;type&quot;:&quot;string_pattern_mismatch&quot;,&quot;loc&quot;:[&quot;body&quot;,&quot;grant_type&quot;],&quot;msg&quot;:&quot;String should match pattern &#39;password&#39;&quot;,&quot;input&quot;:&quot;\&quot;John Doe\&quot;&quot;,&quot;ctx&quot;:{&quot;pattern&quot;:&quot;password&quot;}}]}</code></pre>
+				
+				
+			</details></td>
+	</tr>
+	<tr>
+		<th scope="row">Parameter</th>
+		<td><pre><code>username</code></pre></td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Evidence</th>
+		<td><pre><code>password</code></pre></td>
+	</tr>
+	<tr>
+		<th scope="row">Solution</th>
+		<td> 
+<p>Se trata de una alerta informativa y no de una vulnerabilidad, por lo que no hay nada que corregir.</p>
+ </td>
+	</tr>
+</table>
+
+											</details></li>
+									</ol>
+								</li>
+								
+							</ol>
+						</li>
+						
+					</ol>
+				</li>
+				
+				
+				
+				
+				  
+			</ol>
+		</section>
+
+		<section id="appendix" class="appendix">
+			<h2>Appendix</h2>
+
+			<section id="alert-types" class="alert-types">
+				<h3>Alert Types</h3>
+				<p class="alert-types-intro">This section contains additional information on the types of alerts in the report.</p>
+				<ol>
+					<li
+						id="alert-type-0">
+						<h4>Cross Site Scripting (Persistente en la respuesta JSON)</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by an active scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/40014/">Cross Site Scripting XSS (Persistente)</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/79.html">79</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>8</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://owasp.org/www-community/attacks/xss/">https://owasp.org/www-community/attacks/xss/</a></li>
+										<li><a
+											href="https://cwe.mitre.org/data/definitions/79.html">https://cwe.mitre.org/data/definitions/79.html</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-1">
+						<h4>Falta encabezado X-Content-Type-Options</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10021/">Falta encabezado X-Content-Type-Options</a>)
+									</span>   
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">CWE ID</th>
+								<td><a
+									href="https://cwe.mitre.org/data/definitions/693.html">693</a></td>
+							</tr>
+							<tr>
+								<th scope="row">WASC ID</th>
+								<td>15</td>
+							</tr>
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)">https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</a></li>
+										<li><a
+											href="https://owasp.org/www-community/Security_Headers">https://owasp.org/www-community/Security_Headers</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+					<li
+						id="alert-type-2">
+						<h4>Petición de Autenticación Identificada</h4>
+						<table class="alert-types-table">
+							<tr>
+								<th scope="row">Source</th>
+								<td>
+									
+									   <span>raised by a passive scanner</span> <span>(<a
+										href="https://www.zaproxy.org/docs/alerts/10111/">Petición de Autenticación Identificada</a>)
+									</span>   
+								</td>
+							</tr>
+							
+							
+							<tr>
+								<th scope="row">Reference</th>
+								<td>
+									<ol>
+										<li><a
+											href="https://www.zaproxy.org/docs/desktop/addons/authentication-helper/auth-req-id/">https://www.zaproxy.org/docs/desktop/addons/authentication-helper/auth-req-id/</a></li>
+									</ol>
+								</td>
+							</tr>
+						</table>
+					</li>
+				</ol>
+			</section>
+		</section>
+		 
+	</main>
+</body>
+</html>
+
+
+
